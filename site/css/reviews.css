@@ -1,0 +1,70 @@
+/* Focused reviews page: one lead story and a concise supporting collection. */
+.reviews-page { --reviews-paper: #f3f5f7; --reviews-ink: #111827; --reviews-muted: #667085; --reviews-line: #d9dee5; }
+
+.reviews-page-hero { padding-block: 88px; background: #fff; }
+.reviews-page-hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 96px; align-items: end; }
+.reviews-page-hero h1 { font-size: clamp(46px, 5vw, 70px); line-height: 1.08; letter-spacing: -.04em; }
+.reviews-page-hero-copy > p { max-width: 540px; color: var(--reviews-muted); font-size: 19px; line-height: 1.7; }
+.reviews-page-hero .hero-actions { margin-top: 32px; }
+
+.reviews-lead-story { padding-block: 88px; background: var(--reviews-paper); }
+.reviews-lead-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 80px; align-items: center; }
+.reviews-lead-copy h2 { max-width: 700px; font-size: clamp(30px, 3vw, 44px); line-height: 1.2; letter-spacing: -.03em; }
+.reviews-lead-copy blockquote { max-width: 760px; margin: 36px 0 0; font-family: Lora, Georgia, serif; color: var(--reviews-ink); font-size: clamp(22px, 2vw, 29px); line-height: 1.55; }
+.reviews-person { display: flex; align-items: baseline; gap: 14px; margin-top: 28px; font-size: 16px; }
+.reviews-person strong { font-weight: 700; }
+.reviews-person span { color: var(--reviews-muted); }
+.reviews-lead-image { width: 100%; padding: 18px; border: 0; background: #e8edf2; cursor: zoom-in; }
+.reviews-lead-image img { display: block; width: 100%; height: 430px; object-fit: contain; }
+
+.reviews-stories { padding-block: 96px; }
+.reviews-stories-heading { display: grid; grid-template-columns: 1fr .75fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+.reviews-stories-heading h2 { font-size: clamp(34px, 3vw, 46px); letter-spacing: -.03em; }
+.reviews-stories-heading p { max-width: 440px; margin-left: auto; color: var(--reviews-muted); font-size: 17px; line-height: 1.7; }
+.reviews-stories-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; row-gap: 56px; }
+.reviews-story { display: grid; grid-template-columns: 180px 1fr; gap: 24px 30px; align-items: start; padding-top: 28px; border-top: 1px solid var(--reviews-line); }
+.reviews-story-image { grid-row: 1 / 3; width: 100%; padding: 0; border: 0; background: var(--reviews-paper); cursor: zoom-in; }
+.reviews-story-image img { display: block; width: 100%; height: 180px; object-fit: cover; }
+.reviews-story blockquote { margin: 0; color: var(--reviews-ink); font-family: Inter, sans-serif; font-size: 17px; line-height: 1.75; }
+.reviews-story footer { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 14px; font-size: 15px; }
+.reviews-story footer strong { font-weight: 700; }
+.reviews-story footer span { color: var(--reviews-muted); }
+
+.reviews-page .dark-cta { padding-block: 72px; }
+
+@media (max-width: 1100px) {
+  .reviews-page-hero-grid { gap: 48px; }
+  .reviews-lead-grid { gap: 48px; }
+  .reviews-stories-grid { gap: 48px 36px; }
+  .reviews-story { grid-template-columns: 140px 1fr; gap: 22px; }
+  .reviews-story-image img { height: 150px; }
+}
+
+@media (max-width: 800px) {
+  .reviews-page-hero { padding-block: 64px; }
+  .reviews-page-hero-grid, .reviews-lead-grid { grid-template-columns: 1fr; gap: 36px; }
+  .reviews-page-hero-copy > p { font-size: 18px; }
+  .reviews-lead-story, .reviews-stories { padding-block: 64px; }
+  .reviews-lead-image { max-width: 640px; }
+  .reviews-lead-image img { height: 390px; }
+  .reviews-stories-heading { grid-template-columns: 1fr; gap: 18px; }
+  .reviews-stories-heading p { margin: 0; }
+  .reviews-stories-grid { grid-template-columns: 1fr; }
+  .reviews-story { grid-template-columns: 180px 1fr; }
+}
+
+@media (max-width: 560px) {
+  .reviews-page-hero, .reviews-lead-story, .reviews-stories { padding-block: 48px; }
+  .reviews-page-hero h1 { font-size: 39px; }
+  .reviews-page-hero-copy > p { font-size: 17px; }
+  .reviews-page-hero .hero-actions .btn { width: 100%; }
+  .reviews-lead-copy h2, .reviews-stories-heading h2 { font-size: 31px; }
+  .reviews-lead-copy blockquote { margin-top: 26px; font-size: 22px; }
+  .reviews-person { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .reviews-lead-image { padding: 10px; }
+  .reviews-lead-image img { height: 280px; }
+  .reviews-story { grid-template-columns: 1fr; gap: 20px; padding-top: 24px; }
+  .reviews-story-image { grid-row: auto; }
+  .reviews-story-image img { height: 230px; }
+  .reviews-story blockquote { font-size: 16px; }
+}

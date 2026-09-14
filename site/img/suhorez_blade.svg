@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <!-- High-contrast Chrome / Silver Diamond Teeth Gradient -->
+    <linearGradient id="chromeTeeth" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="25%" stop-color="#E2E8F0" />
+      <stop offset="50%" stop-color="#94A3B8" />
+      <stop offset="75%" stop-color="#F1F5F9" />
+      <stop offset="100%" stop-color="#CBD5E1" />
+    </linearGradient>
+
+    <!-- Vibrant Electric Royal Blue Body -->
+    <radialGradient id="electricBlueBody" cx="45%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="35%" stop-color="#2563EB" />
+      <stop offset="75%" stop-color="#1D4ED8" />
+      <stop offset="100%" stop-color="#1E3A8A" />
+    </radialGradient>
+
+    <!-- Polished Steel Center Flange -->
+    <radialGradient id="mirrorSteel" cx="35%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="30%" stop-color="#E2E8F0" />
+      <stop offset="70%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#475569" />
+    </radialGradient>
+  </defs>
+
+  <style>
+    @keyframes bladeRotateKeyframes {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .blade-spin-motion {
+      transform-origin: 100px 100px;
+      animation: bladeRotateKeyframes 10s linear infinite;
+    }
+  </style>
+
+  <g class="blade-spin-motion">
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 100 100"
+      to="360 100 100"
+      dur="10s"
+      repeatCount="indefinite" />
+
+    <!-- 1. Diamond Segments (High-contrast bright silver teeth with deep gaps) -->
+    <path d="M 198.00 100.00 A 98 98 0 0 1 194.11 127.34 L 176.82 122.32 A 80 80 0 0 0 180.00 100.00 Z M 190.54 137.50 A 98 98 0 0 1 176.48 161.27 L 162.43 150.02 A 80 80 0 0 0 173.91 130.61 Z M 169.30 169.30 A 98 98 0 0 1 147.21 185.88 L 138.54 170.10 A 80 80 0 0 0 156.57 156.57 Z M 137.50 190.54 A 98 98 0 0 1 110.75 197.41 L 108.78 179.52 A 80 80 0 0 0 130.61 173.91 Z M 100.00 198.00 A 98 98 0 0 1 72.66 194.11 L 77.68 176.82 A 80 80 0 0 0 100.00 180.00 Z M 62.50 190.54 A 98 98 0 0 1 38.73 176.48 L 49.98 162.43 A 80 80 0 0 0 69.39 173.91 Z M 30.70 169.30 A 98 98 0 0 1 14.12 147.21 L 29.90 138.54 A 80 80 0 0 0 43.43 156.57 Z M 9.46 137.50 A 98 98 0 0 1 2.59 110.75 L 20.48 108.78 A 80 80 0 0 0 26.09 130.61 Z M 2.00 100.00 A 98 98 0 0 1 5.89 72.66 L 23.18 77.68 A 80 80 0 0 0 20.00 100.00 Z M 9.46 62.50 A 98 98 0 0 1 23.52 38.73 L 37.57 49.98 A 80 80 0 0 0 26.09 69.39 Z M 30.70 30.70 A 98 98 0 0 1 52.79 14.12 L 61.46 29.90 A 80 80 0 0 0 43.43 43.43 Z M 62.50 9.46 A 98 98 0 0 1 89.25 2.59 L 91.22 20.48 A 80 80 0 0 0 69.39 26.09 Z M 100.00 2.00 A 98 98 0 0 1 127.34 5.89 L 122.32 23.18 A 80 80 0 0 0 100.00 20.00 Z M 137.50 9.46 A 98 98 0 0 1 161.27 23.52 L 150.02 37.57 A 80 80 0 0 0 130.61 26.09 Z M 169.30 30.70 A 98 98 0 0 1 185.88 52.79 L 170.10 61.46 A 80 80 0 0 0 156.57 43.43 Z M 190.54 62.50 A 98 98 0 0 1 197.41 89.25 L 179.52 91.22 A 80 80 0 0 0 173.91 69.39 Z" fill="url(#chromeTeeth)" stroke="#FFFFFF" stroke-width="0.8" />
+
+    <!-- 2. Electric Blue Disc Body -->
+    <circle cx="100" cy="100" r="80" fill="url(#electricBlueBody)" stroke="#60A5FA" stroke-width="1.5" />
+
+    <!-- Bright concentric grooving tracks for striking spinning motion -->
+    <circle cx="100" cy="100" r="68" fill="none" stroke="#93C5FD" stroke-width="1.5" stroke-dasharray="12 6" />
+    <circle cx="100" cy="100" r="55" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+    <circle cx="100" cy="100" r="44" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="1.2" />
+
+    <!-- 3. Expansion Laser Slots (high contrast keyholes) -->
+    <g transform="rotate(45 100 100)">
+      <path d="M 100 22 L 97 50 A 4.5 4.5 0 1 0 103 50 L 100 22 Z" fill="#141415" stroke="#93C5FD" stroke-width="1.2" />
+      <circle cx="100" cy="54" r="3.5" fill="#141415" stroke="#93C5FD" stroke-width="1" />
+    </g>
+
+    <g transform="rotate(135 100 100)">
+      <path d="M 100 22 L 97 50 A 4.5 4.5 0 1 0 103 50 L 100 22 Z" fill="#141415" stroke="#93C5FD" stroke-width="1.2" />
+      <circle cx="100" cy="54" r="3.5" fill="#141415" stroke="#93C5FD" stroke-width="1" />
+    </g>
+
+    <g transform="rotate(225 100 100)">
+      <path d="M 100 22 L 97 50 A 4.5 4.5 0 1 0 103 50 L 100 22 Z" fill="#141415" stroke="#93C5FD" stroke-width="1.2" />
+      <circle cx="100" cy="54" r="3.5" fill="#141415" stroke="#93C5FD" stroke-width="1" />
+    </g>
+
+    <g transform="rotate(315 100 100)">
+      <path d="M 100 22 L 97 50 A 4.5 4.5 0 1 0 103 50 L 100 22 Z" fill="#141415" stroke="#93C5FD" stroke-width="1.2" />
+      <circle cx="100" cy="54" r="3.5" fill="#141415" stroke="#93C5FD" stroke-width="1" />
+    </g>
+
+    <!-- 4. Polished Steel Center Flange -->
+    <circle cx="100" cy="100" r="34" fill="url(#mirrorSteel)" stroke="#CBD5E1" stroke-width="1.5" />
+
+    <!-- Rotation Direction Arrows (Bright White / Navy) -->
+    <path d="M 84 76 A 22 22 0 0 1 116 76" fill="none" stroke="#0F172A" stroke-width="3" stroke-linecap="round" />
+    <polygon points="119,70 124,78 115,80" fill="#0F172A" />
+
+    <path d="M 116 124 A 22 22 0 0 1 84 124" fill="none" stroke="#0F172A" stroke-width="3" stroke-linecap="round" />
+    <polygon points="81,130 76,122 85,120" fill="#0F172A" />
+
+    <!-- 5. Central Arbor Hole -->
+    <circle cx="100" cy="100" r="17" fill="#141415" stroke="#FFFFFF" stroke-width="1.5" />
+  </g>
+</svg>
