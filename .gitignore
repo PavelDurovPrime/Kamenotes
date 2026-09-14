@@ -1,5 +1,26 @@
-node_modules/
+# Passwords and sensitive credentials
+PASS*
+*PASS*
+*.pass
+*.env
+*.env.*
+
+# Raw Viber photo imports (already processed in site/img/production)
+Photo/
+
+# QA test artifacts, logs and screenshots
 qa/
 *.log
+
+# Operating system and editor artifacts
 .DS_Store
 Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.tmp
+*.bak
+
+# Node dependencies
+node_modules/
