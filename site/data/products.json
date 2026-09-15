@@ -10,8 +10,10 @@
     "specs": [
       "Стела: 80х40х5 см",
       "Тумба: 50х20х15 см",
-      "Квітник: 100х5х10 см"
-    ]
+      "Квітник: 100х5х10 см (2 шт), 50х5х10 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-2-5",
@@ -22,10 +24,12 @@
     "price": 6600,
     "category": "odinarni",
     "specs": [
-      "Стела: 80х40х5 см",
-      "Тумба: 50х20х15 см",
-      "Квітник: 100х5х10 см"
-    ]
+      "Стела: 100х50х5 см",
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х5х10 см (2 шт), 50х5х10 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-3-5",
@@ -38,8 +42,10 @@
     "specs": [
       "Стела: 80х40х5 см",
       "Тумба: 50х20х15 см",
-      "Квітник: 100х5х10 см"
-    ]
+      "Квітник: 100х5х10 см (2 шт), 50х5х10 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-4-5",
@@ -50,24 +56,28 @@
     "price": 6900,
     "category": "odinarni",
     "specs": [
-      "Стела: 80х40х5 см",
-      "Тумба: 50х20х15 см",
-      "Квітник: 100х5х10 см"
-    ]
+      "Стела: 100х50х5 см",
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х5х10 см (2 шт), 50х5х10 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-1",
     "sku": "КМ-1",
     "title": "Пам'ятник КМ-1",
     "img": "img/kamenotes/shop_pamyatnik_km1.jpg",
-    "badge": "Популярна класика",
+    "badge": "Стандарт 8 см",
     "price": 7600,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-2",
@@ -79,9 +89,11 @@
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-3",
@@ -93,9 +105,11 @@
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-4",
@@ -103,13 +117,15 @@
     "title": "Пам'ятник КМ-4",
     "img": "img/kamenotes/shop_pamyatnik_km4.jpg",
     "badge": "Стандарт 8 см",
-    "price": 8400,
+    "price": 7900,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-5",
@@ -117,13 +133,15 @@
     "title": "Пам'ятник КМ-5",
     "img": "img/kamenotes/shop_pamyatnik_km5.jpg",
     "badge": "Стандарт 8 см",
-    "price": 8700,
+    "price": 7900,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-6",
@@ -131,13 +149,15 @@
     "title": "Пам'ятник КМ-6",
     "img": "img/kamenotes/shop_pamyatnik_km6-3.jpg",
     "badge": "Стандарт 8 см",
-    "price": 8900,
+    "price": 8300,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-7",
@@ -145,13 +165,15 @@
     "title": "Пам'ятник КМ-7",
     "img": "img/kamenotes/shop_pamyatnik_km7.jpg",
     "badge": "Фігурна різка",
-    "price": 9200,
+    "price": 7900,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-8",
@@ -159,13 +181,15 @@
     "title": "Пам'ятник КМ-8",
     "img": "img/kamenotes/shop_pamyatnik_km8-2.jpg",
     "badge": "Фігурна різка",
-    "price": 9400,
+    "price": 10200,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-9",
@@ -173,13 +197,15 @@
     "title": "Пам'ятник КМ-9",
     "img": "img/kamenotes/shop_pamyatnik_km9.jpg",
     "badge": "Фігурна різка",
-    "price": 9600,
+    "price": 10200,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-10",
@@ -187,13 +213,15 @@
     "title": "Пам'ятник КМ-10",
     "img": "img/kamenotes/shop_pamyatnik_km10.jpg",
     "badge": "Хвилястий верх",
-    "price": 9900,
+    "price": 10200,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-11",
@@ -205,9 +233,11 @@
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-12",
@@ -215,13 +245,15 @@
     "title": "Пам'ятник КМ-12",
     "img": "img/kamenotes/shop_pamyatnik_km12.jpg",
     "badge": "Хвилястий верх",
-    "price": 10500,
+    "price": 10200,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-13",
@@ -229,13 +261,15 @@
     "title": "Пам'ятник КМ-13",
     "img": "img/kamenotes/shop_pamyatnik_km13.jpg",
     "badge": "Скульптурний зріз",
-    "price": 10800,
+    "price": 10200,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-14",
@@ -243,13 +277,15 @@
     "title": "Пам'ятник КМ-14",
     "img": "img/kamenotes/shop_pamyatnik_km14.jpg",
     "badge": "Скульптурний зріз",
-    "price": 11000,
+    "price": 10800,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-15",
@@ -257,13 +293,15 @@
     "title": "Пам'ятник КМ-15",
     "img": "img/kamenotes/shop_pamyatnik_km15.jpg",
     "badge": "Авторський фасон",
-    "price": 11300,
+    "price": 10800,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-16",
@@ -271,13 +309,15 @@
     "title": "Пам'ятник КМ-16",
     "img": "img/kamenotes/shop_pamyatnik_km16.jpg",
     "badge": "Авторський фасон",
-    "price": 11500,
+    "price": 10800,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-17",
@@ -285,13 +325,15 @@
     "title": "Пам'ятник КМ-17",
     "img": "img/kamenotes/shop_pamyatnik_km17.jpg",
     "badge": "Фігурна фаска",
-    "price": 11800,
+    "price": 10500,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-18",
@@ -299,13 +341,15 @@
     "title": "Пам'ятник КМ-18",
     "img": "img/kamenotes/shop_pamyatnik_km18.jpg",
     "badge": "Фігурна фаска",
-    "price": 12000,
+    "price": 10800,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-19",
@@ -313,13 +357,15 @@
     "title": "Пам'ятник КМ-19",
     "img": "img/kamenotes/shop_pamyatnik_km19.jpg",
     "badge": "Ексклюзивний дизайн",
-    "price": 12200,
+    "price": 10800,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-20",
@@ -327,13 +373,15 @@
     "title": "Пам'ятник КМ-20",
     "img": "img/kamenotes/shop_pamyatnik_km20.jpg",
     "badge": "Ексклюзивний дизайн",
-    "price": 12400,
+    "price": 13200,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-21",
@@ -341,13 +389,15 @@
     "title": "Пам'ятник КМ-21",
     "img": "img/kamenotes/shop_pamyatnik_km21.jpg",
     "badge": "Преміум різьба",
-    "price": 12500,
+    "price": 13200,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-22",
@@ -355,13 +405,15 @@
     "title": "Пам'ятник КМ-22",
     "img": "img/kamenotes/shop_pamyatnik_km22.jpg",
     "badge": "Преміум різьба",
-    "price": 12600,
+    "price": 12700,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-23",
@@ -369,13 +421,15 @@
     "title": "Пам'ятник КМ-23",
     "img": "img/kamenotes/shop_pamyatnik_km23.jpg",
     "badge": "Преміум різьба",
-    "price": 12700,
+    "price": 13200,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-24",
@@ -383,13 +437,15 @@
     "title": "Пам'ятник КМ-24",
     "img": "img/kamenotes/shop_pamyatnik_km24.jpg",
     "badge": "Скульптурний рельєф",
-    "price": 12800,
+    "price": 13200,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-25",
@@ -397,13 +453,15 @@
     "title": "Пам'ятник КМ-25",
     "img": "img/kamenotes/shop_pamyatnik_km25.jpg",
     "badge": "Скульптурний рельєф",
-    "price": 12900,
+    "price": 13200,
     "category": "odinarni",
     "specs": [
       "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-26",
@@ -411,13 +469,15 @@
     "title": "Пам'ятник КМ-26",
     "img": "img/kamenotes/shop_pamyatnik_km26.jpg",
     "badge": "Скульптурний рельєф",
-    "price": 13000,
+    "price": 13200,
     "category": "odinarni",
     "specs": [
-      "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-27",
@@ -425,13 +485,15 @@
     "title": "Пам'ятник КМ-27",
     "img": "img/kamenotes/shop_pamyatnik_km27.jpg",
     "badge": "Художні промені",
-    "price": 13100,
+    "price": 13200,
     "category": "odinarni",
     "specs": [
-      "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-28",
@@ -442,10 +504,12 @@
     "price": 13200,
     "category": "odinarni",
     "specs": [
-      "Стела: 100х50х8 см",
-      "Тумба: 60х20х20 см",
-      "Квітник: 100х8х10 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 60х20х15 см",
+      "Квітник: 100х10х8 см (2 шт), 50х10х8 см (1 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-29",
@@ -456,10 +520,12 @@
     "price": 11500,
     "category": "podvijni",
     "specs": [
-      "Стела горизонтальна: 100х60х8 см",
-      "Тумба: 110х20х20 см",
-      "Квітник подвійний: 100х120 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Кубики: 15х15х15 см (2 шт), тумба: 100х20х20 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-30",
@@ -470,10 +536,12 @@
     "price": 12500,
     "category": "podvijni",
     "specs": [
-      "Стела горизонтальна: 100х60х8 см",
-      "Тумба: 110х20х20 см",
-      "Квітник подвійний: 100х120 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 110х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-31",
@@ -481,13 +549,15 @@
     "title": "Подвійний пам'ятник КМ-31",
     "img": "img/kamenotes/shop_pamyatnik_km31.jpg",
     "badge": "Подвійна хвиля",
-    "price": 12800,
+    "price": 12500,
     "category": "podvijni",
     "specs": [
-      "Стела: 110х60х8 см",
-      "Тумба: 120х20х20 см",
-      "Квітник: 100х120 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-32",
@@ -495,13 +565,15 @@
     "title": "Подвійний пам'ятник КМ-32",
     "img": "img/kamenotes/shop_pamyatnik_km32.jpg",
     "badge": "Подвійна хвиля",
-    "price": 13000,
+    "price": 12500,
     "category": "podvijni",
     "specs": [
-      "Стела: 110х60х8 см",
-      "Тумба: 120х20х20 см",
-      "Квітник: 100х120 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Підставка: 60х8х10 см, тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-33",
@@ -509,13 +581,15 @@
     "title": "Подвійний пам'ятник КМ-33",
     "img": "img/kamenotes/shop_pamyatnik_km33.jpg",
     "badge": "Фігурний подвійний",
-    "price": 13200,
+    "price": 12500,
     "category": "podvijni",
     "specs": [
-      "Стела: 110х60х8 см",
-      "Тумба: 120х20х20 см",
-      "Квітник: 100х120 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 110х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-34",
@@ -523,13 +597,15 @@
     "title": "Подвійний пам'ятник КМ-34",
     "img": "img/kamenotes/shop_pamyatnik_km34.jpg",
     "badge": "Сімейний меморіал",
-    "price": 13500,
+    "price": 12900,
     "category": "podvijni",
     "specs": [
-      "Стела: 120х60х8 см",
-      "Тумба: 130х20х20 см",
-      "Квітник: 100х130 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Кубики: 15х15х15 см (2 шт), тумба: 100х20х20 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-35",
@@ -537,13 +613,15 @@
     "title": "Подвійний пам'ятник КМ-35",
     "img": "img/kamenotes/shop_pamyatnik_km35.jpg",
     "badge": "Сімейний меморіал",
-    "price": 13600,
+    "price": 13200,
     "category": "podvijni",
     "specs": [
-      "Стела: 120х60х8 см",
-      "Тумба: 130х20х20 см",
-      "Квітник: 100х130 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-36",
@@ -551,13 +629,15 @@
     "title": "Подвійний пам'ятник КМ-36",
     "img": "img/kamenotes/shop_pamyatnik_km36.jpg",
     "badge": "Сімейний меморіал",
-    "price": 13800,
+    "price": 13200,
     "category": "podvijni",
     "specs": [
-      "Стела: 120х60х8 см",
-      "Тумба: 130х20х20 см",
-      "Квітник: 100х130 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-39",
@@ -565,13 +645,15 @@
     "title": "Подвійний пам'ятник КМ-39",
     "img": "img/kamenotes/shop_pamyatnik_km39.jpg",
     "badge": "Композиція для двох",
-    "price": 14000,
+    "price": 13500,
     "category": "podvijni",
     "specs": [
-      "Стела: 120х70х8 см",
-      "Тумба: 130х20х20 см",
-      "Квітник: 110х130 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-40",
@@ -579,13 +661,15 @@
     "title": "Подвійний пам'ятник КМ-40",
     "img": "img/kamenotes/shop_pamyatnik_km40.jpg",
     "badge": "Композиція для двох",
-    "price": 14200,
+    "price": 13500,
     "category": "podvijni",
     "specs": [
-      "Стела: 120х70х8 см",
-      "Тумба: 130х20х20 см",
-      "Квітник: 110х130 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-41",
@@ -593,13 +677,15 @@
     "title": "Подвійний пам'ятник КМ-41",
     "img": "img/kamenotes/shop_pamyatnik_km41-2.jpg",
     "badge": "Роздільні стели",
-    "price": 14500,
+    "price": 13500,
     "category": "podvijni",
     "specs": [
-      "2 стели: 100х45х8 см",
-      "Тумба: 120х25х20 см",
-      "Квітник: 110х120 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-42",
@@ -607,13 +693,15 @@
     "title": "Подвійний пам'ятник КМ-42",
     "img": "img/kamenotes/shop_pamyatnik_km42.jpg",
     "badge": "Роздільні стели",
-    "price": 14800,
+    "price": 13500,
     "category": "podvijni",
     "specs": [
-      "2 стели: 100х45х8 см",
-      "Тумба: 120х25х20 см",
-      "Квітник: 110х120 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-43",
@@ -621,13 +709,15 @@
     "title": "Подвійний пам'ятник КМ-43",
     "img": "img/kamenotes/shop_pamyatnik_km43.jpg",
     "badge": "Стели з хрестом",
-    "price": 15000,
+    "price": 13500,
     "category": "podvijni",
     "specs": [
-      "2 стели + хрест: 110х100 см",
-      "Тумба: 130х25х20 см",
-      "Квітник: 110х130 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-44",
@@ -635,13 +725,15 @@
     "title": "Подвійний пам'ятник КМ-44",
     "img": "img/kamenotes/shop_pamyatnik_km44.jpg",
     "badge": "Стели з хрестом",
-    "price": 15200,
+    "price": 13500,
     "category": "podvijni",
     "specs": [
-      "2 стели + хрест: 110х100 см",
-      "Тумба: 130х25х20 см",
-      "Квітник: 110х130 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-45",
@@ -649,13 +741,15 @@
     "title": "Подвійний пам'ятник КМ-45",
     "img": "img/kamenotes/shop_pamyatnik_km45.jpg",
     "badge": "Преміум подвійний",
-    "price": 15500,
+    "price": 13500,
     "category": "podvijni",
     "specs": [
-      "Стела: 120х80х10 см",
-      "Тумба: 140х30х20 см",
-      "Квітник: 120х140 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "km-46",
@@ -663,13 +757,15 @@
     "title": "Подвійний пам'ятник КМ-46",
     "img": "img/kamenotes/shop_pamyatnik_km46.jpg",
     "badge": "Преміум подвійний",
-    "price": 15800,
+    "price": 13500,
     "category": "podvijni",
     "specs": [
-      "Стела: 120х80х10 см",
-      "Тумба: 140х30х20 см",
-      "Квітник: 120х140 см"
-    ]
+      "Стела: 100х60х8 см",
+      "Тумба: 100х20х15 см",
+      "Квітник: 100х10х8 см (3 шт)"
+    ],
+    "priceVerified": true,
+    "priceSource": "https://kamenotes.com/ua/monuments.html"
   },
   {
     "id": "vsk-71a",
@@ -677,13 +773,14 @@
     "title": "Військовий меморіал ВСК-71а",
     "img": "img/kamenotes/zsu_zsu-monument-71a.jpg",
     "badge": "Військовий ЗСУ",
-    "price": 21500,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Козацький хрест 120х60х8 см",
       "Тумба: 70х25х20 см",
       "Букинське габро вищого гатунку"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-72",
@@ -691,13 +788,14 @@
     "title": "Військовий меморіал ВСК-72",
     "img": "img/kamenotes/zsu_zsu-monument-72.jpg",
     "badge": "Військовий ЗСУ",
-    "price": 22000,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Стела з Тризубом 120х60х8 см",
       "Тумба: 70х25х20 см",
       "Букинське габро, поліровка фасок"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-73",
@@ -705,13 +803,14 @@
     "title": "Військовий меморіал ВСК-73",
     "img": "img/kamenotes/zsu_zsu-monument-73.jpg",
     "badge": "Військовий ЗСУ",
-    "price": 22500,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Стела Герою ЗСУ 120х60х8 см",
       "Тумба: 70х25х20 см",
       "Глибоке гравірування шеврона"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-74",
@@ -719,13 +818,14 @@
     "title": "Військовий меморіал ВСК-74",
     "img": "img/kamenotes/zsu_zsu-monument-74.jpg",
     "badge": "Військовий ЗСУ",
-    "price": 23000,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Фігурна стела з прапором 120х60 см",
       "Тумба: 80х25х20 см",
       "Комплект з надгробною плитою"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-75",
@@ -733,13 +833,14 @@
     "title": "Військовий меморіал ВСК-75",
     "img": "img/kamenotes/zsu_zsu-monument-75.jpg",
     "badge": "Військовий ЗСУ",
-    "price": 23500,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Обеліск Слави 120х60х10 см",
       "Тумба: 80х30х20 см",
       "Повнорозмірний квітник з надгробком"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-76",
@@ -747,13 +848,14 @@
     "title": "Військовий меморіал ВСК-76",
     "img": "img/kamenotes/zsu_zsu-monument-76.jpg",
     "badge": "Військовий ЗСУ",
-    "price": 24000,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Стела з барельєфом 120х60х10 см",
       "Тумба: 80х30х20 см",
       "Букинське габро + червоний граніт"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-77",
@@ -761,13 +863,14 @@
     "title": "Військовий меморіал ВСК-77",
     "img": "img/kamenotes/zsu_zsu-monument-77.jpg",
     "badge": "Військовий ЗСУ",
-    "price": 24500,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Козацький хрест з лабрадоритом",
       "Тумба: 80х30х20 см",
       "Іризуючий синій відблиск каменю"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-78",
@@ -775,13 +878,14 @@
     "title": "Військовий меморіал ВСК-78",
     "img": "img/kamenotes/zsu_zsu-monument-78.jpg",
     "badge": "Військовий ЗСУ",
-    "price": 25000,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Одинарний військовий обеліск 130х60",
       "Тумба: 80х30х25 см",
       "Дзеркальне алмазне полірування"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-79",
@@ -789,13 +893,14 @@
     "title": "Військовий меморіал ВСК-79",
     "img": "img/kamenotes/zsu_zsu-monument-79.jpg",
     "badge": "Військовий ЗСУ",
-    "price": 25500,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Меморіал Незламності 130х60х10 см",
       "Тумба: 90х30х20 см",
       "Масивний надгробок з фасками"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-80",
@@ -803,13 +908,14 @@
     "title": "Військовий меморіал ВСК-80",
     "img": "img/kamenotes/zsu_zsu-monument-80.jpg",
     "badge": "Військовий ЗСУ",
-    "price": 26000,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Фігурна стела з крилом та прапором",
       "Букинське габро 130х60х10 см",
       "Повний меморіальний комплект"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-kiev-1",
@@ -817,13 +923,14 @@
     "title": "Пам'ятник воїну ЗСУ із зеленого граніту",
     "img": "img/kamenotes/our_zsu-monument-kiev_pamjatnyk-vijskovomy.jpg",
     "badge": "Меморіал Герою",
-    "price": 32000,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Зелений маславський граніт + габро",
       "Стела з барельєфом і хрестом",
       "Повний комплект з огорожею"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-kiev-2",
@@ -831,13 +938,14 @@
     "title": "Меморіал Захиснику (Червоний граніт)",
     "img": "img/kamenotes/our_zsu-monument-kiev_zsu-monument-kiev.jpg",
     "badge": "Меморіал Герою",
-    "price": 35000,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Лезниківський граніт + габро",
       "Стела у формі Знамена",
       "Надгробна плита з гербом"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "vsk-chudniv",
@@ -845,13 +953,14 @@
     "title": "Пам'ятник воїну ЗСУ, Чуднів",
     "img": "img/kamenotes/our_zsu-komplex-tok_zsu-monument.jpg",
     "badge": "Меморіал Герою",
-    "price": 38000,
+    "price": 0,
     "category": "vijskovi",
     "specs": [
       "Токівський граніт + букинське габро",
       "Масивний постамент та надгробок",
       "Гранітний цоколь по периметру"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-5",
@@ -859,13 +968,14 @@
     "title": "Цехова модель стели КМ-5",
     "img": "img/kamenotes/models_km-5.jpg",
     "badge": "Модель цеху",
-    "price": 9200,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела цехового різьблення: 100х50х8",
       "Тумба: 60х20х20 см",
       "Фігурна верхня дуга"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-6",
@@ -873,13 +983,14 @@
     "title": "Цехова модель стели КМ-6",
     "img": "img/kamenotes/models_km-6.jpg",
     "badge": "Модель цеху",
-    "price": 9500,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела цехового різьблення: 100х50х8",
       "Тумба: 60х20х20 см",
       "Асиметричний кутовий зріз"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-7",
@@ -887,13 +998,14 @@
     "title": "Цехова модель стели КМ-7",
     "img": "img/kamenotes/models_km-7.jpg",
     "badge": "Модель цеху",
-    "price": 9800,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела цехового різьблення: 100х50х8",
       "Тумба: 60х20х20 см",
       "Подвійна хвиля з фаскою"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-8",
@@ -901,13 +1013,14 @@
     "title": "Цехова модель стели КМ-8",
     "img": "img/kamenotes/models_km-8.jpg",
     "badge": "Модель цеху",
-    "price": 10200,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела цехового різьблення: 100х50х8",
       "Тумба: 60х20х20 см",
       "Хвильовий скос з поліровкою"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-16",
@@ -915,13 +1028,14 @@
     "title": "Авторська модель стели КМ-16",
     "img": "img/kamenotes/models_km-16.jpg",
     "badge": "Модель цеху",
-    "price": 11800,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела: 100х50х8 см",
       "Тумба: 60х20х20 см",
       "Фігурне перо по краю"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-17",
@@ -929,13 +1043,14 @@
     "title": "Авторська модель стели КМ-17",
     "img": "img/kamenotes/models_km-17.jpg",
     "badge": "Модель цеху",
-    "price": 12200,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела: 100х50х8 см",
       "Тумба: 60х20х20 см",
       "Глибока бічна фаска"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-19",
@@ -943,13 +1058,14 @@
     "title": "Цехова модель стели КМ-19",
     "img": "img/kamenotes/models_km-19.jpg",
     "badge": "Модель цеху",
-    "price": 12500,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела: 100х50х8 см",
       "Тумба: 60х20х20 см",
       "Скульптурний кант"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-24",
@@ -957,13 +1073,14 @@
     "title": "Цехова модель стели КМ-24",
     "img": "img/kamenotes/models_km-24.jpg",
     "badge": "Модель цеху",
-    "price": 13200,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела: 100х50х8 см",
       "Тумба: 60х20х20 см",
       "Пелюстковий зріз граней"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-25",
@@ -971,13 +1088,14 @@
     "title": "Цехова модель стели КМ-25",
     "img": "img/kamenotes/models_km-25.jpg",
     "badge": "Модель цеху",
-    "price": 13400,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела: 100х50х8 см",
       "Тумба: 60х20х20 см",
       "Багатоступеневий карниз"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-27",
@@ -985,13 +1103,14 @@
     "title": "Цехова модель стели КМ-27",
     "img": "img/kamenotes/models_km-27.jpg",
     "badge": "Модель цеху",
-    "price": 13800,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела: 100х50х8 см",
       "Тумба: 60х20х20 см",
       "Різьблений барельєф хреста"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-27b",
@@ -999,13 +1118,14 @@
     "title": "Стела КМ-27 (з білими променями)",
     "img": "img/kamenotes/models_km-27-s-belymi-luchami.jpg",
     "badge": "Модель цеху",
-    "price": 14500,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела: 100х50х8 см",
       "Тумба: 60х20х20 см",
       "Акрилове висвітлення променів"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-34",
@@ -1013,13 +1133,14 @@
     "title": "Цехова сімейна модель КМ-34",
     "img": "img/kamenotes/models_km-34.jpg",
     "badge": "Модель цеху",
-    "price": 14200,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Широка стела 120х60х8 см",
       "Тумба: 130х20х20 см",
       "Симетрична подвійна арка"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-36",
@@ -1027,13 +1148,14 @@
     "title": "Цехова подвійна модель КМ-36",
     "img": "img/kamenotes/models_km-36.jpg",
     "badge": "Модель цеху",
-    "price": 14600,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Широка стела 120х60х8 см",
       "Тумба: 130х20х20 см",
       "Фігурне серце між портретами"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "mod-7p",
@@ -1041,13 +1163,14 @@
     "title": "Стела за моделлю КМ-7 (Покращена)",
     "img": "img/kamenotes/models_po-modeli-km-7.jpg",
     "badge": "Модель цеху",
-    "price": 10500,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Стела: 100х50х8 см",
       "Тумба: 60х20х20 см",
       "Подвійний полірований кант"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5355",
@@ -1055,13 +1178,14 @@
     "title": "Пам'ятник KM-5355",
     "img": "img/kamenotes/gallery_odinarni_KM-5355.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5356",
@@ -1069,13 +1193,14 @@
     "title": "Пам'ятник KM-5356",
     "img": "img/kamenotes/gallery_odinarni_KM-5356.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5357",
@@ -1083,13 +1208,14 @@
     "title": "Пам'ятник KM-5357",
     "img": "img/kamenotes/gallery_odinarni_KM-5357.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5358",
@@ -1097,13 +1223,14 @@
     "title": "Пам'ятник KM-5358",
     "img": "img/kamenotes/gallery_odinarni_KM-5358.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5359",
@@ -1111,13 +1238,14 @@
     "title": "Пам'ятник KM-5359",
     "img": "img/kamenotes/gallery_odinarni_KM-5359.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5360",
@@ -1125,13 +1253,14 @@
     "title": "Пам'ятник KM-5360",
     "img": "img/kamenotes/gallery_odinarni_KM-5360.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5361",
@@ -1139,13 +1268,14 @@
     "title": "Пам'ятник KM-5361",
     "img": "img/kamenotes/gallery_odinarni_KM-5361.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5362",
@@ -1153,13 +1283,14 @@
     "title": "Пам'ятник KM-5362",
     "img": "img/kamenotes/gallery_odinarni_KM-5362.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5363",
@@ -1167,13 +1298,14 @@
     "title": "Пам'ятник KM-5363",
     "img": "img/kamenotes/gallery_odinarni_KM-5363.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5364",
@@ -1181,13 +1313,14 @@
     "title": "Пам'ятник KM-5364",
     "img": "img/kamenotes/gallery_odinarni_KM-5364.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5365",
@@ -1195,13 +1328,14 @@
     "title": "Пам'ятник KM-5365",
     "img": "img/kamenotes/gallery_odinarni_KM-5365.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5366",
@@ -1209,13 +1343,14 @@
     "title": "Пам'ятник KM-5366",
     "img": "img/kamenotes/gallery_odinarni_KM-5366.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5367",
@@ -1223,13 +1358,14 @@
     "title": "Пам'ятник KM-5367",
     "img": "img/kamenotes/gallery_odinarni_KM-5367.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5368",
@@ -1237,13 +1373,14 @@
     "title": "Пам'ятник KM-5368",
     "img": "img/kamenotes/gallery_odinarni_KM-5368.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5369",
@@ -1251,13 +1388,14 @@
     "title": "Пам'ятник KM-5369",
     "img": "img/kamenotes/gallery_odinarni_KM-5369.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5370",
@@ -1265,13 +1403,14 @@
     "title": "Пам'ятник KM-5370",
     "img": "img/kamenotes/gallery_odinarni_KM-5370.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5371",
@@ -1279,13 +1418,14 @@
     "title": "Пам'ятник KM-5371",
     "img": "img/kamenotes/gallery_odinarni_KM-5371.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5372",
@@ -1293,13 +1433,14 @@
     "title": "Пам'ятник KM-5372",
     "img": "img/kamenotes/gallery_odinarni_KM-5372.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5373",
@@ -1307,13 +1448,14 @@
     "title": "Пам'ятник KM-5373",
     "img": "img/kamenotes/gallery_odinarni_KM-5373.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5374",
@@ -1321,13 +1463,14 @@
     "title": "Пам'ятник KM-5374",
     "img": "img/kamenotes/gallery_odinarni_KM-5374.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5375",
@@ -1335,13 +1478,14 @@
     "title": "Пам'ятник KM-5375",
     "img": "img/kamenotes/gallery_odinarni_KM-5375.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5376",
@@ -1349,13 +1493,14 @@
     "title": "Пам'ятник KM-5376",
     "img": "img/kamenotes/gallery_odinarni_KM-5376.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5377",
@@ -1363,13 +1508,14 @@
     "title": "Пам'ятник KM-5377",
     "img": "img/kamenotes/gallery_odinarni_KM-5377.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5378",
@@ -1377,13 +1523,14 @@
     "title": "Пам'ятник KM-5378",
     "img": "img/kamenotes/gallery_odinarni_KM-5378.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5379",
@@ -1391,13 +1538,14 @@
     "title": "Пам'ятник KM-5379",
     "img": "img/kamenotes/gallery_odinarni_KM-5379.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5380",
@@ -1405,13 +1553,14 @@
     "title": "Пам'ятник KM-5380",
     "img": "img/kamenotes/gallery_odinarni_KM-5380.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5381",
@@ -1419,13 +1568,14 @@
     "title": "Пам'ятник KM-5381",
     "img": "img/kamenotes/gallery_odinarni_KM-5381.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5382",
@@ -1433,13 +1583,14 @@
     "title": "Пам'ятник KM-5382",
     "img": "img/kamenotes/gallery_odinarni_KM-5382.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5383",
@@ -1447,13 +1598,14 @@
     "title": "Пам'ятник KM-5383",
     "img": "img/kamenotes/gallery_odinarni_KM-5383.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5384",
@@ -1461,13 +1613,14 @@
     "title": "Пам'ятник KM-5384",
     "img": "img/kamenotes/gallery_odinarni_KM-5384.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5385",
@@ -1475,13 +1628,14 @@
     "title": "Пам'ятник KM-5385",
     "img": "img/kamenotes/gallery_odinarni_KM-5385.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5386",
@@ -1489,13 +1643,14 @@
     "title": "Пам'ятник KM-5386",
     "img": "img/kamenotes/gallery_odinarni_KM-5386.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5387",
@@ -1503,13 +1658,14 @@
     "title": "Пам'ятник KM-5387",
     "img": "img/kamenotes/gallery_odinarni_KM-5387.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5388",
@@ -1517,13 +1673,14 @@
     "title": "Пам'ятник KM-5388",
     "img": "img/kamenotes/gallery_odinarni_KM-5388.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-5389",
@@ -1531,13 +1688,14 @@
     "title": "Пам'ятник KM-5389",
     "img": "img/kamenotes/gallery_odinarni_KM-5389.jpg",
     "badge": "Авторська модель",
-    "price": 7500,
+    "price": 0,
     "category": "odinarni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7450",
@@ -1545,13 +1703,14 @@
     "title": "Подвійний пам'ятник KM-7450",
     "img": "img/kamenotes/gallery_podvijni_KM-7450.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7451",
@@ -1559,13 +1718,14 @@
     "title": "Подвійний пам'ятник KM-7451",
     "img": "img/kamenotes/gallery_podvijni_KM-7451.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7452",
@@ -1573,13 +1733,14 @@
     "title": "Подвійний пам'ятник KM-7452",
     "img": "img/kamenotes/gallery_podvijni_KM-7452.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7453",
@@ -1587,13 +1748,14 @@
     "title": "Подвійний пам'ятник KM-7453",
     "img": "img/kamenotes/gallery_podvijni_KM-7453.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7454",
@@ -1601,13 +1763,14 @@
     "title": "Подвійний пам'ятник KM-7454",
     "img": "img/kamenotes/gallery_podvijni_KM-7454.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7455",
@@ -1615,13 +1778,14 @@
     "title": "Подвійний пам'ятник KM-7455",
     "img": "img/kamenotes/gallery_podvijni_KM-7455.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7456",
@@ -1629,13 +1793,14 @@
     "title": "Подвійний пам'ятник KM-7456",
     "img": "img/kamenotes/gallery_podvijni_KM-7456.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7457",
@@ -1643,13 +1808,14 @@
     "title": "Подвійний пам'ятник KM-7457",
     "img": "img/kamenotes/gallery_podvijni_KM-7457.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7458",
@@ -1657,13 +1823,14 @@
     "title": "Подвійний пам'ятник KM-7458",
     "img": "img/kamenotes/gallery_podvijni_KM-7458.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7459",
@@ -1671,13 +1838,14 @@
     "title": "Подвійний пам'ятник KM-7459",
     "img": "img/kamenotes/gallery_podvijni_KM-7459.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7460",
@@ -1685,13 +1853,14 @@
     "title": "Подвійний пам'ятник KM-7460",
     "img": "img/kamenotes/gallery_podvijni_KM-7460.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7462",
@@ -1699,13 +1868,14 @@
     "title": "Подвійний пам'ятник KM-7462",
     "img": "img/kamenotes/gallery_podvijni_KM-7462.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7463",
@@ -1713,13 +1883,14 @@
     "title": "Подвійний пам'ятник KM-7463",
     "img": "img/kamenotes/gallery_podvijni_KM-7463.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7464",
@@ -1727,13 +1898,14 @@
     "title": "Подвійний пам'ятник KM-7464",
     "img": "img/kamenotes/gallery_podvijni_KM-7464.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7465",
@@ -1741,13 +1913,14 @@
     "title": "Подвійний пам'ятник KM-7465",
     "img": "img/kamenotes/gallery_podvijni_KM-7465.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7466",
@@ -1755,13 +1928,14 @@
     "title": "Подвійний пам'ятник KM-7466",
     "img": "img/kamenotes/gallery_podvijni_KM-7466.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7467",
@@ -1769,13 +1943,14 @@
     "title": "Подвійний пам'ятник KM-7467",
     "img": "img/kamenotes/gallery_podvijni_KM-7467.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7468",
@@ -1783,13 +1958,14 @@
     "title": "Подвійний пам'ятник KM-7468",
     "img": "img/kamenotes/gallery_podvijni_KM-7468.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7470",
@@ -1797,13 +1973,14 @@
     "title": "Подвійний пам'ятник KM-7470",
     "img": "img/kamenotes/gallery_podvijni_KM-7470.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7471",
@@ -1811,13 +1988,14 @@
     "title": "Подвійний пам'ятник KM-7471",
     "img": "img/kamenotes/gallery_podvijni_KM-7471.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7472",
@@ -1825,13 +2003,14 @@
     "title": "Подвійний пам'ятник KM-7472",
     "img": "img/kamenotes/gallery_podvijni_KM-7472.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7473",
@@ -1839,13 +2018,14 @@
     "title": "Подвійний пам'ятник KM-7473",
     "img": "img/kamenotes/gallery_podvijni_KM-7473.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7474",
@@ -1853,13 +2033,14 @@
     "title": "Подвійний пам'ятник KM-7474",
     "img": "img/kamenotes/gallery_podvijni_KM-7474.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7475",
@@ -1867,13 +2048,14 @@
     "title": "Подвійний пам'ятник KM-7475",
     "img": "img/kamenotes/gallery_podvijni_KM-7475.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7476",
@@ -1881,13 +2063,14 @@
     "title": "Подвійний пам'ятник KM-7476",
     "img": "img/kamenotes/gallery_podvijni_KM-7476.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7477",
@@ -1895,13 +2078,14 @@
     "title": "Подвійний пам'ятник KM-7477",
     "img": "img/kamenotes/gallery_podvijni_KM-7477.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7478",
@@ -1909,13 +2093,14 @@
     "title": "Подвійний пам'ятник KM-7478",
     "img": "img/kamenotes/gallery_podvijni_KM-7478.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7479",
@@ -1923,13 +2108,14 @@
     "title": "Подвійний пам'ятник KM-7479",
     "img": "img/kamenotes/gallery_podvijni_KM-7479.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7480",
@@ -1937,13 +2123,14 @@
     "title": "Подвійний пам'ятник KM-7480",
     "img": "img/kamenotes/gallery_podvijni_KM-7480.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-km-7481",
@@ -1951,13 +2138,14 @@
     "title": "Подвійний пам'ятник KM-7481",
     "img": "img/kamenotes/gallery_podvijni_KM-7481.jpg",
     "badge": "Авторська модель",
-    "price": 22000,
+    "price": 0,
     "category": "podvijni",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3500",
@@ -1965,13 +2153,14 @@
     "title": "Фігурна стела MOD-3500",
     "img": "img/kamenotes/gallery_modeli_MOD-3500.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3501",
@@ -1979,13 +2168,14 @@
     "title": "Фігурна стела MOD-3501",
     "img": "img/kamenotes/gallery_modeli_MOD-3501.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3502",
@@ -1993,13 +2183,14 @@
     "title": "Фігурна стела MOD-3502",
     "img": "img/kamenotes/gallery_modeli_MOD-3502.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3503",
@@ -2007,13 +2198,14 @@
     "title": "Фігурна стела MOD-3503",
     "img": "img/kamenotes/gallery_modeli_MOD-3503.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3504",
@@ -2021,13 +2213,14 @@
     "title": "Фігурна стела MOD-3504",
     "img": "img/kamenotes/gallery_modeli_MOD-3504.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3505",
@@ -2035,13 +2228,14 @@
     "title": "Фігурна стела MOD-3505",
     "img": "img/kamenotes/gallery_modeli_MOD-3505.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3506",
@@ -2049,13 +2243,14 @@
     "title": "Фігурна стела MOD-3506",
     "img": "img/kamenotes/gallery_modeli_MOD-3506.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3507",
@@ -2063,13 +2258,14 @@
     "title": "Фігурна стела MOD-3507",
     "img": "img/kamenotes/gallery_modeli_MOD-3507.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3508",
@@ -2077,13 +2273,14 @@
     "title": "Фігурна стела MOD-3508",
     "img": "img/kamenotes/gallery_modeli_MOD-3508.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3509",
@@ -2091,13 +2288,14 @@
     "title": "Фігурна стела MOD-3509",
     "img": "img/kamenotes/gallery_modeli_MOD-3509.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3510",
@@ -2105,13 +2303,14 @@
     "title": "Фігурна стела MOD-3510",
     "img": "img/kamenotes/gallery_modeli_MOD-3510.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3511",
@@ -2119,13 +2318,14 @@
     "title": "Фігурна стела MOD-3511",
     "img": "img/kamenotes/gallery_modeli_MOD-3511.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3512",
@@ -2133,13 +2333,14 @@
     "title": "Фігурна стела MOD-3512",
     "img": "img/kamenotes/gallery_modeli_MOD-3512.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3513",
@@ -2147,13 +2348,14 @@
     "title": "Фігурна стела MOD-3513",
     "img": "img/kamenotes/gallery_modeli_MOD-3513.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3514",
@@ -2161,13 +2363,14 @@
     "title": "Фігурна стела MOD-3514",
     "img": "img/kamenotes/gallery_modeli_MOD-3514.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3515",
@@ -2175,13 +2378,14 @@
     "title": "Фігурна стела MOD-3515",
     "img": "img/kamenotes/gallery_modeli_MOD-3515.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3516",
@@ -2189,13 +2393,14 @@
     "title": "Фігурна стела MOD-3516",
     "img": "img/kamenotes/gallery_modeli_MOD-3516.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3517",
@@ -2203,13 +2408,14 @@
     "title": "Фігурна стела MOD-3517",
     "img": "img/kamenotes/gallery_modeli_MOD-3517.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3518",
@@ -2217,13 +2423,14 @@
     "title": "Фігурна стела MOD-3518",
     "img": "img/kamenotes/gallery_modeli_MOD-3518.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3519",
@@ -2231,13 +2438,14 @@
     "title": "Фігурна стела MOD-3519",
     "img": "img/kamenotes/gallery_modeli_MOD-3519.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3520",
@@ -2245,13 +2453,14 @@
     "title": "Фігурна стела MOD-3520",
     "img": "img/kamenotes/gallery_modeli_MOD-3520.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3521",
@@ -2259,13 +2468,14 @@
     "title": "Фігурна стела MOD-3521",
     "img": "img/kamenotes/gallery_modeli_MOD-3521.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3522",
@@ -2273,13 +2483,14 @@
     "title": "Фігурна стела MOD-3522",
     "img": "img/kamenotes/gallery_modeli_MOD-3522.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3523",
@@ -2287,13 +2498,14 @@
     "title": "Фігурна стела MOD-3523",
     "img": "img/kamenotes/gallery_modeli_MOD-3523.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-mod-3524",
@@ -2301,13 +2513,14 @@
     "title": "Фігурна стела MOD-3524",
     "img": "img/kamenotes/gallery_modeli_MOD-3524.jpg",
     "badge": "Авторська модель",
-    "price": 11000,
+    "price": 0,
     "category": "modeli",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-001",
@@ -2315,13 +2528,14 @@
     "title": "Гранітний хрест KR-001",
     "img": "img/kamenotes/gallery_khresti_KR-001.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-002",
@@ -2329,13 +2543,14 @@
     "title": "Гранітний хрест KR-002",
     "img": "img/kamenotes/gallery_khresti_KR-002.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-003",
@@ -2343,13 +2558,14 @@
     "title": "Гранітний хрест KR-003",
     "img": "img/kamenotes/gallery_khresti_KR-003.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-004",
@@ -2357,13 +2573,14 @@
     "title": "Гранітний хрест KR-004",
     "img": "img/kamenotes/gallery_khresti_KR-004.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-005",
@@ -2371,13 +2588,14 @@
     "title": "Гранітний хрест KR-005",
     "img": "img/kamenotes/gallery_khresti_KR-005.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-006",
@@ -2385,13 +2603,14 @@
     "title": "Гранітний хрест KR-006",
     "img": "img/kamenotes/gallery_khresti_KR-006.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-007",
@@ -2399,13 +2618,14 @@
     "title": "Гранітний хрест KR-007",
     "img": "img/kamenotes/gallery_khresti_KR-007.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-008",
@@ -2413,13 +2633,14 @@
     "title": "Гранітний хрест KR-008",
     "img": "img/kamenotes/gallery_khresti_KR-008.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-009",
@@ -2427,13 +2648,14 @@
     "title": "Гранітний хрест KR-009",
     "img": "img/kamenotes/gallery_khresti_KR-009.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-010",
@@ -2441,13 +2663,14 @@
     "title": "Гранітний хрест KR-010",
     "img": "img/kamenotes/gallery_khresti_KR-010.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-011",
@@ -2455,13 +2678,14 @@
     "title": "Гранітний хрест KR-011",
     "img": "img/kamenotes/gallery_khresti_KR-011.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-012",
@@ -2469,13 +2693,14 @@
     "title": "Гранітний хрест KR-012",
     "img": "img/kamenotes/gallery_khresti_KR-012.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-013",
@@ -2483,13 +2708,14 @@
     "title": "Гранітний хрест KR-013",
     "img": "img/kamenotes/gallery_khresti_KR-013.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-014",
@@ -2497,13 +2723,14 @@
     "title": "Гранітний хрест KR-014",
     "img": "img/kamenotes/gallery_khresti_KR-014.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-015",
@@ -2511,13 +2738,14 @@
     "title": "Гранітний хрест KR-015",
     "img": "img/kamenotes/gallery_khresti_KR-015.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-016",
@@ -2525,13 +2753,14 @@
     "title": "Гранітний хрест KR-016",
     "img": "img/kamenotes/gallery_khresti_KR-016.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-017",
@@ -2539,13 +2768,14 @@
     "title": "Гранітний хрест KR-017",
     "img": "img/kamenotes/gallery_khresti_KR-017.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-018",
@@ -2553,13 +2783,14 @@
     "title": "Гранітний хрест KR-018",
     "img": "img/kamenotes/gallery_khresti_KR-018.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-019",
@@ -2567,13 +2798,14 @@
     "title": "Гранітний хрест KR-019",
     "img": "img/kamenotes/gallery_khresti_KR-019.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-020",
@@ -2581,13 +2813,14 @@
     "title": "Гранітний хрест KR-020",
     "img": "img/kamenotes/gallery_khresti_KR-020.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-021",
@@ -2595,13 +2828,14 @@
     "title": "Гранітний хрест KR-021",
     "img": "img/kamenotes/gallery_khresti_KR-021.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-022",
@@ -2609,13 +2843,14 @@
     "title": "Гранітний хрест KR-022",
     "img": "img/kamenotes/gallery_khresti_KR-022.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-023",
@@ -2623,13 +2858,14 @@
     "title": "Гранітний хрест KR-023",
     "img": "img/kamenotes/gallery_khresti_KR-023.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-024",
@@ -2637,13 +2873,14 @@
     "title": "Гранітний хрест KR-024",
     "img": "img/kamenotes/gallery_khresti_KR-024.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kr-025",
@@ -2651,13 +2888,14 @@
     "title": "Гранітний хрест KR-025",
     "img": "img/kamenotes/gallery_khresti_KR-025.jpg",
     "badge": "Авторська модель",
-    "price": 8900,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-001",
@@ -2665,13 +2903,14 @@
     "title": "Надгробна плита ND-001",
     "img": "img/kamenotes/gallery_nadgrobni_ND-001.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-002",
@@ -2679,13 +2918,14 @@
     "title": "Надгробна плита ND-002",
     "img": "img/kamenotes/gallery_nadgrobni_ND-002.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-003",
@@ -2693,13 +2933,14 @@
     "title": "Надгробна плита ND-003",
     "img": "img/kamenotes/gallery_nadgrobni_ND-003.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-004",
@@ -2707,13 +2948,14 @@
     "title": "Надгробна плита ND-004",
     "img": "img/kamenotes/gallery_nadgrobni_ND-004.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-005",
@@ -2721,13 +2963,14 @@
     "title": "Надгробна плита ND-005",
     "img": "img/kamenotes/gallery_nadgrobni_ND-005.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-006",
@@ -2735,13 +2978,14 @@
     "title": "Надгробна плита ND-006",
     "img": "img/kamenotes/gallery_nadgrobni_ND-006.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-007",
@@ -2749,13 +2993,14 @@
     "title": "Надгробна плита ND-007",
     "img": "img/kamenotes/gallery_nadgrobni_ND-007.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-008",
@@ -2763,13 +3008,14 @@
     "title": "Надгробна плита ND-008",
     "img": "img/kamenotes/gallery_nadgrobni_ND-008.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-009",
@@ -2777,13 +3023,14 @@
     "title": "Надгробна плита ND-009",
     "img": "img/kamenotes/gallery_nadgrobni_ND-009.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-010",
@@ -2791,13 +3038,14 @@
     "title": "Надгробна плита ND-010",
     "img": "img/kamenotes/gallery_nadgrobni_ND-010.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-011",
@@ -2805,13 +3053,14 @@
     "title": "Надгробна плита ND-011",
     "img": "img/kamenotes/gallery_nadgrobni_ND-011.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-012",
@@ -2819,13 +3068,14 @@
     "title": "Надгробна плита ND-012",
     "img": "img/kamenotes/gallery_nadgrobni_ND-012.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-013",
@@ -2833,13 +3083,14 @@
     "title": "Надгробна плита ND-013",
     "img": "img/kamenotes/gallery_nadgrobni_ND-013.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-014",
@@ -2847,13 +3098,14 @@
     "title": "Надгробна плита ND-014",
     "img": "img/kamenotes/gallery_nadgrobni_ND-014.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-015",
@@ -2861,13 +3113,14 @@
     "title": "Надгробна плита ND-015",
     "img": "img/kamenotes/gallery_nadgrobni_ND-015.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-016",
@@ -2875,13 +3128,14 @@
     "title": "Надгробна плита ND-016",
     "img": "img/kamenotes/gallery_nadgrobni_ND-016.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-017",
@@ -2889,13 +3143,14 @@
     "title": "Надгробна плита ND-017",
     "img": "img/kamenotes/gallery_nadgrobni_ND-017.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-018",
@@ -2903,13 +3158,14 @@
     "title": "Надгробна плита ND-018",
     "img": "img/kamenotes/gallery_nadgrobni_ND-018.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-019",
@@ -2917,13 +3173,14 @@
     "title": "Надгробна плита ND-019",
     "img": "img/kamenotes/gallery_nadgrobni_ND-019.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-nd-020",
@@ -2931,13 +3188,14 @@
     "title": "Надгробна плита ND-020",
     "img": "img/kamenotes/gallery_nadgrobni_ND-020.jpg",
     "badge": "Авторська модель",
-    "price": 5400,
+    "price": 0,
     "category": "khresti",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-001",
@@ -2945,13 +3203,14 @@
     "title": "Гранітна огорожа OK-001",
     "img": "img/kamenotes/gallery_ogorozhi_OK-001.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-002",
@@ -2959,13 +3218,14 @@
     "title": "Гранітна огорожа OK-002",
     "img": "img/kamenotes/gallery_ogorozhi_OK-002.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-003",
@@ -2973,13 +3233,14 @@
     "title": "Гранітна огорожа OK-003",
     "img": "img/kamenotes/gallery_ogorozhi_OK-003.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-004",
@@ -2987,13 +3248,14 @@
     "title": "Гранітна огорожа OK-004",
     "img": "img/kamenotes/gallery_ogorozhi_OK-004.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-005",
@@ -3001,13 +3263,14 @@
     "title": "Гранітна огорожа OK-005",
     "img": "img/kamenotes/gallery_ogorozhi_OK-005.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-006",
@@ -3015,13 +3278,14 @@
     "title": "Гранітна огорожа OK-006",
     "img": "img/kamenotes/gallery_ogorozhi_OK-006.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-007",
@@ -3029,13 +3293,14 @@
     "title": "Гранітна огорожа OK-007",
     "img": "img/kamenotes/gallery_ogorozhi_OK-007.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-008",
@@ -3043,13 +3308,14 @@
     "title": "Гранітна огорожа OK-008",
     "img": "img/kamenotes/gallery_ogorozhi_OK-008.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-009",
@@ -3057,13 +3323,14 @@
     "title": "Гранітна огорожа OK-009",
     "img": "img/kamenotes/gallery_ogorozhi_OK-009.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-010",
@@ -3071,13 +3338,14 @@
     "title": "Гранітна огорожа OK-010",
     "img": "img/kamenotes/gallery_ogorozhi_OK-010.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-011",
@@ -3085,13 +3353,14 @@
     "title": "Гранітна огорожа OK-011",
     "img": "img/kamenotes/gallery_ogorozhi_OK-011.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-012",
@@ -3099,13 +3368,14 @@
     "title": "Гранітна огорожа OK-012",
     "img": "img/kamenotes/gallery_ogorozhi_OK-012.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-013",
@@ -3113,13 +3383,14 @@
     "title": "Гранітна огорожа OK-013",
     "img": "img/kamenotes/gallery_ogorozhi_OK-013.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-014",
@@ -3127,13 +3398,14 @@
     "title": "Гранітна огорожа OK-014",
     "img": "img/kamenotes/gallery_ogorozhi_OK-014.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-015",
@@ -3141,13 +3413,14 @@
     "title": "Гранітна огорожа OK-015",
     "img": "img/kamenotes/gallery_ogorozhi_OK-015.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-016",
@@ -3155,13 +3428,14 @@
     "title": "Гранітна огорожа OK-016",
     "img": "img/kamenotes/gallery_ogorozhi_OK-016.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-017",
@@ -3169,13 +3443,14 @@
     "title": "Гранітна огорожа OK-017",
     "img": "img/kamenotes/gallery_ogorozhi_OK-017.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-018",
@@ -3183,13 +3458,14 @@
     "title": "Гранітна огорожа OK-018",
     "img": "img/kamenotes/gallery_ogorozhi_OK-018.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-019",
@@ -3197,13 +3473,14 @@
     "title": "Гранітна огорожа OK-019",
     "img": "img/kamenotes/gallery_ogorozhi_OK-019.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-ok-020",
@@ -3211,13 +3488,14 @@
     "title": "Гранітна огорожа OK-020",
     "img": "img/kamenotes/gallery_ogorozhi_OK-020.jpg",
     "badge": "Авторська модель",
-    "price": 7200,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-01",
@@ -3225,13 +3503,14 @@
     "title": "Комплект стіл та лавка KST-01",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-01.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-02",
@@ -3239,13 +3518,14 @@
     "title": "Комплект стіл та лавка KST-02",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-02.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-03",
@@ -3253,13 +3533,14 @@
     "title": "Комплект стіл та лавка KST-03",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-03.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-04",
@@ -3267,13 +3548,14 @@
     "title": "Комплект стіл та лавка KST-04",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-04.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-05",
@@ -3281,13 +3563,14 @@
     "title": "Комплект стіл та лавка KST-05",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-05.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-06",
@@ -3295,13 +3578,14 @@
     "title": "Комплект стіл та лавка KST-06",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-06.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-07",
@@ -3309,13 +3593,14 @@
     "title": "Комплект стіл та лавка KST-07",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-07.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-08",
@@ -3323,13 +3608,14 @@
     "title": "Комплект стіл та лавка KST-08",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-08.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-09",
@@ -3337,13 +3623,14 @@
     "title": "Комплект стіл та лавка KST-09",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-09.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-10",
@@ -3351,13 +3638,14 @@
     "title": "Комплект стіл та лавка KST-10",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-10.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-11",
@@ -3365,13 +3653,14 @@
     "title": "Комплект стіл та лавка KST-11",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-11.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-12",
@@ -3379,13 +3668,14 @@
     "title": "Комплект стіл та лавка KST-12",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-12.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-13",
@@ -3393,13 +3683,14 @@
     "title": "Комплект стіл та лавка KST-13",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-13.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-14",
@@ -3407,13 +3698,14 @@
     "title": "Комплект стіл та лавка KST-14",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-14.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   },
   {
     "id": "km-gal-kst-15",
@@ -3421,12 +3713,13 @@
     "title": "Комплект стіл та лавка KST-15",
     "img": "img/kamenotes/gallery_stoly-lavky_KST-15.jpg",
     "badge": "Авторська модель",
-    "price": 4800,
+    "price": 0,
     "category": "ogorozhi",
     "specs": [
       "Натуральний Букинський габро або граніт",
       "Високоточна ручна обробка граней",
       "Полірування водою без хімічних паст"
-    ]
+    ],
+    "priceVerified": false
   }
 ]

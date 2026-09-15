@@ -21,7 +21,7 @@ const ROUTE_KIEV_LINK = 'https://www.google.com/maps/dir/?api=1&origin=%D0%9A%D0
 const ROUTE_ZT_LINK = 'https://www.google.com/maps/dir/?api=1&origin=%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80&destination=50.3281248%2C29.082698&travelmode=driving';
 
 const CATEGORIES = [
-  { id: 'all', label: 'З цінами', short: 'Усі моделі' },
+  { id: 'all', label: 'Усі моделі', short: 'Усі моделі' },
   { id: 'odinarni', label: "Одинарні пам'ятники", short: 'Одинарні' },
   { id: 'podvijni', label: "Подвійні пам'ятники", short: 'Подвійні' },
   { id: 'vijskovi', label: 'Військові ЗСУ', short: 'Військові ЗСУ' },
@@ -60,6 +60,10 @@ function formatPrice(num) {
   return Number(num || 0).toLocaleString('uk-UA').replace(/\u00A0/g, ' ');
 }
 
+function hasVerifiedPrice(product) {
+  return Number.isFinite(Number(product.price)) && Number(product.price) > 0;
+}
+
 function categoryName(id) {
   const item = CATEGORIES.find(category => category.id === id);
   return item ? item.short : "Пам'ятники";
@@ -86,7 +90,8 @@ function productForPublic(product) {
 }
 
 function productViberHref(product) {
-  const text = `Вітаю! Мене цікавить пам'ятник арт. ${product.sku} ("${product.title}") за ціною від ${formatPrice(product.price)} грн. Прошу прорахувати повну вартість з оформленням і монтажем.`;
+  const pricePart = hasVerifiedPrice(product) ? ` за ціною від ${formatPrice(product.price)} грн` : '';
+  const text = `Вітаю! Мене цікавить пам'ятник арт. ${product.sku} ("${product.title}")${pricePart}. Прошу прорахувати повну вартість з оформленням і монтажем.`;
   return `${VIBER_BASE}&draft=${encodeURIComponent(text)}`;
 }
 
@@ -130,9 +135,9 @@ function renderHeader(active) {
       </a>
       <nav class="main-nav" aria-label="Основна навігація">
         ${navLink(active, 'catalog', 'catalog.html', 'Каталог')}
+        ${navLink(active, 'works', 'vidguky.html', 'Наші роботи')}
         ${navLink(active, 'production', 'vyrobnytstvo.html', 'Виробництво')}
-        ${navLink(active, 'paving', 'brukivka.html', 'Бруківка')}
-        ${navLink(active, 'reviews', 'vidguky.html', 'Відгуки')}
+        ${navLink(active, 'services', 'oformlennya.html', 'Послуги')}
         ${navLink(active, 'contacts', 'kontakty.html', 'Контакти')}
       </nav>
       <div class="header-actions">
@@ -154,10 +159,10 @@ function renderFooter() {
     <div class="container footer-compact">
       <div class="footer-identity">
         <a class="footer-mark" href="index.html" aria-label="KAMENOTES, головна сторінка"><img src="img/suhorez_blade.svg" alt="" width="44" height="44"><span>KAMENOTES</span></a>
-        <p>Гранітна мануфактура у Коростишеві · з 1995 року</p>
+        <p>KAMENOTES — виробництво гранітних пам’ятників у Коростишеві · з 1995 року</p>
       </div>
       <nav class="footer-navigation" aria-label="Навігація у футері">
-        <a href="catalog.html">Каталог</a><a href="vyrobnytstvo.html">Виробництво</a><a href="brukivka.html">Бруківка</a><a href="vidguky.html">Відгуки</a><a href="kontakty.html">Контакти</a>
+        <a href="catalog.html">Каталог</a><a href="vidguky.html">Наші роботи</a><a href="vyrobnytstvo.html">Виробництво</a><a href="oformlennya.html">Художнє оформлення</a><a href="montazh.html">Монтаж</a><a href="kontakty.html">Контакти</a><a href="brukivka.html">Інша продукція: бруківка</a>
       </nav>
       <address class="footer-contact-compact">
         <a href="${MAP_LINK}" target="_blank" rel="noopener">м. Коростишів, вул. Партизанська-117<br>Коростишівський гранітний завод</a>
@@ -189,8 +194,8 @@ function renderFooter() {
         <p id="lightboxPhotoMeta" class="lightbox-photo-meta"></p>
         <div class="lightbox-product-only">
           <div class="lightbox-price-row">
-            <span>Ціна виробника</span>
-            <strong id="lightboxPrice">від 5 900 грн</strong>
+            <span>Вартість</span>
+            <strong id="lightboxPrice">Ціна за прорахунком</strong>
           </div>
           <div class="lightbox-specs-block">
             <h3>Комплектація</h3>
@@ -244,7 +249,7 @@ function renderProductCard(product, options = {}) {
     : ['Натуральне Букинське габро', 'Пряма різка у цеху Коростишева', 'Дзеркальне водне полірування фасок'];
 
   const specsAttr = escapeAttr(specs.join('||'));
-  const priceFormatted = formatPrice(item.price);
+  const priceLabel = hasVerifiedPrice(item) ? `від ${formatPrice(item.price)} грн` : 'Ціна за прорахунком';
 
   return `<article class="product-card ${escapeAttr(item.category)}" data-category="${escapeAttr(item.category)}" data-search="${escapeAttr(`${item.sku} ${item.title} ${specs.join(' ')}`.toLowerCase())}">
     <button class="product-media js-lightbox" type="button"
@@ -252,8 +257,9 @@ function renderProductCard(product, options = {}) {
       data-title="${escapeAttr(item.title)}"
       data-sku="Арт. ${escapeAttr(item.sku)}"
       data-category="${escapeAttr(categoryName(item.category))}"
+      data-product-id="${escapeAttr(item.id)}"
       data-badge="${escapeAttr(item.badge || '')}"
-      data-price="від ${priceFormatted} грн"
+      data-price="${escapeAttr(priceLabel)}"
       data-specs="${specsAttr}"
       data-viber="${escapeAttr(viberHref)}"
       aria-label="Збільшити та переглянути ${escapeAttr(item.sku)}">
@@ -266,14 +272,15 @@ function renderProductCard(product, options = {}) {
       </div>
       <h3>${escapeHtml(item.title)}</h3>
       <div class="product-price">
-        <strong>від ${priceFormatted} грн</strong>
+        <strong>${escapeHtml(priceLabel)}</strong>
         <button class="product-detail js-lightbox" type="button"
           data-image="${escapeAttr(item.img)}"
           data-title="${escapeAttr(item.title)}"
           data-sku="Арт. ${escapeAttr(item.sku)}"
           data-category="${escapeAttr(categoryName(item.category))}"
+          data-product-id="${escapeAttr(item.id)}"
           data-badge="${escapeAttr(item.badge || '')}"
-          data-price="від ${priceFormatted} грн"
+          data-price="${escapeAttr(priceLabel)}"
           data-specs="${specsAttr}"
           data-viber="${escapeAttr(viberHref)}"
           aria-label="Переглянути деталі ${escapeAttr(item.sku)}">${arrowIcon()}</button>
@@ -316,20 +323,29 @@ function renderReviewCard(review, compact = false) {
 
 function renderIndex(products) {
   // Share the catalog inventory and detail renderer, including admin updates.
-  const categoryPicks = ['km-1', 'km-29', 'vsk-71a', 'mod-16'];
-  const homeCategories = ['odinarni', 'podvijni', 'vijskovi', 'modeli'].map((id, index) => {
-    const category = CATEGORIES.find(item => item.id === id);
-    const items = products.filter(item => item.category === id);
-    const item = items.find(item => item.id === categoryPicks[index]) || items[0];
+  const categoryDefinitions = [
+    { label: "Одинарні пам'ятники", href: 'catalog.html?filter=odinarni', productId: 'km-1', note: 'Моделі для одного поховання' },
+    { label: "Подвійні пам'ятники", href: 'catalog.html?filter=podvijni', productId: 'km-29', note: 'Стели та комплекти на двох' },
+    { label: 'Меморіальні комплекси', href: 'vidguky.html#works', productId: 'vsk-chudniv', note: 'Реалізовані комплексні роботи' },
+    { label: "Пам'ятники військовим", href: 'catalog.html?filter=vijskovi', productId: 'vsk-71a', note: 'Моделі та виконані меморіали' },
+    { label: 'Хрести', href: 'catalog.html?filter=khresti', productId: 'km-gal-kr-001', note: 'Гранітні хрести різних форм' },
+    { label: 'Надгробні плити', href: 'catalog.html?filter=khresti', productId: 'km-gal-nd-001', note: 'Плити з натурального каменю' }
+  ];
+  const homeCategories = categoryDefinitions.map(definition => {
+    const item = products.find(product => product.id === definition.productId);
     if (!item) return '';
-    return `<a class="home-category" href="catalog.html?filter=${id}">
+    return `<a class="home-category" href="${definition.href}">
       <div class="home-category-image"><img src="${escapeAttr(item.img)}" alt="${escapeAttr(item.title)}" loading="lazy" width="360" height="360"></div>
-      <div class="home-category-label"><h3>${escapeHtml(category.label)}</h3>${arrowIcon()}</div>
-      <span>${items.length} моделей у каталозі</span>
+      <div class="home-category-label"><h3>${escapeHtml(definition.label)}</h3>${arrowIcon()}</div>
+      <span>${escapeHtml(definition.note)}</span>
     </a>`;
   }).join('\n');
-  const selectedProducts = ['km-1', 'km-29', 'vsk-71a'].map(id => products.find(item => item.id === id)).filter(Boolean);
-  const completedWorks = ['vsk-kiev-1', 'vsk-kiev-2', 'vsk-chudniv'].map(id => products.find(item => item.id === id)).filter(Boolean);
+  const selectedProducts = ['km-1', 'km-4', 'km-8', 'km-17', 'km-29', 'km-34'].map(id => products.find(item => item.id === id)).filter(Boolean);
+  const completedWorks = [
+    'vsk-kiev-1', 'vsk-kiev-2', 'vsk-chudniv',
+    'km-gal-km-5389', 'km-gal-km-5385', 'km-gal-km-5371',
+    'km-gal-km-5360', 'km-gal-ok-007'
+  ].map(id => products.find(item => item.id === id)).filter(Boolean);
   const worksMarkup = completedWorks.map(product => {
     const item = productForPublic(product);
     return `<figure class="home-work"><button class="js-lightbox" type="button" data-image="${escapeAttr(item.img)}" data-title="${escapeAttr(item.title)}" data-meta="Робота KAMENOTES" aria-label="Збільшити: ${escapeAttr(item.title)}"><img src="${escapeAttr(item.img)}" alt="${escapeAttr(item.title)}" loading="lazy" width="480" height="540"></button><figcaption>${escapeHtml(item.title)}</figcaption></figure>`;
@@ -358,7 +374,7 @@ function renderIndex(products) {
           <div class="home-intro-actions"><a class="btn btn-dark" href="catalog.html">Переглянути каталог ${arrowIcon()}</a><a class="text-link" href="${VIBER_BASE}">Консультація у Viber ${arrowIcon()}</a></div>
           <ul class="home-hero-facts" aria-label="Про KAMENOTES"><li><strong>З 1995 року</strong><span>працюємо з каменем</span></li><li><strong>Власний цех</strong><span>ціни від виробника</span></li><li><strong>По Україні</strong><span>доставка та монтаж</span></li></ul>
         </div>
-        <figure class="home-intro-photo"><img src="img/production/workshop_07.jpg" alt="Майстер KAMENOTES біля обладнання для обробки граніту в Коростишеві" width="1600" height="1200" fetchpriority="high"><figcaption><span>Наше виробництво</span><span>Коростишів, Україна</span></figcaption></figure>
+        <figure class="home-intro-photo"><img src="img/kamenotes/our_zsu-monument-kiev_pamjatnyk-vijskovomy.jpg" alt="Готовий меморіальний комплекс, виготовлений і встановлений KAMENOTES" width="1600" height="1200" fetchpriority="high"><figcaption><span>Готова робота KAMENOTES</span><span>Виготовлення та монтаж</span></figcaption></figure>
       </div>
     </section>
 
@@ -366,7 +382,7 @@ function renderIndex(products) {
       <div class="container">
         <div class="home-section-heading"><div><p class="kicker">Каталог пам’ятників</p><h2 id="categories-title">Оберіть тип пам’ятника</h2></div><a class="text-link" href="catalog.html">Увесь каталог ${arrowIcon()}</a></div>
         <div class="home-category-grid">${homeCategories}</div>
-        <div class="home-category-more"><span>Також виготовляємо</span><a href="catalog.html?filter=khresti">Хрести та плити ${arrowIcon()}</a><a href="catalog.html?filter=ogorozhi">Огорожі та столи ${arrowIcon()}</a></div>
+        <div class="home-category-more"><span>Інші вироби</span><a href="catalog.html?filter=ogorozhi">Огорожі та столи ${arrowIcon()}</a></div>
       </div>
     </section>
 
@@ -377,7 +393,7 @@ function renderIndex(products) {
       </div>
     </section>` : ''}
 
-    ${completedWorks.length ? `<section class="section home-works" aria-labelledby="works-title">
+    ${completedWorks.length ? `<section class="section home-works" id="works" aria-labelledby="works-title">
       <div class="container"><div class="home-section-heading"><div><p class="kicker">Виготовлено та встановлено</p><h2 id="works-title">Наші роботи</h2></div><p>Готові меморіали — від обробки граніту до встановлення на місці.</p></div><div class="home-works-grid">${worksMarkup}</div></div>
     </section>` : ''}
 
@@ -406,7 +422,7 @@ function renderIndex(products) {
     <section class="section home-materials">
       <div class="container home-stone-layout">
         <figure class="home-stone-image">
-          <img src="img/production/workshop_16.jpg" alt="Натуральні кам’яні плити на складі мануфактури" width="640" height="480" loading="lazy">
+          <img src="img/production/workshop_16.jpg" alt="Натуральні кам’яні плити на складі виробництва" width="640" height="480" loading="lazy">
           <figcaption>Камінь на нашому складі</figcaption>
         </figure>
         <div class="home-stone-copy">
@@ -532,7 +548,7 @@ function renderReviews(reviews) {
       </div>
     </section>
 
-    <section class="section reviews-lead-story surface-section">
+    <section class="section reviews-lead-story surface-section" id="works">
       <div class="container reviews-lead-grid">
         <div class="reviews-lead-copy">
           <h2>Замовлення на відстані — від розмови до готової роботи.</h2>
@@ -560,7 +576,7 @@ function renderReviews(reviews) {
   return pageShell({
     title: "Відгуки клієнтів про пам'ятники | KAMENOTES",
     description: "Відгуки клієнтів KAMENOTES про виготовлення, художнє оформлення, доставку та встановлення гранітних пам'ятників.",
-    active: 'reviews',
+    active: 'works',
     body
   }).replace('<main id="main">', '<main id="main" class="reviews-page">')
     .replace('</head>', '  <link rel="stylesheet" href="css/reviews.css?v=20260915-graphite">\n</head>');
@@ -835,7 +851,7 @@ function renderDecoration() {
   return pageShell({
     title: "Художнє оформлення пам'ятників | KAMENOTES Коростишів",
     description: "Художнє оформлення пам'ятників у KAMENOTES: ручне гравіювання портретів, написи, українські епітафії, образи й декоративні елементи на граніті.",
-    active: 'production',
+    active: 'services',
     body
   }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-graphite">\n</head>');
 }
@@ -895,6 +911,29 @@ function renderMounting() {
       </div>
     </section>
 
+    <section class="section production-work mounting-examples" aria-labelledby="mounting-examples-title">
+      <div class="container">
+        <div class="production-work-heading">
+          <div><p class="kicker">Встановлені об’єкти</p><h2 id="mounting-examples-title">Результат на місці.</h2></div>
+          <p>Реальні роботи KAMENOTES: одинарні й подвійні пам’ятники, комплекси з облицюванням та гранітними огорожами.</p>
+        </div>
+        <div class="production-work-grid">
+          <article class="production-work-item production-work-item-wide">
+            <button class="js-lightbox" type="button" data-image="img/kamenotes/gallery_odinarni_KM-5389.jpg" data-title="Встановлений одинарний пам’ятник" data-meta="Робота KAMENOTES" aria-label="Збільшити фото встановленого одинарного пам'ятника"><img src="img/kamenotes/gallery_odinarni_KM-5389.jpg" alt="Одинарний гранітний пам’ятник після встановлення" loading="lazy"></button>
+            <div><span>01</span><h3>Одинарний комплект</h3><p>Стела, тумба, квітник і елементи благоустрою після завершення робіт.</p></div>
+          </article>
+          <article class="production-work-item">
+            <button class="js-lightbox" type="button" data-image="img/kamenotes/gallery_podvijni_KM-7481.jpg" data-title="Встановлений подвійний пам’ятник" data-meta="Робота KAMENOTES" aria-label="Збільшити фото встановленого подвійного пам'ятника"><img src="img/kamenotes/gallery_podvijni_KM-7481.jpg" alt="Подвійний гранітний пам’ятник після встановлення" loading="lazy"></button>
+            <div><span>02</span><h3>Подвійний комплект</h3><p>Готовий об’єкт із горизонтальною стелою та облаштованою ділянкою.</p></div>
+          </article>
+          <article class="production-work-item">
+            <button class="js-lightbox" type="button" data-image="img/kamenotes/gallery_ogorozhi_OK-007.jpg" data-title="Комплекс із гранітною огорожею" data-meta="Робота KAMENOTES" aria-label="Збільшити фото комплексу з огорожею"><img src="img/kamenotes/gallery_ogorozhi_OK-007.jpg" alt="Встановлений гранітний комплекс з огорожею" loading="lazy"></button>
+            <div><span>03</span><h3>Комплекс з огорожею</h3><p>Монтаж деталей, облицювання та огорожі як одного погодженого комплекту.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="production-material-band">
       <div class="container production-material-row">
         <div><p class="kicker">Перед виїздом</p><h2>Готуємо комплект у цеху</h2></div>
@@ -913,7 +952,7 @@ function renderMounting() {
   return pageShell({
     title: "Монтаж і встановлення пам'ятників | KAMENOTES",
     description: "Доставка та монтаж гранітних пам'ятників KAMENOTES: заміри, армована бетонна основа, облицювання, складання й контроль встановленого виробу.",
-    active: 'production',
+    active: 'services',
     body
   }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-graphite">\n</head>');
 }
@@ -989,7 +1028,7 @@ function renderPaving() {
   return pageShell({
     title: 'Гранітна бруківка оптом від виробника | KAMENOTES Коростишів',
     description: 'Гранітна бруківка оптом від виробника у Коростишеві: колота, пиляно-колота, повнопиляна термооброблена та галтована з габро, Покостівки й Лезниківського граніту.',
-    active: 'paving',
+    active: '',
     body
   }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-graphite">\n</head>');
 }
@@ -1020,7 +1059,6 @@ function renderContacts() {
     <div class="container contacts-composition">
       <div class="contacts-copy">
         <p class="kicker">KAMENOTES / Контакти</p>
-        <h1>Зустрінемось<br>у Коростишеві</h1>
         <address class="contacts-address">вул. Партизанська-117<span>Коростишівський гранітний завод</span></address>
         <div class="contacts-main-phone"><span>Олександр / Юрій · Керівництво та виробництво</span><a href="tel:${PHONE_MAIN}">+38 (097) 715-79-15</a></div>
         <dl class="contacts-directory">
@@ -1033,7 +1071,6 @@ function renderContacts() {
       </div>
       <div class="contacts-map">
         ${renderMapFrame()}
-        <a class="text-link" href="${MAP_LINK}" target="_blank" rel="noopener">Прокласти маршрут ${arrowIcon()}</a>
       </div>
     </div>
   </section>
@@ -1118,6 +1155,7 @@ img {
 a {
   color: inherit;
   text-decoration: none;
+  touch-action: manipulation;
 }
 
 button,
@@ -1127,6 +1165,7 @@ input {
 
 button {
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 h1,
@@ -3013,12 +3052,21 @@ function renderMainJs() {
     }
   }
 
-  function closeLightbox() {
+  function closeLightbox(syncHistory = true) {
     if (!lightbox) return;
     lightbox.classList.remove('active');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lightbox-open');
     resetLightboxZoom();
+    if (syncHistory) {
+      const currentUrl = new URL(window.location.href);
+      if (history.state && history.state.lightboxProduct) {
+        history.back();
+      } else if (currentUrl.searchParams.has('product')) {
+        currentUrl.searchParams.delete('product');
+        history.replaceState({}, '', currentUrl);
+      }
+    }
     if (lastFocus) lastFocus.focus();
   }
 
@@ -3086,6 +3134,13 @@ function renderMainJs() {
       lightbox.classList.add('active');
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.classList.add('lightbox-open');
+      if (trigger.dataset.productId) {
+        const currentUrl = new URL(window.location.href);
+        if (currentUrl.searchParams.get('product') !== trigger.dataset.productId) {
+          currentUrl.searchParams.set('product', trigger.dataset.productId);
+          history.pushState({ lightboxProduct: true }, '', currentUrl);
+        }
+      }
       const closeButton = lightbox.querySelector('.lightbox-close');
       if (closeButton) closeButton.focus();
     }
@@ -3113,6 +3168,20 @@ function renderMainJs() {
   });
 
   applyCatalogFilter();
+  const productParam = urlParams.get('product');
+  if (productParam) {
+    const productTrigger = document.querySelector('.js-lightbox[data-product-id="' + CSS.escape(productParam) + '"]');
+    if (productTrigger) productTrigger.click();
+  }
+  window.addEventListener('popstate', () => {
+    const productId = new URL(window.location.href).searchParams.get('product');
+    if (!productId) {
+      if (lightbox && lightbox.classList.contains('active')) closeLightbox(false);
+      return;
+    }
+    const productTrigger = document.querySelector('.js-lightbox[data-product-id="' + CSS.escape(productId) + '"]');
+    if (productTrigger) productTrigger.click();
+  });
 });`;
 }
 

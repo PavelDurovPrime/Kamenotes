@@ -54,17 +54,28 @@ async function main() {
   assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'true');
   await page.goto('http://127.0.0.1:3000/index.html');
   const inventory = JSON.parse(fs.readFileSync(path.join(root, 'data', 'products.json'), 'utf8'));
-  assert.equal(await page.locator('.home-category').count(), 4);
-  for (const [index, id] of ['km-1', 'km-29', 'vsk-71a'].entries()) {
+  assert.equal(await page.locator('.home-category').count(), 6);
+  for (const [index, id] of ['km-1', 'km-4', 'km-8', 'km-17', 'km-29', 'km-34'].entries()) {
     const item = inventory.find(product => product.id === id);
     const card = page.locator('.home-featured .product-card').nth(index);
     assert.equal(await card.locator('h3').innerText(), item.title);
     assert.equal((await card.locator('.product-price strong').innerText()).replace(/\s/g, ''), `від${item.price}грн`);
   }
+  assert.equal(await page.locator('.home-work').count(), 8);
   await page.locator('.home-featured .js-lightbox').first().click();
   assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'false');
   assert.equal(await page.locator('#lightboxSku').textContent(), `Арт. ${inventory.find(p => p.id === 'km-1').sku}`);
   await page.keyboard.press('Escape');
+  await page.goto('http://127.0.0.1:3000/catalog.html?product=km-29');
+  assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'false');
+  assert.equal(await page.locator('#lightboxSku').textContent(), 'Арт. КМ-29');
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !new URL(location.href).searchParams.has('product'));
+  assert.equal(new URL(page.url()).searchParams.has('product'), false);
+  await page.goto('http://127.0.0.1:3000/catalog.html?product=vsk-71a');
+  assert.equal(await page.locator('#lightboxPrice').textContent(), 'Ціна за прорахунком');
+  await page.keyboard.press('Escape');
+  await page.goto('http://127.0.0.1:3000/index.html');
   await page.locator('.home-work .js-lightbox').first().click();
   assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'false');
   await page.keyboard.press('Escape');
@@ -122,6 +133,7 @@ async function main() {
   const reviewsAfter = await (await page.request.get(`${base}/api/reviews`)).json();
   assert.deepEqual(reviewsAfter, reviewsBefore, 'Existing reviews must remain unchanged');
   await page.goto(`${base}/vidguky.html`);
+  assert.equal(await page.locator('#works').count(), 1);
   assert.equal(await page.locator('.reviews-story').count(), 6);
   assert.equal(await page.locator('.reviews-lead-copy blockquote').textContent(), reviewsBefore.find(review => review.id === 'review-2014-05-andrii-mykolaiv').text);
   for (const [source, target] of [

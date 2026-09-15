@@ -66,12 +66,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function closeLightbox() {
+  function closeLightbox(syncHistory = true) {
     if (!lightbox) return;
     lightbox.classList.remove('active');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lightbox-open');
     resetLightboxZoom();
+    if (syncHistory) {
+      const currentUrl = new URL(window.location.href);
+      if (history.state && history.state.lightboxProduct) {
+        history.back();
+      } else if (currentUrl.searchParams.has('product')) {
+        currentUrl.searchParams.delete('product');
+        history.replaceState({}, '', currentUrl);
+      }
+    }
     if (lastFocus) lastFocus.focus();
   }
 
@@ -139,6 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
       lightbox.classList.add('active');
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.classList.add('lightbox-open');
+      if (trigger.dataset.productId) {
+        const currentUrl = new URL(window.location.href);
+        if (currentUrl.searchParams.get('product') !== trigger.dataset.productId) {
+          currentUrl.searchParams.set('product', trigger.dataset.productId);
+          history.pushState({ lightboxProduct: true }, '', currentUrl);
+        }
+      }
       const closeButton = lightbox.querySelector('.lightbox-close');
       if (closeButton) closeButton.focus();
     }
@@ -166,4 +182,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   applyCatalogFilter();
+  const productParam = urlParams.get('product');
+  if (productParam) {
+    const productTrigger = document.querySelector('.js-lightbox[data-product-id="' + CSS.escape(productParam) + '"]');
+    if (productTrigger) productTrigger.click();
+  }
+  window.addEventListener('popstate', () => {
+    const productId = new URL(window.location.href).searchParams.get('product');
+    if (!productId) {
+      if (lightbox && lightbox.classList.contains('active')) closeLightbox(false);
+      return;
+    }
+    const productTrigger = document.querySelector('.js-lightbox[data-product-id="' + CSS.escape(productId) + '"]');
+    if (productTrigger) productTrigger.click();
+  });
 });
