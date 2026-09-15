@@ -5,7 +5,7 @@ const { chromium } = require('playwright');
 
 async function main() {
   const root = path.join(__dirname, 'site');
-  const pages = ['index.html', 'catalog.html', 'vyrobnytstvo.html', 'vidguky.html', 'kontakty.html'];
+  const pages = ['index.html', 'catalog.html', 'vyrobnytstvo.html', 'oformlennya.html', 'montazh.html', 'brukivka.html', 'vidguky.html', 'kontakty.html'];
   const missing = new Set();
   for (const name of pages) {
     const html = fs.readFileSync(path.join(root, name), 'utf8');
@@ -25,7 +25,7 @@ async function main() {
     await page.setViewportSize({ width, height: 900 });
     for (const name of pages) {
       await page.goto(`http://127.0.0.1:3000/${name}`, { waitUntil: 'domcontentloaded' });
-      await page.locator('.hero-image').evaluate(image => image.decode());
+      await page.locator('img').evaluateAll(images => Promise.all(images.map(image => image.decode().catch(() => {}))));
       await page.screenshot({ path: path.join(__dirname, 'qa', `${name}-${width}.png`) });
       const layout = await page.evaluate(() => ({
         width: innerWidth,
@@ -49,6 +49,14 @@ async function main() {
   await page.screenshot({ path: path.join(__dirname, 'qa', 'catalog-lightbox.png') });
   await page.keyboard.press('Escape');
   assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'true');
+  await page.goto('http://127.0.0.1:3000/index.html');
+  assert.equal(await page.locator('.home-featured').count(), 0, 'Homepage catalog showcase must stay removed');
+  await page.goto('http://127.0.0.1:3000/brukivka.html');
+  assert.equal(await page.locator('h1').innerText(), 'Гранітна\nбруківка оптом.');
+  await page.goto('http://127.0.0.1:3000/oformlennya.html');
+  assert.equal(await page.locator('h1').innerText(), 'Оформлення\nпам’ятника.');
+  await page.goto('http://127.0.0.1:3000/montazh.html');
+  assert.equal(await page.locator('h1').innerText(), 'Монтаж\nпам’ятника.');
   await page.goto('http://127.0.0.1:3000/admin');
   assert.equal((await page.request.get('http://127.0.0.1:3000/api/products')).status(), 200);
   const base = 'http://127.0.0.1:3000';
@@ -94,13 +102,26 @@ async function main() {
   assert.deepEqual(reviewsAfter, reviewsBefore, 'Existing reviews must remain unchanged');
   await page.goto(`${base}/vidguky.html`);
   assert.equal(await page.locator('.review-card').count(), 19);
-  for (const [source, target] of [['/catalog/', '/catalog.html'], ['/contacts.html', '/kontakty.html'], ['/ua/', '/index.html']]) {
+  for (const [source, target] of [
+    ['/catalog/', '/catalog.html'],
+    ['/contacts.html', '/kontakty.html'],
+    ['/ua/', '/index.html'],
+    ['/ua/bruschatka.html', '/brukivka.html'],
+    ['/ua/services/bruschatka.html', '/brukivka.html'],
+    ['/ua/services/329-bruschatka.html', '/brukivka.html'],
+    ['/ua/mounting.html', '/montazh.html'],
+    ['/ua/services/portret.html', '/oformlennya.html'],
+    ['/ua/services/retush.html', '/oformlennya.html'],
+    ['/ua/services/litery.html', '/oformlennya.html'],
+    ['/ua/services/khudozhne-oformlennya.html', '/oformlennya.html'],
+    ['/ua/epitaph.html', '/oformlennya.html']
+  ]) {
     await page.goto(`${base}${source}`);
     await page.waitForURL(`${base}${target}`);
   }
   assert.deepEqual(errors, []);
   await browser.close();
-  console.log('PASS: local assets, 5 pages at 4 widths, product and review CRUD with cleanup, filters, lightbox, redirects, no JS errors.');
+  console.log('PASS: local assets, 8 pages at 4 widths, product and review CRUD with cleanup, filters, lightbox, redirects, no JS errors.');
 }
 
 main().catch(error => { console.error(error); process.exit(1); });

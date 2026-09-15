@@ -17,8 +17,8 @@ const PHONE_SHOP_LABEL = '099 931 45 20';
 const EMAIL = 'suhorez@ukr.net';
 const MAP_LINK = 'https://maps.app.goo.gl/QTLZb45coBpbMcQA9';
 const VIBER_BASE = 'viber://chat?number=%2B380977157915';
-const ROUTE_KIEV_LINK = 'https://www.google.com/maps/dir/%D0%9A%D0%B8%D0%B5%D0%B2/KAMENOTES.com+-+%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%B8+%D0%B8%D0%B7+%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B0,+%D0%9A%D0%BE%D1%80%D0%BE%D1%81%D1%82%D1%8B%D1%88%D0%B5%D0%B2,+%D1%83%D0%BB.+%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D1%85+%D0%BF%D0%B0%D1%80%D1%82%D0%B8%D0%B7%D0%B0%D0%BD%D0%BE%D0%B2,+%D0%9A%D0%BE%D1%80%D0%BE%D1%81%D1%82%D1%8B%D1%88%D0%B5%D0%B2,+%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C/@50.3674122,29.7547776,10z/data=!4m13!4m12!1m5!1m1!1s0x40d4cf4ee15a4505:0x764931d2170146fe!2m2!1d30.5234!2d50.4501!1m5!1m1!1s0x472c83e298d808ad:0x2afed4ca42ae830c!2m2!1d29.0809756!2d50.3275428';
-const ROUTE_ZT_LINK = 'https://www.google.com/maps/dir/%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80,+%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C/KAMENOTES.com+-+%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%B8+%D0%B8%D0%B7+%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B0,+%D0%9A%D0%BE%D1%80%D0%BE%D1%81%D1%82%D1%8B%D1%88%D0%B5%D0%B2,+%D1%83%D0%BB.+%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D1%85+%D0%BF%D0%B0%D1%80%D1%82%D0%B8%D0%B7%D0%B0%D0%BD%D0%BE%D0%B2,+%D0%9A%D0%BE%D1%80%D0%BE%D1%81%D1%82%D1%8B%D1%88%D0%B5%D0%B2,+%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C/@50.2803575,28.7397235,11z/data=!4m13!4m12!1m5!1m1!1s0x472c64a32bfa355d:0xf14ad2a3d9b9e229!2m2!1d28.6586669!2d50.25465!1m5!1m1!1s0x472c83e298d808ad:0x2afed4ca42ae830c!2m2!1d29.0809756!2d50.3275428';
+const ROUTE_KIEV_LINK = 'https://www.google.com/maps/dir/?api=1&origin=%D0%9A%D0%B8%D1%97%D0%B2&destination=50.3281248%2C29.082698&travelmode=driving';
+const ROUTE_ZT_LINK = 'https://www.google.com/maps/dir/?api=1&origin=%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80&destination=50.3281248%2C29.082698&travelmode=driving';
 
 const CATEGORIES = [
   { id: 'all', label: 'З цінами', short: 'Усі моделі' },
@@ -28,17 +28,6 @@ const CATEGORIES = [
   { id: 'modeli', label: 'Авторські моделі цеху', short: 'Моделі цеху' },
   { id: 'khresti', label: 'Хрести та плити', short: 'Хрести' },
   { id: 'ogorozhi', label: 'Огорожі та столи', short: 'Огорожі' }
-];
-
-const FEATURED_IDS = [
-  'km-1-5',
-  'km-2-5',
-  'km-7',
-  'km-27',
-  'km-34',
-  'vsk-01',
-  'gallery-khresti-kr-001',
-  'km-gal-kst-01'
 ];
 
 function ensureDirs() {
@@ -142,6 +131,7 @@ function renderHeader(active) {
       <nav class="main-nav" aria-label="Основна навігація">
         ${navLink(active, 'catalog', 'catalog.html', 'Каталог')}
         ${navLink(active, 'production', 'vyrobnytstvo.html', 'Виробництво')}
+        ${navLink(active, 'paving', 'brukivka.html', 'Бруківка')}
         ${navLink(active, 'reviews', 'vidguky.html', 'Відгуки')}
         ${navLink(active, 'contacts', 'kontakty.html', 'Контакти')}
       </nav>
@@ -161,34 +151,18 @@ function renderHeader(active) {
 
 function renderFooter() {
   return `<footer class="site-footer">
-    <div class="container footer-primary">
-      <div class="footer-story">
-        <a class="footer-mark" href="index.html" aria-label="KAMENOTES, головна сторінка"><img src="img/suhorez_blade.svg" alt="" width="52" height="52"><span>KAMENOTES</span></a>
-        <p class="footer-eyebrow">Гранітна мануфактура · Коростишів · з 1995 року</p>
-        <h2>Пам’ять у камені.<br>Від ескізу до монтажу.</h2>
+    <div class="container footer-compact">
+      <div class="footer-identity">
+        <a class="footer-mark" href="index.html" aria-label="KAMENOTES, головна сторінка"><img src="img/suhorez_blade.svg" alt="" width="44" height="44"><span>KAMENOTES</span></a>
+        <p>Гранітна мануфактура у Коростишеві · з 1995 року</p>
       </div>
-      <div class="footer-connect">
-        <p>Розкажіть, який пам’ятник вам потрібен. Допоможемо з моделлю, матеріалом і розрахунком вартості.</p>
-        <a class="footer-phone" href="tel:${PHONE_MAIN}">${PHONE_MAIN_LABEL}</a>
-        <div class="footer-actions">
-          <a class="btn btn-viber footer-viber" href="${VIBER_BASE}">${viberIcon()}<span>Написати у Viber</span></a>
-          <a class="btn btn-outline-light footer-call" href="tel:${PHONE_MAIN}">${phoneIcon()}<span>Зателефонувати</span></a>
-        </div>
-      </div>
-    </div>
-    <div class="container footer-secondary">
       <nav class="footer-navigation" aria-label="Навігація у футері">
-        <strong>Розділи</strong>
-        <div><a href="catalog.html">Каталог</a><a href="vyrobnytstvo.html">Виробництво</a><a href="vidguky.html">Відгуки</a><a href="kontakty.html">Контакти</a></div>
+        <a href="catalog.html">Каталог</a><a href="vyrobnytstvo.html">Виробництво</a><a href="brukivka.html">Бруківка</a><a href="vidguky.html">Відгуки</a><a href="kontakty.html">Контакти</a>
       </nav>
-      <div class="footer-location">
-        <strong>Виробництво</strong>
-        <address><a href="${MAP_LINK}" target="_blank" rel="noopener">м. Коростишів, вул. Партизанська-117<br>Коростишівський гранітний завод</a></address>
-      </div>
-      <div class="footer-online">
-        <strong>Електронна пошта</strong>
-        <a href="mailto:${EMAIL}">${EMAIL}</a>
-      </div>
+      <address class="footer-contact-compact">
+        <a href="${MAP_LINK}" target="_blank" rel="noopener">м. Коростишів, вул. Партизанська-117<br>Коростишівський гранітний завод</a>
+        <span><a href="tel:${PHONE_MAIN}">${PHONE_MAIN_LABEL}</a><a href="mailto:${EMAIL}">${EMAIL}</a></span>
+      </address>
     </div>
     <div class="container footer-bottom"><span>© 1995–2026 KAMENOTES</span><span>Виробляємо в Коростишеві · працюємо по Україні</span></div>
   </footer>
@@ -246,7 +220,7 @@ function pageShell({ title, description, active, body }) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=20260914-luxury-v4">
-  <link rel="stylesheet" href="css/design-system.css?v=20260914-footer-contact">
+  <link rel="stylesheet" href="css/design-system.css?v=20260915-stone-palette">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -341,10 +315,6 @@ function renderReviewCard(review, compact = false) {
 
 function renderIndex(products) {
   const reviews = readReviews().filter(review => review.published !== false);
-  const byId = new Map(products.map(product => [product.id, product]));
-  const featured = FEATURED_IDS.map(id => byId.get(id)).filter(Boolean);
-  const fallbackFeatured = featured.length >= 6 ? featured : products.slice(0, 6);
-  const showcase = fallbackFeatured.slice(0, 6).map(product => renderProductCard(product, { compact: true })).join('\n');
   const homeReviewIds = ['review-2014-05-andrii-mykolaiv', 'review-2018-10-ludmyla-v', 'review-2014-04-iryna'];
   const homeReviewMarkup = homeReviewIds.map((id, index) => {
     const review = reviews.find(item => item.id === id);
@@ -360,37 +330,15 @@ function renderIndex(products) {
   }).join('\n');
 
   const body = `    <section class="home-hero">
-      <div class="container home-hero-layout">
-        <div class="home-hero-copy">
-          <p class="kicker">KAMENOTES · Коростишів</p>
-          <h1><span>Моноліт та час.</span>Гранітна мануфактура<br>з 1995 року.</h1>
-          <p class="hero-copy">Виготовляємо пам'ятники з натурального граніту та габро у власному цеху. Показуємо реальні моделі, чесні ціни виробника і беремо відповідальність за монтаж.</p>
-          <div class="hero-actions">
-            <a class="btn btn-dark" href="catalog.html">Дивитися каталог <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-            <a class="btn btn-viber" href="viber://chat?number=%2B380977157915&draft=%D0%92%D1%96%D1%82%D0%B0%D1%8E!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D1%80%D0%B0%D1%85%D1%83%D0%B2%D0%B0%D1%82%D0%B8%20%D0%BF%D0%B0%D0%BC'%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D1%83%20KAMENOTES."><img class="viber-img" src="img/viber-white.svg" alt="" aria-hidden="true"> <span>Прорахунок у Viber</span></a>
-          </div>
-          <dl class="hero-proof">
-            <div><dt>30+</dt><dd>років у каменеобробці</dd></div>
-            <div><dt>власний цех</dt><dd>розпил, полірування, гравірування</dd></div>
-            <div><dt>Коростишів</dt><dd>український камінь і майстерність</dd></div>
-          </dl>
-        </div>
-        <figure class="home-hero-visual">
-          <img src="img/production/workshop_07.jpg" alt="Майстер KAMENOTES біля портальної пили у Коростишеві">
-          <figcaption><span>01</span> Власне виробництво · Коростишів</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section home-featured surface-section">
-      <div class="container">
-        <div class="section-heading">
-    <p class="kicker">Популярні моделі</p>
-    <h2>Пам&#039;ятники з цінами виробника</h2>
-    <p>Класичні та різьблені моделі з натурального каменю. Точна вартість залежить від розмірів, породи граніту й художнього оформлення.</p>
-  </div>
-        <div class="product-grid featured-grid">${showcase}</div>
-        <div class="section-action"><a class="btn btn-dark" href="catalog.html">Відкрити повний каталог <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+      <div class="home-hero-backdrop" aria-hidden="true"><img src="img/production/workshop_07.jpg" alt=""></div>
+      <div class="container home-hero-content">
+        <p class="kicker">Власне виробництво · Коростишів</p>
+        <h1>Пам’ятники з граніту.<br><span>Від виробника.</span></h1>
+        <p class="hero-copy">Виготовляємо у власному цеху, погоджуємо кожну деталь і відповідаємо за результат — від вибору каменю до встановлення.</p>
+        <a class="btn home-hero-cta" href="catalog.html">Переглянути каталог ${arrowIcon()}</a>
+        <ul class="home-hero-facts" aria-label="Про KAMENOTES">
+          <li>З 1995 року</li><li>Власний цех</li><li>Доставка та монтаж</li>
+        </ul>
       </div>
     </section>
 
@@ -465,7 +413,7 @@ function renderIndex(products) {
     <section class="section dark-cta">
       <div class="container cta-grid">
         <div><p class="kicker">Обговорімо ваше замовлення</p><h2>Почнемо з вашого задуму.</h2><p>Надішліть артикул із каталогу або власний ескіз у Viber. Допоможемо з вибором і прорахуємо вартість.</p></div>
-        <div class="cta-actions"><a class="btn btn-viber" href="viber://chat?number=%2B380977157915&draft=%D0%92%D1%96%D1%82%D0%B0%D1%8E!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D1%80%D0%B0%D1%85%D1%83%D0%B2%D0%B0%D1%82%D0%B8%20%D0%BF%D0%B0%D0%BC'%D1%8F%D1%82%D0%BD%D0%B8%D0%BA.%20%D0%9D%D0%B0%D0%B4%D1%96%D1%88%D0%BB%D1%8E%20%D0%B0%D1%80%D1%82%D0%B8%D0%BA%D1%83%D0%BB%20%D0%B0%D0%B1%D0%BE%20%D0%B5%D1%81%D0%BA%D1%96%D0%B7."><img class="viber-img" src="img/viber-white.svg" alt="" aria-hidden="true"> <span>Написати у Viber</span></a><a class="btn btn-outline-light" href="tel:+380977157915"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span>097 715 79 15</span></a></div>
+        <div class="cta-actions"><a class="btn btn-viber" href="viber://chat?number=%2B380977157915&draft=%D0%92%D1%96%D1%82%D0%B0%D1%8E!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D1%80%D0%B0%D1%85%D1%83%D0%B2%D0%B0%D1%82%D0%B8%20%D0%BF%D0%B0%D0%BC'%D1%8F%D1%82%D0%BD%D0%B8%D0%BA.%20%D0%9D%D0%B0%D0%B4%D1%96%D1%88%D0%BB%D1%8E%20%D0%B0%D1%80%D1%82%D0%B8%D0%BA%D1%83%D0%BB%20%D0%B0%D0%B1%D0%BE%20%D0%B5%D1%81%D0%BA%D1%96%D0%B7."><img class="viber-img" src="img/viber-white.svg" alt="" aria-hidden="true"> <span>Написати у Viber</span></a></div>
       </div>
     </section>
 
@@ -490,7 +438,7 @@ function renderIndex(products) {
     active: 'home',
     body
   }).replace('<main id="main">', '<main id="main" class="home-page">')
-    .replace('</head>', '  <link rel="stylesheet" href="css/home.css?v=20260914-home-2">\n</head>');
+    .replace('</head>', '  <link rel="stylesheet" href="css/home.css?v=20260915-stone-palette">\n</head>');
 }
 function renderReviews(reviews) {
   const published = reviews.filter(review => review.published !== false);
@@ -556,7 +504,7 @@ function renderReviews(reviews) {
     <section class="section dark-cta">
       <div class="container cta-grid">
         <div><p class="kicker">Почнемо з вашого задуму</p><h2>Надішліть модель або ескіз</h2><p>Підберемо камінь, уточнимо оформлення та прорахуємо вартість.</p></div>
-        <div class="cta-actions"><a class="btn btn-viber" href="${VIBER_BASE}&draft=${encodeURIComponent("Вітаю! Хочу замовити прорахунок пам'ятника.")}">${viberIcon()} <span>Написати у Viber</span></a><a class="btn btn-outline-light" href="tel:${PHONE_MAIN}">${phoneIcon()} <span>${PHONE_MAIN_LABEL}</span></a></div>
+        <div class="cta-actions"><a class="btn btn-viber" href="${VIBER_BASE}&draft=${encodeURIComponent("Вітаю! Хочу замовити прорахунок пам'ятника.")}">${viberIcon()} <span>Написати у Viber</span></a></div>
       </div>
     </section>`;
 
@@ -624,7 +572,6 @@ function renderCatalog(products) {
         </div>
         <div class="cta-actions">
           <a class="btn btn-viber" href="${VIBER_BASE}&draft=${encodeURIComponent("Вітаю! Маю власний ескіз для прорахунку пам'ятника.")}">${viberIcon()} <span>Надіслати ескіз</span></a>
-          <a class="btn btn-outline-light" href="tel:${PHONE_SALES}">${phoneIcon()} <span>${PHONE_SALES_LABEL}</span></a>
         </div>
       </div>
     </section>`;
@@ -638,30 +585,20 @@ function renderCatalog(products) {
 }
 
 function renderProduction() {
-  const body = `    <section class="production-page-hero">
-      <div class="container production-hero-grid">
-        <div class="production-hero-copy">
-          <p class="kicker">Власне виробництво · Коростишів</p>
-          <h1>Від каменю<br>до готового пам’ятника.</h1>
-          <p class="production-hero-lead">Ми самі розпилюємо, поліруємо, оформлюємо та готуємо виріб до монтажу. Ви можете побачити цех і обрати камінь наживо.</p>
-          <div class="production-hero-actions">
-            <a class="btn btn-dark" href="catalog.html">Переглянути каталог ${arrowIcon()}</a>
-            <a class="btn btn-light" href="${MAP_LINK}" target="_blank" rel="noopener">Запланувати візит</a>
-          </div>
-          <dl class="production-proof" aria-label="Переваги виробництва">
-            <div><dt>30+</dt><dd>років досвіду</dd></div>
-            <div><dt>1 цех</dt><dd>повний цикл робіт</dd></div>
-            <div><dt>Україна</dt><dd>доставка та монтаж</dd></div>
-          </dl>
+  const body = `    <section class="production-masthead">
+      <div class="container">
+        <div class="production-masthead-copy">
+          <div><p class="kicker">Власне виробництво · Коростишів</p><h1>Камінь проходить<br>усі етапи тут.</h1></div>
+          <div><p>Розпилюємо, поліруємо, гравіруємо й готуємо пам’ятник до монтажу в одному цеху. Ви можете приїхати, побачити виробництво та обрати камінь наживо.</p><a class="text-link" href="#production-cycle">Як ми працюємо ${arrowIcon()}</a></div>
         </div>
-        <figure class="production-hero-media">
-          <button class="js-lightbox" type="button" data-image="img/production/workshop_07.jpg" data-title="Цех KAMENOTES" data-meta="Коростишів" aria-label="Збільшити фото виробництва"><img src="img/production/workshop_07.jpg" alt="Майстер KAMENOTES біля портальної пили в каменеобробному цеху"></button>
-          <figcaption>Реальний цех KAMENOTES у Коростишеві</figcaption>
+        <figure class="production-masthead-media">
+          <button class="js-lightbox" type="button" data-image="img/production/workshop_03.jpg" data-title="Розпил граніту у цеху KAMENOTES" data-meta="Коростишів" aria-label="Збільшити фото виробництва"><img src="img/production/workshop_03.jpg" alt="Розпил граніту алмазною пилою у цеху KAMENOTES"></button>
+          <figcaption><span>Реальний процес у нашому цеху</span><span>Розпил · полірування · гравіювання</span></figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="production-cycle-band">
+    <section class="production-cycle-band" id="production-cycle">
       <div class="container">
         <div class="production-cycle-heading">
           <p class="kicker">Повний цикл</p>
@@ -707,6 +644,29 @@ function renderProduction() {
       </div>
     </section>
 
+    <section class="section production-service-nav" aria-labelledby="productionServicesTitle">
+      <div class="container">
+        <div class="production-work-heading">
+          <div><p class="kicker">Після обробки каменю</p><h2 id="productionServicesTitle">Оформлюємо й встановлюємо.</h2></div>
+          <p>Зібрали детальний опис двох завершальних етапів, щоб ви заздалегідь розуміли послідовність робіт.</p>
+        </div>
+        <div class="production-service-grid">
+          <a class="production-service-card" href="oformlennya.html">
+            <span>01 / Художня майстерня</span>
+            <h3>Портрет, написи та декоративні елементи</h3>
+            <p>Підготовка фото, погодження композиції, ручне гравіювання та українські епітафії.</p>
+            <strong>Детальніше ${arrowIcon()}</strong>
+          </a>
+          <a class="production-service-card" href="montazh.html">
+            <span>02 / Роботи на місці</span>
+            <h3>Підготовка основи й монтаж пам’ятника</h3>
+            <p>Заміри, армована основа, облицювання, складання та фінальна перевірка.</p>
+            <strong>Детальніше ${arrowIcon()}</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section class="section production-control">
       <div class="container production-control-grid">
         <figure><img src="img/production/workshop_12.jpg" alt="Готові моделі пам'ятників на території KAMENOTES" loading="lazy"><figcaption>Готові моделі на території виробництва</figcaption></figure>
@@ -718,31 +678,23 @@ function renderProduction() {
             <li><strong>Фото погодження</strong><span>Показуємо готовий виріб до доставки.</span></li>
             <li><strong>Монтаж за договором</strong><span>Готуємо основу, встановлюємо та герметизуємо стики.</span></li>
           </ul>
+          <a class="text-link production-control-link" href="montazh.html">Як відбувається монтаж ${arrowIcon()}</a>
         </div>
       </div>
     </section>
 
-    <section class="section production-control">
-      <div class="container production-control-grid">
-        <figure><img src="img/production/workshop_10.jpg" alt="Виробництво гранітної бруківки у Коростишеві" loading="lazy"><figcaption>Власне виробництво бруківки та шашки з граніту</figcaption></figure>
-        <div class="production-control-copy">
-          <p class="kicker">Супутня продукція · Власний цех</p>
-          <h2>Гранітна бруківка оптом та шашка з каменю</h2>
-          <p style="margin: 12px 0 16px; color: var(--muted); line-height: 1.6;">Виготовляємо бруківку всіх видів для дорожнього мощення, меморіальних майданчиків та благоустрою території безпосередньо в каменеобробному цеху в Коростишеві.</p>
-          <ul>
-            <li><strong>Колота та пиляно-колота</strong><span>Висока міцність, природний колотий рельєф, стійкість до будь-яких погодних навантажень.</span></li>
-            <li><strong>Повнопиляна термооброблена</strong><span>Ідеально рівна геометрія швів зі спеціальною антиковзкою термообробленою поверхнею.</span></li>
-            <li><strong>Галтована шашка (згладжена)</strong><span>Скруглені грані під старовинну бруківку, приємна округла фактура натурального каменю.</span></li>
-            <li><strong>Породи та розрахунок</strong><span>Чорне габро, сіра Покостівка, червоні Лезники. Оптові партії з розрахунком вартості за м².</span></li>
-          </ul>
-        </div>
+    <section class="production-material-band">
+      <div class="container production-material-row">
+        <div><p class="kicker">Супутня продукція</p><h2>Гранітна бруківка</h2></div>
+        <p>Колота, пиляно-колота, повнопиляна термооброблена та галтована бруківка з власного цеху. Працюємо з оптовими замовленнями.</p>
+        <a class="text-link" href="brukivka.html">Перейти до розділу ${arrowIcon()}</a>
       </div>
     </section>
 
     <section class="section dark-cta production-cta">
       <div class="container cta-grid">
         <div><p class="kicker">Візит на виробництво</p><h2>Побачте камінь і цех до замовлення</h2><p>Оцініть колір, полірування, товщину стели та готові моделі. При замовленні повертаємо витрати на дорогу.</p></div>
-        <div class="cta-actions"><a class="btn btn-light" href="${MAP_LINK}" target="_blank" rel="noopener">Відкрити карту ${arrowIcon()}</a><a class="btn btn-outline-light" href="tel:${PHONE_MAIN}">${phoneIcon()} <span>${PHONE_MAIN_LABEL}</span></a></div>
+        <div class="cta-actions"><a class="btn btn-light" href="${MAP_LINK}" target="_blank" rel="noopener">Відкрити карту ${arrowIcon()}</a></div>
       </div>
     </section>`;
 
@@ -751,8 +703,248 @@ function renderProduction() {
     description: "Власне виробництво KAMENOTES у Коростишеві: фото цеху, розпил граніту, водне полірування, ручне гравірування, доставка та монтаж.",
     active: 'production',
     body
-  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260914-production-1">\n</head>');
+  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-stone-palette">\n</head>');
 }
+
+function renderDecoration() {
+  const viberText = encodeURIComponent("Вітаю! Хочу уточнити художнє оформлення пам'ятника: портрет, написи та декоративні елементи.");
+  const body = `    <section class="production-page-hero service-detail-hero decoration-page-hero">
+      <div class="container production-hero-grid">
+        <div class="production-hero-copy">
+          <p class="kicker">Художня майстерня · Коростишів</p>
+          <h1>Оформлення<br>пам’ятника.</h1>
+          <p class="production-hero-lead">Готуємо портрет, написи, епітафію та декоративні елементи як єдину композицію. Перед нанесенням на камінь погоджуємо розташування і вигляд.</p>
+          <div class="production-hero-actions">
+            <a class="btn btn-viber" href="${VIBER_BASE}&draft=${viberText}">${viberIcon()} <span>Надіслати фото у Viber</span></a>
+          </div>
+          <dl class="production-proof" aria-label="Види художнього оформлення">
+            <div><dt>Портрет</dt><dd>ручне гравіювання</dd></div>
+            <div><dt>Написи</dt><dd>шрифт і композиція</dd></div>
+            <div><dt>Декор</dt><dd>образи та орнаменти</dd></div>
+          </dl>
+        </div>
+        <figure class="production-hero-media decoration-hero-media">
+          <button class="js-lightbox" type="button" data-image="img/kamenotes/services_hudozhnik_pamyatnikov.jpg" data-title="Ручне гравіювання портрета" data-meta="Художня майстерня KAMENOTES" aria-label="Збільшити фото ручного гравіювання"><img src="img/kamenotes/services_hudozhnik_pamyatnikov.jpg" alt="Художниця вручну гравірує портрет на граніті"></button>
+          <figcaption>Реальний процес ручного гравіювання у майстерні KAMENOTES</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="production-cycle-band">
+      <div class="container">
+        <div class="production-cycle-heading">
+          <p class="kicker">Порядок роботи</p>
+          <h2>Спершу погодження — потім робота на камені.</h2>
+        </div>
+        <ol class="production-cycle-list">
+          <li><span>01</span><div><h3>Отримуємо матеріали</h3><p>Приймаємо фото, ПІБ, дати й побажання до оформлення.</p></div></li>
+          <li><span>02</span><div><h3>Готуємо композицію</h3><p>Добираємо масштаб портрета, шрифт, розміщення написів і декору.</p></div></li>
+          <li><span>03</span><div><h3>Погоджуємо</h3><p>Узгоджуємо всі елементи до початку гравіювання.</p></div></li>
+          <li><span>04</span><div><h3>Наносимо на камінь</h3><p>Майстер виконує портрет, написи та завершальні деталі.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section production-work">
+      <div class="container">
+        <div class="production-work-heading">
+          <div><p class="kicker">Що можна замовити</p><h2>Одна композиція,<br>а не набір окремих деталей.</h2></div>
+          <p>Розмір і насиченість оформлення підбираємо під форму стели, вільне поле та читабельність написів.</p>
+        </div>
+        <div class="production-work-grid decoration-work-grid">
+          <article class="production-work-item production-work-item-wide">
+            <button class="js-lightbox" type="button" data-image="img/kamenotes/services_hudozhnik_pamyatnikov.jpg" data-title="Портрет на граніті" data-meta="Ручна робота художника" aria-label="Збільшити фото портрета на граніті"><img src="img/kamenotes/services_hudozhnik_pamyatnikov.jpg" alt="Ручна робота над портретом на гранітній стелі" loading="lazy"></button>
+            <div><span>01</span><h3>Портрет</h3><p>Опрацьовуємо риси обличчя, півтони й контраст під конкретний камінь.</p></div>
+          </article>
+          <article class="production-work-item">
+            <button class="js-lightbox" type="button" data-image="img/kamenotes/services_bykvu-na-pamjatniki.jpg" data-title="Написи на камені" data-meta="Різні способи нанесення" aria-label="Збільшити приклади написів на камені"><img src="img/kamenotes/services_bykvu-na-pamjatniki.jpg" alt="Приклади написів і шрифтів на граніті" loading="lazy"></button>
+            <div><span>02</span><h3>Імена, дати та епітафії</h3><p>Добираємо шрифт і кількість рядків так, щоб текст залишався виразним і читабельним.</p></div>
+          </article>
+          <article class="production-work-item">
+            <button class="js-lightbox" type="button" data-image="img/kamenotes/services_hudozh-oformlenie.jpg" data-title="Декоративне гравіювання" data-meta="Елементи художнього оформлення" aria-label="Збільшити приклад декоративного гравіювання"><img src="img/kamenotes/services_hudozh-oformlenie.jpg" alt="Приклад художнього зображення для гравіювання на камені" loading="lazy"></button>
+            <div><span>03</span><h3>Образи й декоративні елементи</h3><p>Святі образи, хрести, квіти, свічки, пейзажі та індивідуальні мотиви.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="production-material-band">
+      <div class="container production-material-row">
+        <div><p class="kicker">Українські епітафії</p><h2>Текст під розмір стели</h2></div>
+        <p>Допоможемо обрати короткий напис, дворядкову епітафію або довший текст. Кількість рядків погоджуємо з урахуванням портрета, дат і декоративних елементів.</p>
+        <a class="text-link" href="tel:${PHONE_MAIN}">Обговорити напис ${arrowIcon()}</a>
+      </div>
+    </section>
+
+    <section class="section dark-cta production-cta">
+      <div class="container cta-grid">
+        <div><p class="kicker">Почніть із фотографії</p><h2>Надішліть матеріали для оцінки</h2><p>Перевіримо якість фото, уточнимо склад оформлення і підготуємо точний прорахунок разом із пам’ятником.</p></div>
+        <div class="cta-actions"><a class="btn btn-viber" href="${VIBER_BASE}&draft=${viberText}">${viberIcon()} <span>Надіслати у Viber</span></a></div>
+      </div>
+    </section>`;
+
+  return pageShell({
+    title: "Художнє оформлення пам'ятників | KAMENOTES Коростишів",
+    description: "Художнє оформлення пам'ятників у KAMENOTES: ручне гравіювання портретів, написи, українські епітафії, образи й декоративні елементи на граніті.",
+    active: 'production',
+    body
+  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-services-1">\n</head>');
+}
+
+function renderMounting() {
+  const viberText = encodeURIComponent("Вітаю! Хочу уточнити доставку та монтаж пам'ятника. Прошу зорієнтувати щодо замірів і вартості.");
+  const body = `    <section class="production-page-hero service-detail-hero mounting-page-hero">
+      <div class="container production-hero-grid">
+        <div class="production-hero-copy">
+          <p class="kicker">Доставка та встановлення · Україна</p>
+          <h1>Монтаж<br>пам’ятника.</h1>
+          <p class="production-hero-lead">Оцінюємо місце, готуємо основу, встановлюємо гранітні деталі та перевіряємо конструкцію після складання. Обсяг робіт і умови гарантії фіксуємо в замовленні.</p>
+          <div class="production-hero-actions">
+            <a class="btn btn-viber" href="${VIBER_BASE}&draft=${viberText}">${viberIcon()} <span>Прорахунок у Viber</span></a>
+          </div>
+          <dl class="production-proof" aria-label="Етапи монтажу пам'ятника">
+            <div><dt>Заміри</dt><dd>перевірка місця</dd></div>
+            <div><dt>Основа</dt><dd>армування й бетон</dd></div>
+            <div><dt>Монтаж</dt><dd>збірка та контроль</dd></div>
+          </dl>
+        </div>
+        <figure class="production-hero-media">
+          <button class="js-lightbox" type="button" data-image="img/kamenotes/gallery_ogorozhi_OK-001.jpg" data-title="Встановлений пам’ятник" data-meta="Робота KAMENOTES" aria-label="Збільшити фото встановленого пам'ятника"><img src="img/kamenotes/gallery_ogorozhi_OK-001.jpg" alt="Готовий гранітний пам’ятник після встановлення"></button>
+          <figcaption>Готовий об’єкт після монтажу</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="production-cycle-band">
+      <div class="container">
+        <div class="production-cycle-heading">
+          <p class="kicker">Послідовність</p>
+          <h2>Надійність починається з правильної основи.</h2>
+        </div>
+        <ol class="production-cycle-list">
+          <li><span>01</span><div><h3>Огляд і заміри</h3><p>Перевіряємо розміри ділянки, ґрунт, доступ і можливі перешкоди.</p></div></li>
+          <li><span>02</span><div><h3>Армована основа</h3><p>Готуємо опалубку, армуємо та заливаємо бетон у місцях навантаження.</p></div></li>
+          <li><span>03</span><div><h3>Облицювання</h3><p>За проєктом монтуємо гранітну або тротуарну плитку й цоколь.</p></div></li>
+          <li><span>04</span><div><h3>Складання</h3><p>Встановлюємо деталі на армовані з’єднання та перевіряємо стики.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section production-control mounting-control">
+      <div class="container production-control-grid">
+        <figure><img src="img/kamenotes/gallery_ogorozhi_OK-007.jpg" alt="Гранітний комплекс після завершення монтажу" loading="lazy"><figcaption>Встановлення з облицюванням і гранітною огорожею</figcaption></figure>
+        <div class="production-control-copy">
+          <p class="kicker">Що враховуємо</p>
+          <h2>Прорахунок під конкретне місце.</h2>
+          <ul>
+            <li><strong>Доступ до ділянки</strong><span>Оцінюємо під’їзд, перенесення деталей і потребу в підйомній техніці.</span></li>
+            <li><strong>Конструкція</strong><span>Вага стели, тумби, плит і огорожі визначає основу та спосіб з’єднання.</span></li>
+            <li><strong>Оздоблення</strong><span>Уточнюємо тип плитки, цоколя, квітника, огорожі й водовідведення.</span></li>
+            <li><strong>Доставка</strong><span>Розраховуємо маршрут і повний комплект робіт до погодження замовлення.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="production-material-band">
+      <div class="container production-material-row">
+        <div><p class="kicker">Перед виїздом</p><h2>Готуємо комплект у цеху</h2></div>
+        <p>Перевіряємо геометрію, стики та комплектність. Для складних конструкцій виконуємо попереднє складання, щоб мінімізувати доопрацювання на місці.</p>
+        <a class="text-link" href="vyrobnytstvo.html">Як працює виробництво ${arrowIcon()}</a>
+      </div>
+    </section>
+
+    <section class="section dark-cta production-cta">
+      <div class="container cta-grid">
+        <div><p class="kicker">Попередня оцінка</p><h2>Надішліть фото й розміри місця</h2><p>Підкажемо, які заміри потрібні, і зорієнтуємо щодо основи, доставки та монтажу.</p></div>
+        <div class="cta-actions"><a class="btn btn-viber" href="${VIBER_BASE}&draft=${viberText}">${viberIcon()} <span>Надіслати у Viber</span></a></div>
+      </div>
+    </section>`;
+
+  return pageShell({
+    title: "Монтаж і встановлення пам'ятників | KAMENOTES",
+    description: "Доставка та монтаж гранітних пам'ятників KAMENOTES: заміри, армована бетонна основа, облицювання, складання й контроль встановленого виробу.",
+    active: 'production',
+    body
+  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-services-1">\n</head>');
+}
+
+function renderPaving() {
+  const body = `    <section class="paving-masthead">
+      <div class="container">
+        <div class="paving-masthead-copy">
+          <div><p class="kicker">Гранітна бруківка · оптом</p><h1>Камінь для доріг<br>і територій.</h1></div>
+          <div><p>Виготовляємо колоту, пиляно-колоту, повнопиляну термооброблену та галтовану бруківку з українського граніту.</p><a class="btn btn-viber" href="${VIBER_BASE}&draft=${encodeURIComponent('Вітаю! Мене цікавить гранітна бруківка. Прошу прорахувати вартість оптового замовлення.')}">${viberIcon()} <span>Отримати прорахунок</span></a></div>
+        </div>
+        <div class="paving-masthead-gallery">
+          <figure><button class="js-lightbox" type="button" data-image="img/catalog/brukivka_1.jpg" data-title="Гранітна бруківка KAMENOTES" data-meta="Приклад укладання" aria-label="Збільшити фото гранітної бруківки"><img src="img/catalog/brukivka_1.jpg" alt="Гранітна бруківка на готовій території"></button><figcaption>Готовий об’єкт · натуральний український камінь</figcaption></figure>
+          <figure><button class="js-lightbox" type="button" data-image="img/catalog/brukivka_2.jpg" data-title="Укладання гранітної бруківки" data-meta="Приклад готової території" aria-label="Збільшити друге фото гранітної бруківки"><img src="img/catalog/brukivka_2.jpg" alt="Гранітна бруківка біля приватного будинку"></button><figcaption>Колота фактура</figcaption></figure>
+        </div>
+        <ul class="paving-masthead-facts" aria-label="Асортимент гранітної бруківки"><li><strong>4</strong><span>види обробки</span></li><li><strong>3</strong><span>породи каменю</span></li><li><strong>м²</strong><span>оптовий прорахунок</span></li></ul>
+      </div>
+    </section>
+
+    <section class="production-cycle-band">
+      <div class="container">
+        <div class="production-cycle-heading">
+          <p class="kicker">Асортимент</p>
+          <h2>Підбираємо фактуру під навантаження, бюджет і вигляд території.</h2>
+        </div>
+        <ol class="production-cycle-list">
+          <li><span>01</span><div><h3>Колота</h3><p>Природний рельєф і висока стійкість для доріг та під’їздів.</p></div></li>
+          <li><span>02</span><div><h3>Пиляно-колота</h3><p>Рівніша основа для зручного укладання з виразною кам’яною фактурою.</p></div></li>
+          <li><span>03</span><div><h3>Повнопиляна</h3><p>Точна геометрія та термооброблена антиковзка поверхня.</p></div></li>
+          <li><span>04</span><div><h3>Галтована</h3><p>Згладжені грані та вигляд традиційної старовинної бруківки.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section production-work">
+      <div class="container">
+        <div class="production-work-heading">
+          <div><p class="kicker">Камінь і фактура</p><h2>Три природні кольори.<br>Жодної штучної імітації.</h2></div>
+          <p>Працюємо з чорним букинським габро, сірою Покостівкою та червоним гранітом Лезниківського родовища.</p>
+        </div>
+        <div class="production-work-grid">
+          <article class="production-work-item production-work-item-wide">
+            <button class="js-lightbox" type="button" data-image="img/catalog/brukivka_1.jpg" data-title="Бруківка з українського граніту" data-meta="Колота та пиляно-колота фактура" aria-label="Збільшити фото бруківки з українського граніту"><img src="img/catalog/brukivka_1.jpg" alt="Колота та пиляно-колота гранітна бруківка" loading="lazy"></button>
+            <div><span>01</span><h3>Чорне габро</h3><p>Глибокий темний колір і висока зносостійкість для інтенсивних навантажень.</p></div>
+          </article>
+          <article class="production-work-item">
+            <button class="js-lightbox" type="button" data-image="img/catalog/brukivka_2.jpg" data-title="Гранітна шашка" data-meta="Виробництво KAMENOTES" aria-label="Збільшити фото гранітної шашки"><img src="img/catalog/brukivka_2.jpg" alt="Гранітна шашка різних кольорів" loading="lazy"></button>
+            <div><span>02</span><h3>Сіра Покостівка</h3><p>Практична світла порода для доріжок, площ і благоустрою.</p></div>
+          </article>
+          <article class="production-work-item">
+            <button class="js-lightbox" type="button" data-image="img/production/workshop_10.jpg" data-title="Виробництво бруківки" data-meta="Каменеобробний цех, Коростишів" aria-label="Збільшити фото виробництва бруківки"><img src="img/production/workshop_10.jpg" alt="Виробництво гранітної бруківки у цеху KAMENOTES" loading="lazy"></button>
+            <div><span>03</span><h3>Червоний Лезниківський граніт</h3><p>Теплий природний акцент для орнаментів і комбінованого мощення.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="production-material-band">
+      <div class="container production-material-row">
+        <div><p class="kicker">Оптові замовлення</p><h2>Розрахунок за м²</h2></div>
+        <p>Вартість залежить від породи каменю, виду обробки, розміру шашки та обсягу партії. Повідомте потрібну площу — підготуємо точний прорахунок.</p>
+        <a class="text-link" href="kontakty.html">Контакти виробництва ${arrowIcon()}</a>
+      </div>
+    </section>
+
+    <section class="section dark-cta production-cta">
+      <div class="container cta-grid">
+        <div><p class="kicker">Замовлення бруківки</p><h2>Уточніть обсяг і потрібну фактуру</h2><p>Допоможемо підібрати камінь, підрахуємо кількість і погодимо умови відвантаження з виробництва у Коростишеві.</p></div>
+        <div class="cta-actions"><a class="btn btn-viber" href="${VIBER_BASE}&draft=${encodeURIComponent('Вітаю! Мене цікавить гранітна бруківка. Прошу прорахувати вартість оптового замовлення.')}">${viberIcon()} <span>Написати у Viber</span></a></div>
+      </div>
+    </section>`;
+
+  return pageShell({
+    title: 'Гранітна бруківка оптом від виробника | KAMENOTES Коростишів',
+    description: 'Гранітна бруківка оптом від виробника у Коростишеві: колота, пиляно-колота, повнопиляна термооброблена та галтована з габро, Покостівки й Лезниківського граніту.',
+    active: 'paving',
+    body
+  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-stone-palette">\n</head>');
+}
+
 function renderMapFrame() {
   return `<div class="map-panel">
     <div class="map-panel-head">
@@ -2894,6 +3086,9 @@ function renderSitemap() {
   <url><loc>https://kamenotes.com/</loc></url>
   <url><loc>https://kamenotes.com/catalog.html</loc></url>
   <url><loc>https://kamenotes.com/vyrobnytstvo.html</loc></url>
+  <url><loc>https://kamenotes.com/oformlennya.html</loc></url>
+  <url><loc>https://kamenotes.com/montazh.html</loc></url>
+  <url><loc>https://kamenotes.com/brukivka.html</loc></url>
   <url><loc>https://kamenotes.com/vidguky.html</loc></url>
   <url><loc>https://kamenotes.com/kontakty.html</loc></url>
 </urlset>
@@ -2923,11 +3118,18 @@ function writeRedirects() {
     'ua/index.html': '../index.html',
     'ua/contacts.html': '../kontakty.html',
     'ua/about.html': '../vyrobnytstvo.html',
-    'ua/mounting.html': '../vyrobnytstvo.html',
+    'ua/mounting.html': '../montazh.html',
     'ua/monuments.html': '../catalog.html',
     'ua/vidguky.html': '../vidguky.html',
-    'ua/services/bruschatka.html': '../vyrobnytstvo.html',
-    'ua/bruschatka.html': '../vyrobnytstvo.html'
+    'ua/services/bruschatka.html': '../../brukivka.html',
+    'ua/services/329-bruschatka.html': '../../brukivka.html',
+    'ua/services/portret.html': '../../oformlennya.html',
+    'ua/services/retush.html': '../../oformlennya.html',
+    'ua/services/litery.html': '../../oformlennya.html',
+    'ua/services/khudozhne-oformlennya.html': '../../oformlennya.html',
+    'ua/epitaph.html': '../oformlennya.html',
+    'ua/epitaph-2.html': '../oformlennya.html',
+    'ua/bruschatka.html': '../brukivka.html'
   };
   for (const [file, target] of Object.entries(redirects)) {
     const destination = path.join(SITE_DIR, file);
@@ -2945,6 +3147,9 @@ function buildAll() {
   fs.writeFileSync(path.join(SITE_DIR, 'index.html'), renderIndex(products), 'utf8');
   fs.writeFileSync(CATALOG_HTML_FILE, renderCatalog(products), 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'vyrobnytstvo.html'), renderProduction(), 'utf8');
+  fs.writeFileSync(path.join(SITE_DIR, 'oformlennya.html'), renderDecoration(), 'utf8');
+  fs.writeFileSync(path.join(SITE_DIR, 'montazh.html'), renderMounting(), 'utf8');
+  fs.writeFileSync(path.join(SITE_DIR, 'brukivka.html'), renderPaving(), 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'kontakty.html'), renderContacts(), 'utf8');
   fs.writeFileSync(REVIEWS_HTML_FILE, renderReviews(reviews), 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'sitemap.xml'), renderSitemap(), 'utf8');

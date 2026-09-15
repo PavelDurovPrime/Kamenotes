@@ -1,5 +1,5 @@
 /* Focused reviews page: one lead story and a concise supporting collection. */
-.reviews-page { --reviews-paper: #f3f5f7; --reviews-ink: #111827; --reviews-muted: #667085; --reviews-line: #d9dee5; }
+.reviews-page { --reviews-paper: #f0e9de; --reviews-ink: #262421; --reviews-muted: #6d675e; --reviews-line: #d8cfc1; }
 
 .reviews-page-hero { padding-block: 88px; background: #fff; }
 .reviews-page-hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 96px; align-items: end; }

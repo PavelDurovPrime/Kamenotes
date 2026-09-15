@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=20260914-luxury-v4">
-  <link rel="stylesheet" href="css/design-system.css?v=20260914-footer-contact">
-  <link rel="stylesheet" href="css/production.css?v=20260914-production-1">
+  <link rel="stylesheet" href="css/design-system.css?v=20260915-compact-footer">
+  <link rel="stylesheet" href="css/production.css?v=20260915-mastheads">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -26,6 +26,7 @@
       <nav class="main-nav" aria-label="Основна навігація">
         <a href="catalog.html">Каталог</a>
         <a href="vyrobnytstvo.html" class="active" aria-current="page">Виробництво</a>
+        <a href="brukivka.html">Бруківка</a>
         <a href="vidguky.html">Відгуки</a>
         <a href="kontakty.html">Контакти</a>
       </nav>
@@ -42,30 +43,20 @@
     </div>
   </header>
   <main id="main">
-    <section class="production-page-hero">
-      <div class="container production-hero-grid">
-        <div class="production-hero-copy">
-          <p class="kicker">Власне виробництво · Коростишів</p>
-          <h1>Від каменю<br>до готового пам’ятника.</h1>
-          <p class="production-hero-lead">Ми самі розпилюємо, поліруємо, оформлюємо та готуємо виріб до монтажу. Ви можете побачити цех і обрати камінь наживо.</p>
-          <div class="production-hero-actions">
-            <a class="btn btn-dark" href="catalog.html">Переглянути каталог <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-            <a class="btn btn-light" href="https://maps.app.goo.gl/QTLZb45coBpbMcQA9" target="_blank" rel="noopener">Запланувати візит</a>
-          </div>
-          <dl class="production-proof" aria-label="Переваги виробництва">
-            <div><dt>30+</dt><dd>років досвіду</dd></div>
-            <div><dt>1 цех</dt><dd>повний цикл робіт</dd></div>
-            <div><dt>Україна</dt><dd>доставка та монтаж</dd></div>
-          </dl>
+    <section class="production-masthead">
+      <div class="container">
+        <div class="production-masthead-copy">
+          <div><p class="kicker">Власне виробництво · Коростишів</p><h1>Камінь проходить<br>усі етапи тут.</h1></div>
+          <div><p>Розпилюємо, поліруємо, гравіруємо й готуємо пам’ятник до монтажу в одному цеху. Ви можете приїхати, побачити виробництво та обрати камінь наживо.</p><a class="text-link" href="#production-cycle">Як ми працюємо <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
         </div>
-        <figure class="production-hero-media">
-          <button class="js-lightbox" type="button" data-image="img/production/workshop_07.jpg" data-title="Цех KAMENOTES" data-meta="Коростишів" aria-label="Збільшити фото виробництва"><img src="img/production/workshop_07.jpg" alt="Майстер KAMENOTES біля портальної пили в каменеобробному цеху"></button>
-          <figcaption>Реальний цех KAMENOTES у Коростишеві</figcaption>
+        <figure class="production-masthead-media">
+          <button class="js-lightbox" type="button" data-image="img/production/workshop_03.jpg" data-title="Розпил граніту у цеху KAMENOTES" data-meta="Коростишів" aria-label="Збільшити фото виробництва"><img src="img/production/workshop_03.jpg" alt="Розпил граніту алмазною пилою у цеху KAMENOTES"></button>
+          <figcaption><span>Реальний процес у нашому цеху</span><span>Розпил · полірування · гравіювання</span></figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="production-cycle-band">
+    <section class="production-cycle-band" id="production-cycle">
       <div class="container">
         <div class="production-cycle-heading">
           <p class="kicker">Повний цикл</p>
@@ -111,6 +102,29 @@
       </div>
     </section>
 
+    <section class="section production-service-nav" aria-labelledby="productionServicesTitle">
+      <div class="container">
+        <div class="production-work-heading">
+          <div><p class="kicker">Після обробки каменю</p><h2 id="productionServicesTitle">Оформлюємо й встановлюємо.</h2></div>
+          <p>Зібрали детальний опис двох завершальних етапів, щоб ви заздалегідь розуміли послідовність робіт.</p>
+        </div>
+        <div class="production-service-grid">
+          <a class="production-service-card" href="oformlennya.html">
+            <span>01 / Художня майстерня</span>
+            <h3>Портрет, написи та декоративні елементи</h3>
+            <p>Підготовка фото, погодження композиції, ручне гравіювання та українські епітафії.</p>
+            <strong>Детальніше <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></strong>
+          </a>
+          <a class="production-service-card" href="montazh.html">
+            <span>02 / Роботи на місці</span>
+            <h3>Підготовка основи й монтаж пам’ятника</h3>
+            <p>Заміри, армована основа, облицювання, складання та фінальна перевірка.</p>
+            <strong>Детальніше <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></strong>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section class="section production-control">
       <div class="container production-control-grid">
         <figure><img src="img/production/workshop_12.jpg" alt="Готові моделі пам'ятників на території KAMENOTES" loading="lazy"><figcaption>Готові моделі на території виробництва</figcaption></figure>
@@ -122,63 +136,39 @@
             <li><strong>Фото погодження</strong><span>Показуємо готовий виріб до доставки.</span></li>
             <li><strong>Монтаж за договором</strong><span>Готуємо основу, встановлюємо та герметизуємо стики.</span></li>
           </ul>
+          <a class="text-link production-control-link" href="montazh.html">Як відбувається монтаж <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
         </div>
       </div>
     </section>
 
-    <section class="section production-control">
-      <div class="container production-control-grid">
-        <figure><img src="img/production/workshop_10.jpg" alt="Виробництво гранітної бруківки у Коростишеві" loading="lazy"><figcaption>Власне виробництво бруківки та шашки з граніту</figcaption></figure>
-        <div class="production-control-copy">
-          <p class="kicker">Супутня продукція · Власний цех</p>
-          <h2>Гранітна бруківка оптом та шашка з каменю</h2>
-          <p style="margin: 12px 0 16px; color: var(--muted); line-height: 1.6;">Виготовляємо бруківку всіх видів для дорожнього мощення, меморіальних майданчиків та благоустрою території безпосередньо в каменеобробному цеху в Коростишеві.</p>
-          <ul>
-            <li><strong>Колота та пиляно-колота</strong><span>Висока міцність, природний колотий рельєф, стійкість до будь-яких погодних навантажень.</span></li>
-            <li><strong>Повнопиляна термооброблена</strong><span>Ідеально рівна геометрія швів зі спеціальною антиковзкою термообробленою поверхнею.</span></li>
-            <li><strong>Галтована шашка (згладжена)</strong><span>Скруглені грані під старовинну бруківку, приємна округла фактура натурального каменю.</span></li>
-            <li><strong>Породи та розрахунок</strong><span>Чорне габро, сіра Покостівка, червоні Лезники. Оптові партії з розрахунком вартості за м².</span></li>
-          </ul>
-        </div>
+    <section class="production-material-band">
+      <div class="container production-material-row">
+        <div><p class="kicker">Супутня продукція</p><h2>Гранітна бруківка</h2></div>
+        <p>Колота, пиляно-колота, повнопиляна термооброблена та галтована бруківка з власного цеху. Працюємо з оптовими замовленнями.</p>
+        <a class="text-link" href="brukivka.html">Перейти до розділу <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
       </div>
     </section>
 
     <section class="section dark-cta production-cta">
       <div class="container cta-grid">
         <div><p class="kicker">Візит на виробництво</p><h2>Побачте камінь і цех до замовлення</h2><p>Оцініть колір, полірування, товщину стели та готові моделі. При замовленні повертаємо витрати на дорогу.</p></div>
-        <div class="cta-actions"><a class="btn btn-light" href="https://maps.app.goo.gl/QTLZb45coBpbMcQA9" target="_blank" rel="noopener">Відкрити карту <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="btn btn-outline-light" href="tel:+380977157915"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span>097 715 79 15</span></a></div>
+        <div class="cta-actions"><a class="btn btn-light" href="https://maps.app.goo.gl/QTLZb45coBpbMcQA9" target="_blank" rel="noopener">Відкрити карту <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
       </div>
     </section>
   </main>
   <footer class="site-footer">
-    <div class="container footer-primary">
-      <div class="footer-story">
-        <a class="footer-mark" href="index.html" aria-label="KAMENOTES, головна сторінка"><img src="img/suhorez_blade.svg" alt="" width="52" height="52"><span>KAMENOTES</span></a>
-        <p class="footer-eyebrow">Гранітна мануфактура · Коростишів · з 1995 року</p>
-        <h2>Пам’ять у камені.<br>Від ескізу до монтажу.</h2>
+    <div class="container footer-compact">
+      <div class="footer-identity">
+        <a class="footer-mark" href="index.html" aria-label="KAMENOTES, головна сторінка"><img src="img/suhorez_blade.svg" alt="" width="44" height="44"><span>KAMENOTES</span></a>
+        <p>Гранітна мануфактура у Коростишеві · з 1995 року</p>
       </div>
-      <div class="footer-connect">
-        <p>Розкажіть, який пам’ятник вам потрібен. Допоможемо з моделлю, матеріалом і розрахунком вартості.</p>
-        <a class="footer-phone" href="tel:+380977157915">097 715 79 15</a>
-        <div class="footer-actions">
-          <a class="btn btn-viber footer-viber" href="viber://chat?number=%2B380977157915"><img class="viber-img" src="img/viber-white.svg" alt="" aria-hidden="true"><span>Написати у Viber</span></a>
-          <a class="btn btn-outline-light footer-call" href="tel:+380977157915"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Зателефонувати</span></a>
-        </div>
-      </div>
-    </div>
-    <div class="container footer-secondary">
       <nav class="footer-navigation" aria-label="Навігація у футері">
-        <strong>Розділи</strong>
-        <div><a href="catalog.html">Каталог</a><a href="vyrobnytstvo.html">Виробництво</a><a href="vidguky.html">Відгуки</a><a href="kontakty.html">Контакти</a></div>
+        <a href="catalog.html">Каталог</a><a href="vyrobnytstvo.html">Виробництво</a><a href="brukivka.html">Бруківка</a><a href="vidguky.html">Відгуки</a><a href="kontakty.html">Контакти</a>
       </nav>
-      <div class="footer-location">
-        <strong>Виробництво</strong>
-        <address><a href="https://maps.app.goo.gl/QTLZb45coBpbMcQA9" target="_blank" rel="noopener">м. Коростишів, вул. Партизанська-117<br>Коростишівський гранітний завод</a></address>
-      </div>
-      <div class="footer-online">
-        <strong>Електронна пошта</strong>
-        <a href="mailto:suhorez@ukr.net">suhorez@ukr.net</a>
-      </div>
+      <address class="footer-contact-compact">
+        <a href="https://maps.app.goo.gl/QTLZb45coBpbMcQA9" target="_blank" rel="noopener">м. Коростишів, вул. Партизанська-117<br>Коростишівський гранітний завод</a>
+        <span><a href="tel:+380977157915">097 715 79 15</a><a href="mailto:suhorez@ukr.net">suhorez@ukr.net</a></span>
+      </address>
     </div>
     <div class="container footer-bottom"><span>© 1995–2026 KAMENOTES</span><span>Виробляємо в Коростишеві · працюємо по Україні</span></div>
   </footer>
