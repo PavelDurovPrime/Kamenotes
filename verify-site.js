@@ -25,7 +25,10 @@ async function main() {
     await page.setViewportSize({ width, height: 900 });
     for (const name of pages) {
       await page.goto(`http://127.0.0.1:3000/${name}`, { waitUntil: 'domcontentloaded' });
-      await page.locator('img').evaluateAll(images => Promise.all(images.map(image => image.decode().catch(() => {}))));
+      await page.locator('img').evaluateAll(images => Promise.all(images.map(image => {
+        image.loading = 'eager';
+        return image.decode().catch(() => {});
+      })));
       await page.screenshot({ path: path.join(__dirname, 'qa', `${name}-${width}.png`) });
       const layout = await page.evaluate(() => ({
         width: innerWidth,
@@ -50,9 +53,25 @@ async function main() {
   await page.keyboard.press('Escape');
   assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'true');
   await page.goto('http://127.0.0.1:3000/index.html');
-  assert.equal(await page.locator('.home-featured').count(), 0, 'Homepage catalog showcase must stay removed');
+  const inventory = JSON.parse(fs.readFileSync(path.join(root, 'data', 'products.json'), 'utf8'));
+  assert.equal(await page.locator('.home-category').count(), 4);
+  for (const [index, id] of ['km-1', 'km-29', 'vsk-71a'].entries()) {
+    const item = inventory.find(product => product.id === id);
+    const card = page.locator('.home-featured .product-card').nth(index);
+    assert.equal(await card.locator('h3').innerText(), item.title);
+    assert.equal((await card.locator('.product-price strong').innerText()).replace(/\s/g, ''), `від${item.price}грн`);
+  }
+  await page.locator('.home-featured .js-lightbox').first().click();
+  assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'false');
+  assert.equal(await page.locator('#lightboxSku').textContent(), `Арт. ${inventory.find(p => p.id === 'km-1').sku}`);
+  await page.keyboard.press('Escape');
+  await page.locator('.home-work .js-lightbox').first().click();
+  assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'false');
+  await page.keyboard.press('Escape');
+  await page.locator('.home-category[href$="filter=podvijni"]').click();
+  assert.equal(await page.locator('.product-card:not(.hidden)').count(), inventory.filter(p => p.category === 'podvijni').length);
   await page.goto('http://127.0.0.1:3000/brukivka.html');
-  assert.equal(await page.locator('h1').innerText(), 'Гранітна\nбруківка оптом.');
+  assert.equal(await page.locator('h1').innerText(), 'Камінь для доріг\nі територій.');
   await page.goto('http://127.0.0.1:3000/oformlennya.html');
   assert.equal(await page.locator('h1').innerText(), 'Оформлення\nпам’ятника.');
   await page.goto('http://127.0.0.1:3000/montazh.html');
@@ -93,15 +112,18 @@ async function main() {
     assert.equal(created.status(), 201);
     const updated = await page.request.put(`${base}/api/reviews/${reviewId}`, { data: { title: 'Перевірено', published: true } });
     assert.equal(updated.status(), 200);
-    const html = await (await page.request.get(`${base}/vidguky.html`)).text();
-    assert.ok(html.includes('Перевірено'));
+    // The public reviews page intentionally shows a curated set of existing stories.
+    const storedReviews = await (await page.request.get(`${base}/api/reviews`)).json();
+    assert.equal(storedReviews.find(review => review.id === reviewId).title, 'Перевірено');
+    assert.equal(storedReviews.find(review => review.id === reviewId).published, true);
   } finally {
     await page.request.delete(`${base}/api/reviews/${reviewId}`);
   }
   const reviewsAfter = await (await page.request.get(`${base}/api/reviews`)).json();
   assert.deepEqual(reviewsAfter, reviewsBefore, 'Existing reviews must remain unchanged');
   await page.goto(`${base}/vidguky.html`);
-  assert.equal(await page.locator('.review-card').count(), 19);
+  assert.equal(await page.locator('.reviews-story').count(), 6);
+  assert.equal(await page.locator('.reviews-lead-copy blockquote').textContent(), reviewsBefore.find(review => review.id === 'review-2014-05-andrii-mykolaiv').text);
   for (const [source, target] of [
     ['/catalog/', '/catalog.html'],
     ['/contacts.html', '/kontakty.html'],

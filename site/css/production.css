@@ -1,7 +1,7 @@
 /* Production page: concise, photographic, and focused on the real workshop. */
 .production-page-hero {
   padding: 64px 0 72px;
-  background: #f3f5f7;
+  background: var(--surface);
 }
 
 .production-hero-grid {
@@ -28,7 +28,7 @@
 .production-hero-lead {
   max-width: 570px;
   margin-top: 28px;
-  color: #667085;
+  color: var(--muted);
   font-size: 18px;
   line-height: 1.75;
 }
@@ -46,11 +46,11 @@
   gap: 18px;
   margin: auto 0 0;
   padding-top: 34px;
-  border-top: 1px solid #d9dee5;
+  border-top: 1px solid var(--line);
 }
 
 .production-proof dt {
-  color: #111827;
+  color: var(--graphite);
   font-family: Lora, Georgia, serif;
   font-size: 24px;
   line-height: 1.2;
@@ -58,7 +58,7 @@
 
 .production-proof dd {
   margin-top: 7px;
-  color: #667085;
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.5;
 }
@@ -73,7 +73,7 @@
   width: 100%;
   padding: 0;
   border: 0;
-  background: #e8edf2;
+  background: var(--surface-strong);
   overflow: hidden;
   cursor: zoom-in;
 }
@@ -94,14 +94,14 @@
 
 .production-hero-media figcaption {
   margin-top: 14px;
-  color: #667085;
+  color: var(--muted);
   font-size: 14px;
 }
 
 .production-cycle-band {
   padding: 88px 0;
-  background: #111827;
-  color: #f8fafc;
+  background: var(--graphite);
+  color: var(--bg);
 }
 
 .production-cycle-heading {
@@ -112,12 +112,12 @@
 }
 
 .production-cycle-heading .kicker {
-  color: #cbd5e1;
+  color: var(--on-dark-muted);
 }
 
 .production-cycle-heading h2 {
   max-width: 780px;
-  color: #f8fafc;
+  color: var(--bg);
   font-size: clamp(34px, 3.3vw, 48px);
   letter-spacing: -.03em;
 }
@@ -136,25 +136,25 @@
   grid-template-columns: 30px 1fr;
   gap: 16px;
   padding-top: 22px;
-  border-top: 1px solid #334155;
+  border-top: 1px solid var(--text);
 }
 
 .production-cycle-list li > span {
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.5;
 }
 
 .production-cycle-list h3 {
   margin: 0;
-  color: #f8fafc;
+  color: var(--bg);
   font-size: 19px;
   font-weight: 600;
 }
 
 .production-cycle-list p {
   margin-top: 10px;
-  color: #cbd5e1;
+  color: var(--on-dark-muted);
   font-size: 15px;
   line-height: 1.7;
 }
@@ -178,7 +178,7 @@
 
 .production-work-heading > p {
   max-width: 500px;
-  color: #667085;
+  color: var(--muted);
   font-size: 17px;
   line-height: 1.75;
 }
@@ -214,7 +214,7 @@
 
 .production-work-item > div > span {
   grid-row: span 2;
-  color: #667085;
+  color: var(--muted);
   font-size: 14px;
 }
 
@@ -226,19 +226,19 @@
 
 .production-work-item p {
   margin: 0;
-  color: #667085;
+  color: var(--muted);
   font-size: 15px;
   line-height: 1.65;
 }
 
 .production-material-band {
   padding: 62px 0;
-  background: #f3f5f7;
+  background: var(--surface);
 }
 
 .production-service-nav {
   padding-block: 96px;
-  background: #fff;
+  background: var(--white);
 }
 
 .production-service-grid {
@@ -253,21 +253,21 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 42px;
-  border: 1px solid #dfe4ea;
-  background: #f8fafc;
-  color: #111827;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--graphite);
   text-decoration: none;
   transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
 .production-service-card:hover {
   transform: translateY(-3px);
-  border-color: #9aa5b1;
-  box-shadow: 0 18px 42px rgba(17, 24, 39, .08);
+  border-color: var(--muted);
+  box-shadow: 0 18px 42px rgba(var(--ink-rgb), .08);
 }
 
 .production-service-card > span {
-  color: #667085;
+  color: var(--muted);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: .08em;
@@ -286,7 +286,7 @@
 .production-service-card p {
   max-width: 550px;
   margin: 18px 0 32px;
-  color: #667085;
+  color: var(--muted);
   font-size: 16px;
   line-height: 1.7;
 }
@@ -321,7 +321,7 @@
 }
 
 .production-material-row > p {
-  color: #667085;
+  color: var(--muted);
   font-size: 16px;
   line-height: 1.75;
 }
@@ -363,7 +363,7 @@
   margin: 36px 0 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--on-dark-muted);
 }
 
 .production-control-copy li {
@@ -371,7 +371,7 @@
   grid-template-columns: minmax(145px, .7fr) 1.3fr;
   gap: 24px;
   padding: 20px 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--on-dark-muted);
 }
 
 .production-control-copy strong {
@@ -379,7 +379,7 @@
 }
 
 .production-control-copy li span {
-  color: #667085;
+  color: var(--muted);
   font-size: 15px;
   line-height: 1.65;
 }
@@ -395,7 +395,7 @@
   display: flex;
   min-height: 610px;
   align-items: center;
-  background: #111827;
+  background: var(--graphite);
 }
 
 .decoration-hero-media img {
@@ -406,7 +406,7 @@
 
 .decoration-work-grid .production-work-item-wide img {
   object-fit: contain;
-  background: #111827;
+  background: var(--graphite);
 }
 
 .mounting-control figure img {
@@ -478,11 +478,11 @@
   .production-control-copy li { grid-template-columns: 1fr; gap: 7px; }
 }
 
-/* Warm stone palette overrides. */
+/* Shared neutral stone palette. */
 .production-page-hero,
 .production-masthead,
 .production-material-band {
-  background: #f0e9de;
+  background: var(--surface);
 }
 
 .production-hero-lead,
@@ -491,46 +491,46 @@
 .production-work-heading > p,
 .production-control-copy li span,
 .production-service-card p {
-  color: #6d675e;
+  color: var(--muted);
 }
 
 .production-proof,
 .production-control-copy ul,
 .production-control-copy li {
-  border-color: #d8cfc1;
+  border-color: var(--line);
 }
 
 .production-proof dt,
 .production-service-card h3 {
-  color: #262421;
+  color: var(--graphite);
 }
 
 .production-cycle-band,
 .paving-masthead {
-  background: #262421;
+  background: var(--graphite);
 }
 
 .production-cycle-band p,
 .production-cycle-list p,
 .paving-masthead-copy > div:last-child > p,
 .paving-masthead-facts span {
-  color: #cec4b7;
+  color: var(--on-dark-muted);
 }
 
 .production-cycle-list,
 .paving-masthead-facts {
-  border-color: #514b43;
+  border-color: var(--text);
 }
 
 .production-service-card,
 .production-hero-media button,
 .production-masthead-media button,
 .paving-masthead-gallery button {
-  background: #39352f;
+  background: var(--graphite-2);
 }
 
 .paving-masthead-gallery figcaption {
-  background: rgba(30, 28, 24, .88);
+  background: rgba(var(--ink-rgb), .88);
 }
 
 @media (max-width: 380px) {
@@ -548,7 +548,7 @@
 /* Production masthead: title-first editorial layout with one real process image. */
 .production-masthead {
   padding: 78px 0 0;
-  background: #f3f5f7;
+  background: var(--surface);
 }
 
 .production-masthead-copy {
@@ -570,7 +570,7 @@
 }
 
 .production-masthead-copy > div:last-child > p {
-  color: #667085;
+  color: var(--muted);
   font-size: 17px;
   line-height: 1.75;
 }
@@ -589,7 +589,7 @@
   width: 100%;
   padding: 0;
   border: 0;
-  background: #111827;
+  background: var(--graphite);
   cursor: zoom-in;
   overflow: hidden;
 }
@@ -613,15 +613,15 @@
   gap: 24px;
   margin: 0;
   padding: 15px 0 22px;
-  color: #667085;
+  color: var(--muted);
   font-size: 13px;
 }
 
 /* Paving masthead: completed projects lead, with the product facts kept concise. */
 .paving-masthead {
   padding: 72px 0 64px;
-  background: #111827;
-  color: #f8fafc;
+  background: var(--graphite);
+  color: var(--bg);
 }
 
 .paving-masthead-copy {
@@ -632,11 +632,11 @@
 }
 
 .paving-masthead .kicker {
-  color: #aeb8c7;
+  color: var(--on-dark-muted);
 }
 
 .paving-masthead h1 {
-  color: #fff;
+  color: var(--white);
   font-size: clamp(50px, 5.7vw, 82px);
   line-height: 1.03;
   letter-spacing: -.05em;
@@ -644,7 +644,7 @@
 
 .paving-masthead-copy > div:last-child > p {
   max-width: 530px;
-  color: #cbd5e1;
+  color: var(--on-dark-muted);
   font-size: 17px;
   line-height: 1.75;
 }
@@ -674,7 +674,7 @@
   display: block;
   padding: 0;
   border: 0;
-  background: #202938;
+  background: var(--graphite-2);
   cursor: zoom-in;
   overflow: hidden;
 }
@@ -701,8 +701,8 @@
   left: 14px;
   margin: 0;
   padding: 11px 13px;
-  background: rgba(8, 14, 24, .84);
-  color: #f8fafc;
+  background: rgba(var(--ink-rgb), .84);
+  color: var(--bg);
   font-size: 12px;
   line-height: 1.5;
   backdrop-filter: blur(8px);
@@ -713,7 +713,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin: 30px 0 0;
   padding: 24px 0 0;
-  border-top: 1px solid #334155;
+  border-top: 1px solid var(--text);
   list-style: none;
 }
 
@@ -726,14 +726,14 @@
 }
 
 .paving-masthead-facts strong {
-  color: #fff;
+  color: var(--white);
   font-family: Lora, Georgia, serif;
   font-size: 26px;
   font-weight: 600;
 }
 
 .paving-masthead-facts span {
-  color: #aeb8c7;
+  color: var(--on-dark-muted);
   font-size: 13px;
 }
 

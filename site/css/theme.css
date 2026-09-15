@@ -1,0 +1,39 @@
+/* Single color source for public pages. Geometry lives in the existing stylesheets. */
+:root {
+  --bg: #f5f5f3;
+  --surface: #eeeeec;
+  --surface-strong: #e5e5e2;
+  --white: #ffffff;
+  --text: #252525;
+  --graphite: #111111;
+  --graphite-2: #353535;
+  --muted: #666663;
+  --soft: var(--muted);
+  --stone: var(--graphite-2);
+  --green: var(--text);
+  --line: #d9d9d5;
+  --on-dark-muted: #ccccca;
+  --line-dark: #454545;
+  --focus: #555552;
+  /* Viber retains its recognizable, saturated service color. */
+  --viber: #6654e8;
+  --viber-hover: #5846d8;
+  --viber-soft: var(--viber);
+  --ink-rgb: 17, 17, 17;
+  --white-rgb: 255, 255, 255;
+  --viber-rgb: 102, 84, 232;
+}
+
+/* A two-tone ring stays visible on both graphite and light surfaces. */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 3px var(--white);
+}
+
+.dark-cta :focus-visible,
+.production-cycle-band :focus-visible,
+.paving-masthead :focus-visible {
+  outline-color: var(--white);
+  box-shadow: 0 0 0 3px var(--graphite);
+}

@@ -219,8 +219,9 @@ function pageShell({ title, description, active, body }) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260914-luxury-v4">
-  <link rel="stylesheet" href="css/design-system.css?v=20260915-stone-palette">
+  <link rel="stylesheet" href="css/theme.css?v=20260915-graphite">
+  <link rel="stylesheet" href="css/style.css?v=20260915-graphite">
+  <link rel="stylesheet" href="css/design-system.css?v=20260915-graphite">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -314,6 +315,25 @@ function renderReviewCard(review, compact = false) {
 }
 
 function renderIndex(products) {
+  // Share the catalog inventory and detail renderer, including admin updates.
+  const categoryPicks = ['km-1', 'km-29', 'vsk-71a', 'mod-16'];
+  const homeCategories = ['odinarni', 'podvijni', 'vijskovi', 'modeli'].map((id, index) => {
+    const category = CATEGORIES.find(item => item.id === id);
+    const items = products.filter(item => item.category === id);
+    const item = items.find(item => item.id === categoryPicks[index]) || items[0];
+    if (!item) return '';
+    return `<a class="home-category" href="catalog.html?filter=${id}">
+      <div class="home-category-image"><img src="${escapeAttr(item.img)}" alt="${escapeAttr(item.title)}" loading="lazy" width="360" height="360"></div>
+      <div class="home-category-label"><h3>${escapeHtml(category.label)}</h3>${arrowIcon()}</div>
+      <span>${items.length} моделей у каталозі</span>
+    </a>`;
+  }).join('\n');
+  const selectedProducts = ['km-1', 'km-29', 'vsk-71a'].map(id => products.find(item => item.id === id)).filter(Boolean);
+  const completedWorks = ['vsk-kiev-1', 'vsk-kiev-2', 'vsk-chudniv'].map(id => products.find(item => item.id === id)).filter(Boolean);
+  const worksMarkup = completedWorks.map(product => {
+    const item = productForPublic(product);
+    return `<figure class="home-work"><button class="js-lightbox" type="button" data-image="${escapeAttr(item.img)}" data-title="${escapeAttr(item.title)}" data-meta="Робота KAMENOTES" aria-label="Збільшити: ${escapeAttr(item.title)}"><img src="${escapeAttr(item.img)}" alt="${escapeAttr(item.title)}" loading="lazy" width="480" height="540"></button><figcaption>${escapeHtml(item.title)}</figcaption></figure>`;
+  }).join('\n');
   const reviews = readReviews().filter(review => review.published !== false);
   const homeReviewIds = ['review-2014-05-andrii-mykolaiv', 'review-2018-10-ludmyla-v', 'review-2014-04-iryna'];
   const homeReviewMarkup = homeReviewIds.map((id, index) => {
@@ -329,28 +349,47 @@ function renderIndex(products) {
     return markup;
   }).join('\n');
 
-  const body = `    <section class="home-hero">
-      <div class="home-hero-backdrop" aria-hidden="true"><img src="img/production/workshop_07.jpg" alt=""></div>
-      <div class="container home-hero-content">
-        <p class="kicker">Власне виробництво · Коростишів</p>
-        <h1>Пам’ятники з граніту.<br><span>Від виробника.</span></h1>
-        <p class="hero-copy">Виготовляємо у власному цеху, погоджуємо кожну деталь і відповідаємо за результат — від вибору каменю до встановлення.</p>
-        <a class="btn home-hero-cta" href="catalog.html">Переглянути каталог ${arrowIcon()}</a>
-        <ul class="home-hero-facts" aria-label="Про KAMENOTES">
-          <li>З 1995 року</li><li>Власний цех</li><li>Доставка та монтаж</li>
-        </ul>
+  const body = `    <section class="home-hero" aria-labelledby="home-title">
+      <div class="container home-intro-grid">
+        <div class="home-intro-copy">
+          <p class="kicker">KAMENOTES · Коростишів</p>
+          <h1 id="home-title">Гранітні пам’ятники<br><span>від виробника.</span></h1>
+          <p class="hero-copy">Виготовляємо пам’ятники у власному цеху в Коростишеві. Від вибору каменю та оформлення до доставки й монтажу.</p>
+          <div class="home-intro-actions"><a class="btn btn-dark" href="catalog.html">Переглянути каталог ${arrowIcon()}</a><a class="text-link" href="${VIBER_BASE}">Консультація у Viber ${arrowIcon()}</a></div>
+          <ul class="home-hero-facts" aria-label="Про KAMENOTES"><li><strong>З 1995 року</strong><span>працюємо з каменем</span></li><li><strong>Власний цех</strong><span>ціни від виробника</span></li><li><strong>По Україні</strong><span>доставка та монтаж</span></li></ul>
+        </div>
+        <figure class="home-intro-photo"><img src="img/production/workshop_07.jpg" alt="Майстер KAMENOTES біля обладнання для обробки граніту в Коростишеві" width="1600" height="1200" fetchpriority="high"><figcaption><span>Наше виробництво</span><span>Коростишів, Україна</span></figcaption></figure>
       </div>
     </section>
+
+    <section class="section home-categories" aria-labelledby="categories-title">
+      <div class="container">
+        <div class="home-section-heading"><div><p class="kicker">Каталог пам’ятників</p><h2 id="categories-title">Оберіть тип пам’ятника</h2></div><a class="text-link" href="catalog.html">Увесь каталог ${arrowIcon()}</a></div>
+        <div class="home-category-grid">${homeCategories}</div>
+        <div class="home-category-more"><span>Також виготовляємо</span><a href="catalog.html?filter=khresti">Хрести та плити ${arrowIcon()}</a><a href="catalog.html?filter=ogorozhi">Огорожі та столи ${arrowIcon()}</a></div>
+      </div>
+    </section>
+
+    ${selectedProducts.length ? `<section class="section home-featured" aria-labelledby="models-title">
+      <div class="container"><div class="home-section-heading"><div><p class="kicker">Моделі та вартість</p><h2 id="models-title">Пам’ятники з цінами</h2></div><a class="text-link" href="catalog.html">Усі моделі з цінами ${arrowIcon()}</a></div>
+        <div class="product-grid">${selectedProducts.map(item => renderProductCard(item)).join('\n')}</div>
+        <p class="home-price-note">Ціни — за комплектацію, вказану в картці. Оформлення, доставку й монтаж прораховуємо для вашого замовлення.</p>
+      </div>
+    </section>` : ''}
+
+    ${completedWorks.length ? `<section class="section home-works" aria-labelledby="works-title">
+      <div class="container"><div class="home-section-heading"><div><p class="kicker">Виготовлено та встановлено</p><h2 id="works-title">Наші роботи</h2></div><p>Готові меморіали — від обробки граніту до встановлення на місці.</p></div><div class="home-works-grid">${worksMarkup}</div></div>
+    </section>` : ''}
 
     <section class="section home-process">
       <div class="container">
         <div class="home-process-heading">
           <div class="section-heading">
-            <p class="kicker">Власна мануфактура · з 1995 року</p>
-            <h2>Камінь. Руки майстра.<br>Відповідальність за результат.</h2>
+            <p class="kicker">Власне виробництво · з 1995 року</p>
+            <h2>Від кам’яної плити<br>до готового пам’ятника</h2>
             <p>Від першого розпилу до останньої літери — працюємо з каменем у власному цеху в Коростишеві. Ви спілкуєтеся безпосередньо з виробником.</p>
           </div>
-          <a class="text-link" href="vyrobnytstvo.html">Усередині мануфактури <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          <a class="text-link" href="vyrobnytstvo.html">Про виробництво <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
         </div>
         <div class="home-process-images">
           <figure><img src="img/production/workshop_01.jpg" alt="Розпил гранітних плит у цеху KAMENOTES" loading="lazy"><figcaption>01 / Розпил та обробка каменю</figcaption></figure>
@@ -372,7 +411,7 @@ function renderIndex(products) {
         </figure>
         <div class="home-stone-copy">
           <p class="kicker">Матеріали</p>
-          <h2>Природний рисунок.<br>Ваш вибір каменю.</h2>
+          <h2>Натуральний камінь.<br>Ваш вибір.</h2>
           <p>Букинське габро, граніт або лабрадорит — допоможемо підібрати породу під модель, оформлення та бюджет.</p>
           <ul class="home-stone-names" aria-label="Породи каменю">
             <li>Букинське габро</li><li>Граніт</li><li>Лабрадорит</li>
@@ -386,7 +425,7 @@ function renderIndex(products) {
       <div class="container">
         <div class="section-heading">
           <p class="kicker">Як відбувається замовлення</p>
-          <h2>Зрозуміло<br>на кожному кроці.</h2>
+          <h2>Від вибору моделі<br>до встановлення</h2>
           <p>Можна приїхати до нас у Коростишів або погодити всі деталі дистанційно.</p>
         </div>
         <ol class="home-order-list">
@@ -398,11 +437,21 @@ function renderIndex(products) {
       </div>
     </section>
 
+    <section class="section home-services" aria-labelledby="services-title">
+      <div class="container"><div class="home-section-heading"><div><p class="kicker">Послуги майстерні</p><h2 id="services-title">Усе для завершеного замовлення</h2></div></div>
+        <div class="home-service-grid">
+          <a href="oformlennya.html"><span class="kicker">01 / Оформлення</span><h3>Портрети та написи ${arrowIcon()}</h3><p>Гравірування, епітафії та художні елементи на камені.</p></a>
+          <a href="montazh.html"><span class="kicker">02 / Встановлення</span><h3>Доставка та монтаж ${arrowIcon()}</h3><p>Підготовка основи, встановлення деталей і перевірка конструкції.</p></a>
+          <a href="brukivka.html"><span class="kicker">03 / Благоустрій</span><h3>Гранітна бруківка ${arrowIcon()}</h3><p>Натуральний камінь для мощення доріжок і майданчиків.</p></a>
+        </div>
+      </div>
+    </section>
+
     <section class="section reviews-preview">
       <div class="container">
         <div class="section-heading">
           <p class="kicker">Довіра клієнтів</p>
-          <h2>Найважливіше —<br>слова наших замовників.</h2>
+          <h2>Відгуки наших замовників</h2>
           <p>Реальні історії, готові роботи та вдячність, яку ми бережемо.</p>
         </div>
         <div class="reviews-grid reviews-grid-preview">${homeReviewMarkup}</div>
@@ -438,7 +487,7 @@ function renderIndex(products) {
     active: 'home',
     body
   }).replace('<main id="main">', '<main id="main" class="home-page">')
-    .replace('</head>', '  <link rel="stylesheet" href="css/home.css?v=20260915-stone-palette">\n</head>');
+    .replace('</head>', '  <link rel="stylesheet" href="css/home.css?v=20260915-graphite">\n</head>');
 }
 function renderReviews(reviews) {
   const published = reviews.filter(review => review.published !== false);
@@ -514,7 +563,7 @@ function renderReviews(reviews) {
     active: 'reviews',
     body
   }).replace('<main id="main">', '<main id="main" class="reviews-page">')
-    .replace('</head>', '  <link rel="stylesheet" href="css/reviews.css?v=20260914-reviews-2">\n</head>');
+    .replace('</head>', '  <link rel="stylesheet" href="css/reviews.css?v=20260915-graphite">\n</head>');
 }
 function renderCatalog(products) {
   const counts = products.reduce((acc, product) => {
@@ -703,7 +752,7 @@ function renderProduction() {
     description: "Власне виробництво KAMENOTES у Коростишеві: фото цеху, розпил граніту, водне полірування, ручне гравірування, доставка та монтаж.",
     active: 'production',
     body
-  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-stone-palette">\n</head>');
+  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-graphite">\n</head>');
 }
 
 function renderDecoration() {
@@ -788,7 +837,7 @@ function renderDecoration() {
     description: "Художнє оформлення пам'ятників у KAMENOTES: ручне гравіювання портретів, написи, українські епітафії, образи й декоративні елементи на граніті.",
     active: 'production',
     body
-  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-services-1">\n</head>');
+  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-graphite">\n</head>');
 }
 
 function renderMounting() {
@@ -866,7 +915,7 @@ function renderMounting() {
     description: "Доставка та монтаж гранітних пам'ятників KAMENOTES: заміри, армована бетонна основа, облицювання, складання й контроль встановленого виробу.",
     active: 'production',
     body
-  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-services-1">\n</head>');
+  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-graphite">\n</head>');
 }
 
 function renderPaving() {
@@ -942,7 +991,7 @@ function renderPaving() {
     description: 'Гранітна бруківка оптом від виробника у Коростишеві: колота, пиляно-колота, повнопиляна термооброблена та галтована з габро, Покостівки й Лезниківського граніту.',
     active: 'paving',
     body
-  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-stone-palette">\n</head>');
+  }).replace('</head>', '  <link rel="stylesheet" href="css/production.css?v=20260915-graphite">\n</head>');
 }
 
 function renderMapFrame() {
@@ -1032,23 +1081,10 @@ function renderContacts() {
 
 function renderCss() {
   return `:root {
-  --bg: #ffffff;
-  --surface: #f9fafb;
-  --surface-strong: #f3f4f6;
-  --text: #1f2937;
-  --muted: #64748b;
-  --soft: #94a3b8;
-  --line: #e5e7eb;
-  --graphite: #111827;
-  --graphite-2: #1f2937;
-  --stone: #a16207;
-  --green: #166534;
-  --viber: #7360f2;
-  --viber-hover: #5d4bd6;
   --container: 1240px;
   --radius: 8px;
-  --shadow: 0 18px 45px rgba(15, 23, 42, 0.09);
-  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.07);
+  --shadow: 0 18px 45px rgba(var(--ink-rgb), 0.09);
+  --shadow-soft: 0 10px 25px rgba(var(--ink-rgb), 0.07);
 }
 
 * {
@@ -1122,7 +1158,7 @@ h3 {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(161, 98, 7, 0.42);
+  outline: 3px solid rgba(var(--ink-rgb), 0.42);
   outline-offset: 3px;
 }
 
@@ -1133,7 +1169,7 @@ h3 {
   z-index: 9999;
   transform: translateY(-150%);
   background: var(--graphite);
-  color: #ffffff;
+  color: var(--white);
   padding: 10px 14px;
   border-radius: 6px;
 }
@@ -1155,7 +1191,7 @@ h3 {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(var(--white-rgb), 0.96);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
 }
@@ -1281,22 +1317,22 @@ h3 {
 
 .btn-dark {
   background: var(--graphite);
-  color: #ffffff;
+  color: var(--white);
 }
 
 .btn-dark:hover,
 .btn-call:hover {
-  background: #000000;
+  background: var(--graphite);
 }
 
 .btn-call {
   background: var(--graphite);
-  color: #ffffff;
+  color: var(--white);
   white-space: nowrap;
 }
 
 .btn-light {
-  background: #ffffff;
+  background: var(--white);
   color: var(--graphite);
 }
 
@@ -1305,17 +1341,17 @@ h3 {
 }
 
 .btn-outline-light {
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.42);
+  color: var(--white);
+  border-color: rgba(var(--white-rgb), 0.42);
 }
 
 .btn-outline-light:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(var(--white-rgb), 0.12);
 }
 
 .btn-viber {
   background: var(--viber);
-  color: #ffffff;
+  color: var(--white);
 }
 
 .btn-viber:hover {
@@ -1346,7 +1382,7 @@ h3 {
   display: grid;
   align-items: center;
   overflow: hidden;
-  color: #ffffff;
+  color: var(--white);
   background: var(--graphite);
 }
 
@@ -1369,7 +1405,7 @@ h3 {
 }
 
 .hero-overlay {
-  background: linear-gradient(90deg, rgba(17, 24, 39, 0.88), rgba(17, 24, 39, 0.62) 52%, rgba(17, 24, 39, 0.34));
+  background: linear-gradient(90deg, rgba(var(--ink-rgb), 0.88), rgba(var(--ink-rgb), 0.62) 52%, rgba(var(--ink-rgb), 0.34));
 }
 
 .hero-inner,
@@ -1386,14 +1422,14 @@ h3 {
 .hero h1,
 .page-hero h1,
 .dark-cta h2 {
-  color: #ffffff;
+  color: var(--white);
 }
 
 .hero-statement {
   margin-top: 12px;
   font-family: "Lora", Georgia, serif;
   font-size: 36px;
-  color: #ffffff;
+  color: var(--white);
 }
 
 .hero-copy,
@@ -1401,7 +1437,7 @@ h3 {
   max-width: 740px;
   margin-top: 20px;
   font-size: 19px;
-  color: #e5e7eb;
+  color: var(--line);
 }
 
 .hero-actions {
@@ -1415,7 +1451,7 @@ h3 {
   gap: 0;
   margin: 48px 0 0;
   padding: 26px 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  border-top: 1px solid rgba(var(--white-rgb), 0.24);
 }
 
 .hero-proof div {
@@ -1425,14 +1461,14 @@ h3 {
 .hero-proof dt {
   font-family: "Lora", Georgia, serif;
   font-size: 30px;
-  color: #ffffff;
+  color: var(--white);
   font-weight: 700;
   line-height: 1.1;
 }
 
 .hero-proof dd {
   margin: 8px 0 0;
-  color: #cbd5e1;
+  color: var(--on-dark-muted);
   font-size: 14px;
 }
 
@@ -1445,7 +1481,7 @@ h3 {
 }
 
 .hero-kicker {
-  color: #f8fafc;
+  color: var(--bg);
 }
 
 .section {
@@ -1490,7 +1526,7 @@ h3 {
   margin-top: 22px;
   display: grid;
   gap: 14px;
-  color: #475569;
+  color: var(--text);
   font-size: 17px;
 }
 
@@ -1552,8 +1588,8 @@ h3 {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #ffffff;
-  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+  background: var(--white);
+  box-shadow: 0 1px 0 rgba(var(--ink-rgb), 0.03);
   display: flex;
   flex-direction: column;
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
@@ -1562,7 +1598,7 @@ h3 {
 .product-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-soft);
-  border-color: #cbd5e1;
+  border-color: var(--on-dark-muted);
 }
 
 .product-card.hidden {
@@ -1593,8 +1629,8 @@ h3 {
   top: 12px;
   max-width: calc(100% - 24px);
   border-radius: 999px;
-  background: rgba(17, 24, 39, 0.9);
-  color: #ffffff;
+  background: rgba(var(--ink-rgb), 0.9);
+  color: var(--white);
   padding: 5px 10px;
   font-size: 12px;
   font-weight: 800;
@@ -1702,7 +1738,7 @@ h3 {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #ffffff;
+  background: var(--white);
 }
 
 .service-card img {
@@ -1730,16 +1766,16 @@ h3 {
 
 .dark-cta {
   background: var(--graphite);
-  color: #ffffff;
+  color: var(--white);
 }
 
 .dark-cta .kicker {
-  color: #cbd5e1;
+  color: var(--on-dark-muted);
 }
 
 .dark-cta p:not(.kicker) {
   margin-top: 16px;
-  color: #d1d5db;
+  color: var(--on-dark-muted);
   font-size: 17px;
 }
 
@@ -1757,7 +1793,7 @@ h3 {
   list-style: none;
   padding: 0;
   margin: 22px 0;
-  color: #475569;
+  color: var(--text);
 }
 
 .plain-list a {
@@ -1769,7 +1805,7 @@ h3 {
   overflow: hidden;
   border-radius: var(--radius);
   border: 1px solid var(--line);
-  background: #ffffff;
+  background: var(--white);
   box-shadow: var(--shadow-soft);
 }
 
@@ -1840,14 +1876,14 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0 18px 0 46px;
-  background: #ffffff;
+  background: var(--white);
   color: var(--graphite);
   outline: none;
 }
 
 .search-field input:focus {
-  border-color: #c4b5fd;
-  box-shadow: 0 0 0 4px rgba(115, 96, 242, 0.12);
+  border-color: var(--viber-soft);
+  box-shadow: 0 0 0 4px rgba(var(--viber-rgb), 0.12);
 }
 
 .catalog-note {
@@ -1878,7 +1914,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 9px 15px;
-  background: #ffffff;
+  background: var(--white);
   color: var(--graphite);
   font-weight: 800;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
@@ -1893,18 +1929,18 @@ h3 {
 .filter-btn.active {
   background: var(--graphite);
   border-color: var(--graphite);
-  color: #ffffff;
+  color: var(--white);
 }
 
 .filter-btn:hover span,
 .filter-btn.active span {
-  color: #d1d5db;
+  color: var(--on-dark-muted);
 }
 
 .catalog-empty {
   padding: 24px;
   margin-bottom: 20px;
-  background: #ffffff;
+  background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   color: var(--muted);
@@ -1935,8 +1971,8 @@ h3 {
   padding: 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #ffffff;
-  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+  background: var(--white);
+  box-shadow: 0 1px 0 rgba(var(--ink-rgb), 0.03);
 }
 
 .reviews-grid-preview .review-card {
@@ -1984,7 +2020,7 @@ h3 {
 
 .review-card blockquote {
   margin: 12px 0 0;
-  color: #475569;
+  color: var(--text);
   font-size: 15px;
 }
 
@@ -2022,8 +2058,8 @@ h3 {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #ffffff;
-  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+  background: var(--white);
+  box-shadow: 0 1px 0 rgba(var(--ink-rgb), 0.03);
 }
 
 .masonry-media {
@@ -2058,7 +2094,7 @@ h3 {
 .road-card {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #ffffff;
+  background: var(--white);
   padding: 22px;
 }
 
@@ -2075,7 +2111,7 @@ h3 {
   place-items: center;
   border-radius: var(--radius);
   background: var(--graphite);
-  color: #ffffff;
+  color: var(--white);
   font-weight: 800;
 }
 
@@ -2119,24 +2155,24 @@ h3 {
 
 .road-card {
   background: var(--graphite);
-  color: #ffffff;
+  color: var(--white);
 }
 
 .road-card h2 {
   margin-top: 8px;
-  color: #ffffff;
+  color: var(--white);
 }
 
 .road-card p {
-  color: #d1d5db;
+  color: var(--on-dark-muted);
 }
 
 /* ================== РОЗКІШНИЙ СОЛІДНИЙ ФУТЕР (МЕНШ ІІШНИЙ) ================== */
 .site-footer {
-  background: #090E17;
-  color: #CBD5E1;
+  background: var(--graphite);
+  color: var(--on-dark-muted);
   padding-top: 36px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(var(--white-rgb), 0.08);
 }
 
 .footer-top-bar {
@@ -2146,7 +2182,7 @@ h3 {
   flex-wrap: wrap;
   gap: 20px;
   padding-bottom: 28px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(var(--white-rgb), 0.08);
 }
 
 .footer-brand-header {
@@ -2159,7 +2195,7 @@ h3 {
   font-family: 'Lora', Georgia, serif;
   font-size: 26px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: var(--white);
   letter-spacing: 1.2px;
   text-decoration: none;
 }
@@ -2167,7 +2203,7 @@ h3 {
 .footer-brand-tagline {
   font-size: 11px;
   font-weight: 600;
-  color: #94A3B8;
+  color: var(--muted);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -2180,9 +2216,9 @@ h3 {
 }
 
 .footer-pill-phone {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #FFFFFF;
+  background: rgba(var(--white-rgb), 0.08);
+  border: 1px solid rgba(var(--white-rgb), 0.16);
+  color: var(--white);
   font-size: 13px;
   font-weight: 700;
   padding: 8px 16px;
@@ -2195,13 +2231,13 @@ h3 {
 }
 
 .footer-pill-phone:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(var(--white-rgb), 0.15);
+  border-color: rgba(var(--white-rgb), 0.3);
 }
 
 .footer-pill-viber {
-  background: #7360F2;
-  color: #FFFFFF;
+  background: var(--viber);
+  color: var(--white);
   font-size: 13px;
   font-weight: 700;
   padding: 8px 16px;
@@ -2210,19 +2246,19 @@ h3 {
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(115, 96, 242, 0.3);
+  box-shadow: 0 4px 12px rgba(var(--viber-rgb), 0.3);
   transition: all 0.2s ease;
 }
 
 .footer-pill-viber:hover {
-  background: #5E49DC;
+  background: var(--viber-hover);
   transform: translateY(-1px);
 }
 
 .footer-pill-portal {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #93C5FD;
+  border: 1px solid rgba(var(--white-rgb), 0.2);
+  color: var(--on-dark-muted);
   font-size: 12.5px;
   font-weight: 600;
   padding: 8px 16px;
@@ -2232,8 +2268,8 @@ h3 {
 }
 
 .footer-pill-portal:hover {
-  background: rgba(147, 197, 253, 0.1);
-  border-color: #93C5FD;
+  background: rgba(var(--ink-rgb), 0.1);
+  border-color: var(--on-dark-muted);
 }
 
 .footer-grid-luxury {
@@ -2248,14 +2284,14 @@ h3 {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #64748B;
+  color: var(--muted);
   margin: 0 0 16px;
 }
 
 .footer-about-text {
   font-size: 13.5px;
   line-height: 1.65;
-  color: #94A3B8;
+  color: var(--muted);
   margin: 0 0 18px;
 }
 
@@ -2268,9 +2304,9 @@ h3 {
 .footer-stone-badge {
   display: inline-block;
   font-size: 12px;
-  color: #CBD5E1;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--on-dark-muted);
+  background: rgba(var(--white-rgb), 0.04);
+  border: 1px solid rgba(var(--white-rgb), 0.08);
   padding: 5px 12px;
   border-radius: 4px;
   width: fit-content;
@@ -2285,13 +2321,13 @@ h3 {
 .footer-nav-luxury a {
   font-size: 14px;
   font-weight: 500;
-  color: #E2E8F0;
+  color: var(--on-dark-muted);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .footer-nav-luxury a:hover {
-  color: #60A5FA;
+  color: var(--on-dark-muted);
 }
 
 .footer-contact-item {
@@ -2305,18 +2341,18 @@ h3 {
 
 .footer-contact-item strong {
   display: block;
-  color: #FFFFFF;
+  color: var(--white);
   font-size: 12.5px;
   margin-bottom: 2px;
 }
 
 .footer-contact-item p {
   margin: 0;
-  color: #94A3B8;
+  color: var(--muted);
 }
 
 .footer-contact-item a {
-  color: #93C5FD;
+  color: var(--on-dark-muted);
   text-decoration: none;
 }
 
@@ -2325,10 +2361,10 @@ h3 {
 }
 
 .footer-bottom-luxury {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(var(--white-rgb), 0.06);
   padding: 20px 0;
   font-size: 12px;
-  color: #64748B;
+  color: var(--muted);
 }
 
 .footer-bottom-luxury .footer-bottom-inner {
@@ -2355,7 +2391,7 @@ h3 {
   place-items: center;
   border-radius: 999px;
   background: var(--graphite);
-  color: #ffffff;
+  color: var(--white);
   box-shadow: var(--shadow-soft);
 }
 
@@ -2382,7 +2418,7 @@ h3 {
 .lightbox-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(11, 18, 32, 0.82);
+  background: rgba(var(--ink-rgb), 0.82);
 }
 
 .lightbox-dialog {
@@ -2391,16 +2427,16 @@ h3 {
   max-height: calc(100svh - 40px);
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(360px, 430px);
-  background: #ffffff;
+  background: var(--white);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(var(--ink-rgb), 0.35);
+  border: 1px solid rgba(var(--white-rgb), 0.1);
 }
 
 .lightbox-media-col {
   position: relative;
-  background: #F8FAFC;
+  background: var(--bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2422,7 +2458,7 @@ h3 {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(var(--white-rgb), 0.92);
   border: 1px solid var(--line);
   color: var(--muted);
   font-size: 11px;
@@ -2442,7 +2478,7 @@ h3 {
   gap: 14px;
   overflow-y: auto;
   max-height: min(84svh, 740px);
-  background: #ffffff;
+  background: var(--white);
 }
 
 .lightbox-badges-row {
@@ -2453,8 +2489,8 @@ h3 {
 }
 
 .lightbox-sku-badge {
-  background: #0F172A;
-  color: #ffffff;
+  background: var(--graphite);
+  color: var(--white);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.5px;
@@ -2463,37 +2499,37 @@ h3 {
 }
 
 .lightbox-cat-badge {
-  background: #F1F5F9;
-  color: #334155;
+  background: var(--surface);
+  color: var(--text);
   font-size: 12px;
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 4px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid var(--on-dark-muted);
 }
 
 .lightbox-flag-badge {
-  background: #FEF3C7;
-  color: #92400E;
+  background: var(--surface);
+  color: var(--text);
   font-size: 11px;
   font-weight: 700;
   padding: 4px 10px;
   border-radius: 4px;
-  border: 1px solid #FDE68A;
+  border: 1px solid var(--line);
 }
 
 .lightbox-title {
   font-family: 'Lora', Georgia, serif;
   font-size: clamp(22px, 2.2vw, 28px);
-  color: #0F172A;
+  color: var(--graphite);
   line-height: 1.25;
   margin: 0;
   font-weight: 700;
 }
 
 .lightbox-price-card {
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
+  background: var(--bg);
+  border: 1px solid var(--on-dark-muted);
   border-radius: 8px;
   padding: 14px 16px;
   display: flex;
@@ -2519,8 +2555,8 @@ h3 {
 .lightbox-direct-tag {
   font-size: 11px;
   font-weight: 700;
-  color: #166534;
-  background: #DCFCE7;
+  color: var(--text);
+  background: var(--surface-strong);
   padding: 2px 8px;
   border-radius: 4px;
 }
@@ -2528,14 +2564,14 @@ h3 {
 .lightbox-price-val {
   font-size: 26px;
   font-weight: 800;
-  color: #0F172A;
+  color: var(--graphite);
   letter-spacing: -0.5px;
   line-height: 1.1;
 }
 
 .lightbox-price-sub {
   font-size: 11.5px;
-  color: #64748B;
+  color: var(--muted);
 }
 
 .lightbox-section-label {
@@ -2543,13 +2579,13 @@ h3 {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #64748B;
+  color: var(--muted);
   display: block;
   margin-bottom: 7px;
 }
 
 .lightbox-specs-block {
-  border-top: 1px solid #F1F5F9;
+  border-top: 1px solid var(--surface);
   padding-top: 10px;
 }
 
@@ -2567,26 +2603,26 @@ h3 {
   align-items: flex-start;
   gap: 8px;
   font-size: 13px;
-  color: #334155;
+  color: var(--text);
   line-height: 1.45;
 }
 
 .lightbox-specs-list .spec-bullet {
-  color: #2563EB;
+  color: var(--stone);
   font-weight: 800;
   font-size: 13px;
   flex-shrink: 0;
 }
 
 .lightbox-perks-block {
-  background: #F0FDF4;
-  border: 1px solid #BBF7D0;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 11px 13px;
 }
 
 .lightbox-perks-block .lightbox-section-label {
-  color: #166534;
+  color: var(--text);
   margin-bottom: 5px;
 }
 
@@ -2604,13 +2640,13 @@ h3 {
   align-items: flex-start;
   gap: 7px;
   font-size: 12px;
-  color: #166534;
+  color: var(--text);
   line-height: 1.4;
 }
 
 .lightbox-perks-list .perk-check {
   font-weight: 800;
-  color: #15803D;
+  color: var(--text);
   flex-shrink: 0;
 }
 
@@ -2622,8 +2658,8 @@ h3 {
 }
 
 .lightbox-viber-btn {
-  background: #7360F2 !important;
-  color: #ffffff !important;
+  background: var(--viber) !important;
+  color: var(--white) !important;
   padding: 12px 18px !important;
   font-size: 13.5px !important;
   font-weight: 700 !important;
@@ -2633,19 +2669,19 @@ h3 {
   align-items: center !important;
   justify-content: center !important;
   gap: 10px !important;
-  box-shadow: 0 4px 14px rgba(115, 96, 242, 0.35);
+  box-shadow: 0 4px 14px rgba(var(--viber-rgb), 0.35);
   transition: all 0.2s ease !important;
 }
 
 .lightbox-viber-btn:hover {
-  background: #5E49DC !important;
+  background: var(--viber-hover) !important;
   transform: translateY(-1px);
 }
 
 .lightbox-call-btn {
-  background: #F8FAFC !important;
-  color: #0F172A !important;
-  border: 1px solid #CBD5E1 !important;
+  background: var(--bg) !important;
+  color: var(--graphite) !important;
+  border: 1px solid var(--on-dark-muted) !important;
   padding: 10px 16px !important;
   font-size: 12.5px !important;
   font-weight: 700 !important;
@@ -2658,13 +2694,13 @@ h3 {
 }
 
 .lightbox-call-btn:hover {
-  background: #F1F5F9 !important;
-  border-color: #94A3B8 !important;
+  background: var(--surface) !important;
+  border-color: var(--muted) !important;
 }
 
 .lightbox-footer-hint {
   font-size: 11.5px;
-  color: #64748B;
+  color: var(--muted);
   text-align: center;
   line-height: 1.45;
   margin: 0;
@@ -2678,22 +2714,22 @@ h3 {
   z-index: 10;
   width: 38px;
   height: 38px;
-  border: 1px solid #CBD5E1;
+  border: 1px solid var(--on-dark-muted);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  color: #0F172A;
+  background: rgba(var(--white-rgb), 0.95);
+  color: var(--graphite);
   font-size: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(var(--ink-rgb), 0.1);
   transition: all 0.15s ease;
 }
 
 .lightbox-close:hover {
-  background: #F1F5F9;
-  color: #000000;
+  background: var(--surface);
+  color: var(--graphite);
   transform: scale(1.05);
 }
 
@@ -2797,7 +2833,7 @@ h3 {
   .notice-inner { font-size: 12px; line-height: 1.4; }
 
   .hero-overlay {
-    background: rgba(17, 24, 39, 0.72);
+    background: rgba(var(--ink-rgb), 0.72);
   }
 
   .hero-proof {

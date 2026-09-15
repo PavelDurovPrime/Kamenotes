@@ -9,9 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260914-luxury-v4">
-  <link rel="stylesheet" href="css/design-system.css?v=20260915-compact-footer">
-  <link rel="stylesheet" href="css/home.css?v=20260915-masthead">
+  <link rel="stylesheet" href="css/theme.css?v=20260915-graphite">
+  <link rel="stylesheet" href="css/style.css?v=20260915-graphite">
+  <link rel="stylesheet" href="css/design-system.css?v=20260915-graphite">
+  <link rel="stylesheet" href="css/home.css?v=20260915-graphite">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -43,28 +44,169 @@
     </div>
   </header>
   <main id="main" class="home-page">
-    <section class="home-hero">
-      <div class="home-hero-backdrop" aria-hidden="true"><img src="img/production/workshop_07.jpg" alt=""></div>
-      <div class="container home-hero-content">
-        <p class="kicker">Власне виробництво · Коростишів</p>
-        <h1>Пам’ятники з граніту.<br><span>Від виробника.</span></h1>
-        <p class="hero-copy">Виготовляємо у власному цеху, погоджуємо кожну деталь і відповідаємо за результат — від вибору каменю до встановлення.</p>
-        <a class="btn home-hero-cta" href="catalog.html">Переглянути каталог <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-        <ul class="home-hero-facts" aria-label="Про KAMENOTES">
-          <li>З 1995 року</li><li>Власний цех</li><li>Доставка та монтаж</li>
-        </ul>
+    <section class="home-hero" aria-labelledby="home-title">
+      <div class="container home-intro-grid">
+        <div class="home-intro-copy">
+          <p class="kicker">KAMENOTES · Коростишів</p>
+          <h1 id="home-title">Гранітні пам’ятники<br><span>від виробника.</span></h1>
+          <p class="hero-copy">Виготовляємо пам’ятники у власному цеху в Коростишеві. Від вибору каменю та оформлення до доставки й монтажу.</p>
+          <div class="home-intro-actions"><a class="btn btn-dark" href="catalog.html">Переглянути каталог <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="text-link" href="viber://chat?number=%2B380977157915">Консультація у Viber <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+          <ul class="home-hero-facts" aria-label="Про KAMENOTES"><li><strong>З 1995 року</strong><span>працюємо з каменем</span></li><li><strong>Власний цех</strong><span>ціни від виробника</span></li><li><strong>По Україні</strong><span>доставка та монтаж</span></li></ul>
+        </div>
+        <figure class="home-intro-photo"><img src="img/production/workshop_07.jpg" alt="Майстер KAMENOTES біля обладнання для обробки граніту в Коростишеві" width="1600" height="1200" fetchpriority="high"><figcaption><span>Наше виробництво</span><span>Коростишів, Україна</span></figcaption></figure>
       </div>
+    </section>
+
+    <section class="section home-categories" aria-labelledby="categories-title">
+      <div class="container">
+        <div class="home-section-heading"><div><p class="kicker">Каталог пам’ятників</p><h2 id="categories-title">Оберіть тип пам’ятника</h2></div><a class="text-link" href="catalog.html">Увесь каталог <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+        <div class="home-category-grid"><a class="home-category" href="catalog.html?filter=odinarni">
+      <div class="home-category-image"><img src="img/kamenotes/shop_pamyatnik_km1.jpg" alt="Пам&#039;ятник КМ-1" loading="lazy" width="360" height="360"></div>
+      <div class="home-category-label"><h3>Одинарні пам&#039;ятники</h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <span>67 моделей у каталозі</span>
+    </a>
+<a class="home-category" href="catalog.html?filter=podvijni">
+      <div class="home-category-image"><img src="img/kamenotes/shop_pamyatnik_km29.jpg" alt="Подвійний пам&#039;ятник КМ-29" loading="lazy" width="360" height="360"></div>
+      <div class="home-category-label"><h3>Подвійні пам&#039;ятники</h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <span>46 моделей у каталозі</span>
+    </a>
+<a class="home-category" href="catalog.html?filter=vijskovi">
+      <div class="home-category-image"><img src="img/kamenotes/zsu_zsu-monument-71a.jpg" alt="Військовий меморіал ВСК-71а" loading="lazy" width="360" height="360"></div>
+      <div class="home-category-label"><h3>Військові ЗСУ</h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <span>13 моделей у каталозі</span>
+    </a>
+<a class="home-category" href="catalog.html?filter=modeli">
+      <div class="home-category-image"><img src="img/kamenotes/models_km-16.jpg" alt="Авторська модель стели КМ-16" loading="lazy" width="360" height="360"></div>
+      <div class="home-category-label"><h3>Авторські моделі цеху</h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <span>39 моделей у каталозі</span>
+    </a></div>
+        <div class="home-category-more"><span>Також виготовляємо</span><a href="catalog.html?filter=khresti">Хрести та плити <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="catalog.html?filter=ogorozhi">Огорожі та столи <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+      </div>
+    </section>
+
+    <section class="section home-featured" aria-labelledby="models-title">
+      <div class="container"><div class="home-section-heading"><div><p class="kicker">Моделі та вартість</p><h2 id="models-title">Пам’ятники з цінами</h2></div><a class="text-link" href="catalog.html">Усі моделі з цінами <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+        <div class="product-grid"><article class="product-card odinarni" data-category="odinarni" data-search="км-1 пам&#039;ятник км-1 стела: 100х50х8 см тумба: 60х20х20 см квітник: 100х8х10 см">
+    <button class="product-media js-lightbox" type="button"
+      data-image="img/kamenotes/shop_pamyatnik_km1.jpg"
+      data-title="Пам&#039;ятник КМ-1"
+      data-sku="Арт. КМ-1"
+      data-category="Одинарні"
+      data-badge="Популярна класика"
+      data-price="від 7 600 грн"
+      data-specs="Стела: 100х50х8 см||Тумба: 60х20х20 см||Квітник: 100х8х10 см"
+      data-viber="viber://chat?number=%2B380977157915&amp;draft=%D0%92%D1%96%D1%82%D0%B0%D1%8E!%20%D0%9C%D0%B5%D0%BD%D0%B5%20%D1%86%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D0%BC&#039;%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%B0%D1%80%D1%82.%20%D0%9A%D0%9C-1%20(%22%D0%9F%D0%B0%D0%BC&#039;%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%9A%D0%9C-1%22)%20%D0%B7%D0%B0%20%D1%86%D1%96%D0%BD%D0%BE%D1%8E%20%D0%B2%D1%96%D0%B4%207%20600%20%D0%B3%D1%80%D0%BD.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%BE%D1%80%D0%B0%D1%85%D1%83%D0%B2%D0%B0%D1%82%D0%B8%20%D0%BF%D0%BE%D0%B2%D0%BD%D1%83%20%D0%B2%D0%B0%D1%80%D1%82%D1%96%D1%81%D1%82%D1%8C%20%D0%B7%20%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F%D0%BC%20%D1%96%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BC."
+      aria-label="Збільшити та переглянути КМ-1">
+      <img src="img/kamenotes/shop_pamyatnik_km1.jpg" alt="Пам&#039;ятник КМ-1" loading="lazy">
+    </button>
+    <div class="product-body">
+      <div class="product-topline">
+        <span>Арт. КМ-1</span>
+        <span>Одинарні</span>
+      </div>
+      <h3>Пам&#039;ятник КМ-1</h3>
+      <div class="product-price">
+        <strong>від 7 600 грн</strong>
+        <button class="product-detail js-lightbox" type="button"
+          data-image="img/kamenotes/shop_pamyatnik_km1.jpg"
+          data-title="Пам&#039;ятник КМ-1"
+          data-sku="Арт. КМ-1"
+          data-category="Одинарні"
+          data-badge="Популярна класика"
+          data-price="від 7 600 грн"
+          data-specs="Стела: 100х50х8 см||Тумба: 60х20х20 см||Квітник: 100х8х10 см"
+          data-viber="viber://chat?number=%2B380977157915&amp;draft=%D0%92%D1%96%D1%82%D0%B0%D1%8E!%20%D0%9C%D0%B5%D0%BD%D0%B5%20%D1%86%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D0%BC&#039;%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%B0%D1%80%D1%82.%20%D0%9A%D0%9C-1%20(%22%D0%9F%D0%B0%D0%BC&#039;%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%9A%D0%9C-1%22)%20%D0%B7%D0%B0%20%D1%86%D1%96%D0%BD%D0%BE%D1%8E%20%D0%B2%D1%96%D0%B4%207%20600%20%D0%B3%D1%80%D0%BD.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%BE%D1%80%D0%B0%D1%85%D1%83%D0%B2%D0%B0%D1%82%D0%B8%20%D0%BF%D0%BE%D0%B2%D0%BD%D1%83%20%D0%B2%D0%B0%D1%80%D1%82%D1%96%D1%81%D1%82%D1%8C%20%D0%B7%20%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F%D0%BC%20%D1%96%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BC."
+          aria-label="Переглянути деталі КМ-1"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+      </div>
+    </div>
+  </article>
+<article class="product-card podvijni" data-category="podvijni" data-search="км-29 подвійний пам&#039;ятник км-29 стела горизонтальна: 100х60х8 см тумба: 110х20х20 см квітник подвійний: 100х120 см">
+    <button class="product-media js-lightbox" type="button"
+      data-image="img/kamenotes/shop_pamyatnik_km29.jpg"
+      data-title="Подвійний пам&#039;ятник КМ-29"
+      data-sku="Арт. КМ-29"
+      data-category="Подвійні"
+      data-badge="Подвійний комплект"
+      data-price="від 11 500 грн"
+      data-specs="Стела горизонтальна: 100х60х8 см||Тумба: 110х20х20 см||Квітник подвійний: 100х120 см"
+      data-viber="viber://chat?number=%2B380977157915&amp;draft=%D0%92%D1%96%D1%82%D0%B0%D1%8E!%20%D0%9C%D0%B5%D0%BD%D0%B5%20%D1%86%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D0%BC&#039;%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%B0%D1%80%D1%82.%20%D0%9A%D0%9C-29%20(%22%D0%9F%D0%BE%D0%B4%D0%B2%D1%96%D0%B9%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%B0%D0%BC&#039;%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%9A%D0%9C-29%22)%20%D0%B7%D0%B0%20%D1%86%D1%96%D0%BD%D0%BE%D1%8E%20%D0%B2%D1%96%D0%B4%2011%20500%20%D0%B3%D1%80%D0%BD.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%BE%D1%80%D0%B0%D1%85%D1%83%D0%B2%D0%B0%D1%82%D0%B8%20%D0%BF%D0%BE%D0%B2%D0%BD%D1%83%20%D0%B2%D0%B0%D1%80%D1%82%D1%96%D1%81%D1%82%D1%8C%20%D0%B7%20%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F%D0%BC%20%D1%96%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BC."
+      aria-label="Збільшити та переглянути КМ-29">
+      <img src="img/kamenotes/shop_pamyatnik_km29.jpg" alt="Подвійний пам&#039;ятник КМ-29" loading="lazy">
+    </button>
+    <div class="product-body">
+      <div class="product-topline">
+        <span>Арт. КМ-29</span>
+        <span>Подвійні</span>
+      </div>
+      <h3>Подвійний пам&#039;ятник КМ-29</h3>
+      <div class="product-price">
+        <strong>від 11 500 грн</strong>
+        <button class="product-detail js-lightbox" type="button"
+          data-image="img/kamenotes/shop_pamyatnik_km29.jpg"
+          data-title="Подвійний пам&#039;ятник КМ-29"
+          data-sku="Арт. КМ-29"
+          data-category="Подвійні"
+          data-badge="Подвійний комплект"
+          data-price="від 11 500 грн"
+          data-specs="Стела горизонтальна: 100х60х8 см||Тумба: 110х20х20 см||Квітник подвійний: 100х120 см"
+          data-viber="viber://chat?number=%2B380977157915&amp;draft=%D0%92%D1%96%D1%82%D0%B0%D1%8E!%20%D0%9C%D0%B5%D0%BD%D0%B5%20%D1%86%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D0%BC&#039;%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%B0%D1%80%D1%82.%20%D0%9A%D0%9C-29%20(%22%D0%9F%D0%BE%D0%B4%D0%B2%D1%96%D0%B9%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%B0%D0%BC&#039;%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%9A%D0%9C-29%22)%20%D0%B7%D0%B0%20%D1%86%D1%96%D0%BD%D0%BE%D1%8E%20%D0%B2%D1%96%D0%B4%2011%20500%20%D0%B3%D1%80%D0%BD.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%BE%D1%80%D0%B0%D1%85%D1%83%D0%B2%D0%B0%D1%82%D0%B8%20%D0%BF%D0%BE%D0%B2%D0%BD%D1%83%20%D0%B2%D0%B0%D1%80%D1%82%D1%96%D1%81%D1%82%D1%8C%20%D0%B7%20%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F%D0%BC%20%D1%96%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BC."
+          aria-label="Переглянути деталі КМ-29"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+      </div>
+    </div>
+  </article>
+<article class="product-card vijskovi" data-category="vijskovi" data-search="вск-71а військовий меморіал вск-71а козацький хрест 120х60х8 см тумба: 70х25х20 см букинське габро вищого гатунку">
+    <button class="product-media js-lightbox" type="button"
+      data-image="img/kamenotes/zsu_zsu-monument-71a.jpg"
+      data-title="Військовий меморіал ВСК-71а"
+      data-sku="Арт. ВСК-71а"
+      data-category="Військові ЗСУ"
+      data-badge="Військовий ЗСУ"
+      data-price="від 21 500 грн"
+      data-specs="Козацький хрест 120х60х8 см||Тумба: 70х25х20 см||Букинське габро вищого гатунку"
+      data-viber="viber://chat?number=%2B380977157915&amp;draft=%D0%92%D1%96%D1%82%D0%B0%D1%8E!%20%D0%9C%D0%B5%D0%BD%D0%B5%20%D1%86%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D0%BC&#039;%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%B0%D1%80%D1%82.%20%D0%92%D0%A1%D0%9A-71%D0%B0%20(%22%D0%92%D1%96%D0%B9%D1%81%D1%8C%D0%BA%D0%BE%D0%B2%D0%B8%D0%B9%20%D0%BC%D0%B5%D0%BC%D0%BE%D1%80%D1%96%D0%B0%D0%BB%20%D0%92%D0%A1%D0%9A-71%D0%B0%22)%20%D0%B7%D0%B0%20%D1%86%D1%96%D0%BD%D0%BE%D1%8E%20%D0%B2%D1%96%D0%B4%2021%20500%20%D0%B3%D1%80%D0%BD.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%BE%D1%80%D0%B0%D1%85%D1%83%D0%B2%D0%B0%D1%82%D0%B8%20%D0%BF%D0%BE%D0%B2%D0%BD%D1%83%20%D0%B2%D0%B0%D1%80%D1%82%D1%96%D1%81%D1%82%D1%8C%20%D0%B7%20%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F%D0%BC%20%D1%96%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BC."
+      aria-label="Збільшити та переглянути ВСК-71а">
+      <img src="img/kamenotes/zsu_zsu-monument-71a.jpg" alt="Військовий меморіал ВСК-71а" loading="lazy">
+    </button>
+    <div class="product-body">
+      <div class="product-topline">
+        <span>Арт. ВСК-71а</span>
+        <span>Військові ЗСУ</span>
+      </div>
+      <h3>Військовий меморіал ВСК-71а</h3>
+      <div class="product-price">
+        <strong>від 21 500 грн</strong>
+        <button class="product-detail js-lightbox" type="button"
+          data-image="img/kamenotes/zsu_zsu-monument-71a.jpg"
+          data-title="Військовий меморіал ВСК-71а"
+          data-sku="Арт. ВСК-71а"
+          data-category="Військові ЗСУ"
+          data-badge="Військовий ЗСУ"
+          data-price="від 21 500 грн"
+          data-specs="Козацький хрест 120х60х8 см||Тумба: 70х25х20 см||Букинське габро вищого гатунку"
+          data-viber="viber://chat?number=%2B380977157915&amp;draft=%D0%92%D1%96%D1%82%D0%B0%D1%8E!%20%D0%9C%D0%B5%D0%BD%D0%B5%20%D1%86%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D0%BC&#039;%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%B0%D1%80%D1%82.%20%D0%92%D0%A1%D0%9A-71%D0%B0%20(%22%D0%92%D1%96%D0%B9%D1%81%D1%8C%D0%BA%D0%BE%D0%B2%D0%B8%D0%B9%20%D0%BC%D0%B5%D0%BC%D0%BE%D1%80%D1%96%D0%B0%D0%BB%20%D0%92%D0%A1%D0%9A-71%D0%B0%22)%20%D0%B7%D0%B0%20%D1%86%D1%96%D0%BD%D0%BE%D1%8E%20%D0%B2%D1%96%D0%B4%2021%20500%20%D0%B3%D1%80%D0%BD.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D0%BF%D1%80%D0%BE%D1%80%D0%B0%D1%85%D1%83%D0%B2%D0%B0%D1%82%D0%B8%20%D0%BF%D0%BE%D0%B2%D0%BD%D1%83%20%D0%B2%D0%B0%D1%80%D1%82%D1%96%D1%81%D1%82%D1%8C%20%D0%B7%20%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F%D0%BC%20%D1%96%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BC."
+          aria-label="Переглянути деталі ВСК-71а"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+      </div>
+    </div>
+  </article></div>
+        <p class="home-price-note">Ціни — за комплектацію, вказану в картці. Оформлення, доставку й монтаж прораховуємо для вашого замовлення.</p>
+      </div>
+    </section>
+
+    <section class="section home-works" aria-labelledby="works-title">
+      <div class="container"><div class="home-section-heading"><div><p class="kicker">Виготовлено та встановлено</p><h2 id="works-title">Наші роботи</h2></div><p>Готові меморіали — від обробки граніту до встановлення на місці.</p></div><div class="home-works-grid"><figure class="home-work"><button class="js-lightbox" type="button" data-image="img/kamenotes/our_zsu-monument-kiev_pamjatnyk-vijskovomy.jpg" data-title="Пам&#039;ятник воїну ЗСУ із зеленого граніту" data-meta="Робота KAMENOTES" aria-label="Збільшити: Пам&#039;ятник воїну ЗСУ із зеленого граніту"><img src="img/kamenotes/our_zsu-monument-kiev_pamjatnyk-vijskovomy.jpg" alt="Пам&#039;ятник воїну ЗСУ із зеленого граніту" loading="lazy" width="480" height="540"></button><figcaption>Пам&#039;ятник воїну ЗСУ із зеленого граніту</figcaption></figure>
+<figure class="home-work"><button class="js-lightbox" type="button" data-image="img/kamenotes/our_zsu-monument-kiev_zsu-monument-kiev.jpg" data-title="Меморіал Захиснику (Червоний граніт)" data-meta="Робота KAMENOTES" aria-label="Збільшити: Меморіал Захиснику (Червоний граніт)"><img src="img/kamenotes/our_zsu-monument-kiev_zsu-monument-kiev.jpg" alt="Меморіал Захиснику (Червоний граніт)" loading="lazy" width="480" height="540"></button><figcaption>Меморіал Захиснику (Червоний граніт)</figcaption></figure>
+<figure class="home-work"><button class="js-lightbox" type="button" data-image="img/kamenotes/our_zsu-komplex-tok_zsu-monument.jpg" data-title="Пам&#039;ятник воїну ЗСУ, Чуднів" data-meta="Робота KAMENOTES" aria-label="Збільшити: Пам&#039;ятник воїну ЗСУ, Чуднів"><img src="img/kamenotes/our_zsu-komplex-tok_zsu-monument.jpg" alt="Пам&#039;ятник воїну ЗСУ, Чуднів" loading="lazy" width="480" height="540"></button><figcaption>Пам&#039;ятник воїну ЗСУ, Чуднів</figcaption></figure></div></div>
     </section>
 
     <section class="section home-process">
       <div class="container">
         <div class="home-process-heading">
           <div class="section-heading">
-            <p class="kicker">Власна мануфактура · з 1995 року</p>
-            <h2>Камінь. Руки майстра.<br>Відповідальність за результат.</h2>
+            <p class="kicker">Власне виробництво · з 1995 року</p>
+            <h2>Від кам’яної плити<br>до готового пам’ятника</h2>
             <p>Від першого розпилу до останньої літери — працюємо з каменем у власному цеху в Коростишеві. Ви спілкуєтеся безпосередньо з виробником.</p>
           </div>
-          <a class="text-link" href="vyrobnytstvo.html">Усередині мануфактури <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          <a class="text-link" href="vyrobnytstvo.html">Про виробництво <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
         </div>
         <div class="home-process-images">
           <figure><img src="img/production/workshop_01.jpg" alt="Розпил гранітних плит у цеху KAMENOTES" loading="lazy"><figcaption>01 / Розпил та обробка каменю</figcaption></figure>
@@ -86,7 +228,7 @@
         </figure>
         <div class="home-stone-copy">
           <p class="kicker">Матеріали</p>
-          <h2>Природний рисунок.<br>Ваш вибір каменю.</h2>
+          <h2>Натуральний камінь.<br>Ваш вибір.</h2>
           <p>Букинське габро, граніт або лабрадорит — допоможемо підібрати породу під модель, оформлення та бюджет.</p>
           <ul class="home-stone-names" aria-label="Породи каменю">
             <li>Букинське габро</li><li>Граніт</li><li>Лабрадорит</li>
@@ -100,7 +242,7 @@
       <div class="container">
         <div class="section-heading">
           <p class="kicker">Як відбувається замовлення</p>
-          <h2>Зрозуміло<br>на кожному кроці.</h2>
+          <h2>Від вибору моделі<br>до встановлення</h2>
           <p>Можна приїхати до нас у Коростишів або погодити всі деталі дистанційно.</p>
         </div>
         <ol class="home-order-list">
@@ -112,11 +254,21 @@
       </div>
     </section>
 
+    <section class="section home-services" aria-labelledby="services-title">
+      <div class="container"><div class="home-section-heading"><div><p class="kicker">Послуги майстерні</p><h2 id="services-title">Усе для завершеного замовлення</h2></div></div>
+        <div class="home-service-grid">
+          <a href="oformlennya.html"><span class="kicker">01 / Оформлення</span><h3>Портрети та написи <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3><p>Гравірування, епітафії та художні елементи на камені.</p></a>
+          <a href="montazh.html"><span class="kicker">02 / Встановлення</span><h3>Доставка та монтаж <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3><p>Підготовка основи, встановлення деталей і перевірка конструкції.</p></a>
+          <a href="brukivka.html"><span class="kicker">03 / Благоустрій</span><h3>Гранітна бруківка <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3><p>Натуральний камінь для мощення доріжок і майданчиків.</p></a>
+        </div>
+      </div>
+    </section>
+
     <section class="section reviews-preview">
       <div class="container">
         <div class="section-heading">
           <p class="kicker">Довіра клієнтів</p>
-          <h2>Найважливіше —<br>слова наших замовників.</h2>
+          <h2>Відгуки наших замовників</h2>
           <p>Реальні історії, готові роботи та вдячність, яку ми бережемо.</p>
         </div>
         <div class="reviews-grid reviews-grid-preview"><article class="review-card editorial-quote quote-featured quote-with-image">
