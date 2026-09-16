@@ -54,15 +54,16 @@ async function main() {
   assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'true');
   await page.goto('http://127.0.0.1:3000/index.html');
   const inventory = JSON.parse(fs.readFileSync(path.join(root, 'data', 'products.json'), 'utf8'));
-  assert.equal(await page.locator('.home-category').count(), 6);
-  for (const [index, id] of ['km-1', 'km-4', 'km-8', 'km-17', 'km-29', 'km-34'].entries()) {
+  assert.equal(await page.locator('.ed-category').count(), 4);
+  for (const [index, id] of ['km-1', 'km-4', 'km-8', 'km-29'].entries()) {
     const item = inventory.find(product => product.id === id);
-    const card = page.locator('.home-featured .product-card').nth(index);
-    assert.equal(await card.locator('h3').innerText(), item.title);
-    assert.equal((await card.locator('.product-price strong').innerText()).replace(/\s/g, ''), `від${item.price}грн`);
+    const card = page.locator('.ed-price-list > div > a').nth(index);
+    assert.equal(await card.locator('span').innerText(), item.sku);
+    assert.equal((await card.locator('strong').innerText()).replace(/\s/g, ''), `від${item.price}грн`);
   }
-  assert.equal(await page.locator('.home-work').count(), 8);
-  await page.locator('.home-featured .js-lightbox').first().click();
+  assert.equal(await page.locator('.ed-work-section .ed-photo').count(), 3);
+  await page.locator('.ed-price-list > div > a').first().click();
+  await page.locator('#lightbox.active').waitFor();
   assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'false');
   assert.equal(await page.locator('#lightboxSku').textContent(), `Арт. ${inventory.find(p => p.id === 'km-1').sku}`);
   await page.keyboard.press('Escape');
@@ -76,17 +77,18 @@ async function main() {
   assert.equal(await page.locator('#lightboxPrice').textContent(), 'Ціна за прорахунком');
   await page.keyboard.press('Escape');
   await page.goto('http://127.0.0.1:3000/index.html');
-  await page.locator('.home-work .js-lightbox').first().click();
+  await page.locator('.ed-work-section .js-lightbox').first().click();
   assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'false');
   await page.keyboard.press('Escape');
-  await page.locator('.home-category[href$="filter=podvijni"]').click();
+  await page.locator('.ed-category[href$="filter=podvijni"]').click();
+  await page.locator('.filter-btn.active[data-filter="podvijni"]').waitFor();
   assert.equal(await page.locator('.product-card:not(.hidden)').count(), inventory.filter(p => p.category === 'podvijni').length);
   await page.goto('http://127.0.0.1:3000/brukivka.html');
-  assert.equal(await page.locator('h1').innerText(), 'Камінь для доріг\nі територій.');
+  assert.equal(await page.locator('h1').innerText(), 'Гранітна бруківка');
   await page.goto('http://127.0.0.1:3000/oformlennya.html');
-  assert.equal(await page.locator('h1').innerText(), 'Оформлення\nпам’ятника.');
+  assert.equal(await page.locator('h1').innerText(), 'Художнє оформлення');
   await page.goto('http://127.0.0.1:3000/montazh.html');
-  assert.equal(await page.locator('h1').innerText(), 'Монтаж\nпам’ятника.');
+  assert.equal(await page.locator('h1').innerText(), 'Доставка та встановлення');
   await page.goto('http://127.0.0.1:3000/admin');
   assert.equal((await page.request.get('http://127.0.0.1:3000/api/products')).status(), 200);
   const base = 'http://127.0.0.1:3000';
@@ -123,7 +125,7 @@ async function main() {
     assert.equal(created.status(), 201);
     const updated = await page.request.put(`${base}/api/reviews/${reviewId}`, { data: { title: 'Перевірено', published: true } });
     assert.equal(updated.status(), 200);
-    // The public reviews page intentionally shows a curated set of existing stories.
+    // Published reviews are rendered from the same data as the administration panel.
     const storedReviews = await (await page.request.get(`${base}/api/reviews`)).json();
     assert.equal(storedReviews.find(review => review.id === reviewId).title, 'Перевірено');
     assert.equal(storedReviews.find(review => review.id === reviewId).published, true);
@@ -134,8 +136,8 @@ async function main() {
   assert.deepEqual(reviewsAfter, reviewsBefore, 'Existing reviews must remain unchanged');
   await page.goto(`${base}/vidguky.html`);
   assert.equal(await page.locator('#works').count(), 1);
-  assert.equal(await page.locator('.reviews-story').count(), 6);
-  assert.equal(await page.locator('.reviews-lead-copy blockquote').textContent(), reviewsBefore.find(review => review.id === 'review-2014-05-andrii-mykolaiv').text);
+  assert.equal(await page.locator('.ed-review').count(), reviewsBefore.filter(review => review.published !== false).length);
+  assert.deepEqual(await page.locator('.ed-review blockquote').allTextContents(), reviewsBefore.filter(review => review.published !== false).map(review => review.text));
   for (const [source, target] of [
     ['/catalog/', '/catalog.html'],
     ['/contacts.html', '/kontakty.html'],
