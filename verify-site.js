@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
 const { chromium } = require('playwright');
+const base = process.env.BASE_URL || 'http://127.0.0.1:3000';
 
 async function main() {
   const root = path.join(__dirname, 'site');
@@ -24,7 +25,7 @@ async function main() {
   for (const width of [375, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     for (const name of pages) {
-      await page.goto(`http://127.0.0.1:3000/${name}`, { waitUntil: 'domcontentloaded' });
+      await page.goto(`${base}/${name}`, { waitUntil: 'domcontentloaded' });
       await page.locator('img').evaluateAll(images => Promise.all(images.map(image => {
         image.loading = 'eager';
         return image.decode().catch(() => {});
@@ -39,7 +40,7 @@ async function main() {
       assert.deepEqual(layout.broken, [], `${name}: broken images`);
     }
   }
-  await page.goto('http://127.0.0.1:3000/catalog.html?filter=vijskovi');
+  await page.goto(`${base}/catalog.html?filter=vijskovi`);
   assert.equal(await page.locator('.product-card:not(.hidden)').count(), 13);
   await page.locator('#catalogSearchInput').fill('NO-MATCH-TEST');
   assert.equal(await page.locator('.product-card:not(.hidden)').count(), 0);
@@ -52,46 +53,33 @@ async function main() {
   await page.screenshot({ path: path.join(__dirname, 'qa', 'catalog-lightbox.png') });
   await page.keyboard.press('Escape');
   assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'true');
-  await page.goto('http://127.0.0.1:3000/index.html');
+  await page.goto(`${base}/index.html`);
   const inventory = JSON.parse(fs.readFileSync(path.join(root, 'data', 'products.json'), 'utf8'));
-  assert.equal(await page.locator('.ed-category').count(), 4);
-  for (const [index, id] of ['km-1', 'km-4', 'km-8', 'km-29'].entries()) {
-    const item = inventory.find(product => product.id === id);
-    const card = page.locator('.ed-price-list > div > a').nth(index);
-    assert.equal(await card.locator('span').innerText(), item.sku);
-    assert.equal((await card.locator('strong').innerText()).replace(/\s/g, ''), `від${item.price}грн`);
-  }
-  assert.equal(await page.locator('.ed-work-section .ed-photo').count(), 3);
-  await page.locator('.ed-price-list > div > a').first().click();
-  await page.locator('#lightbox.active').waitFor();
-  assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'false');
-  assert.equal(await page.locator('#lightboxSku').textContent(), `Арт. ${inventory.find(p => p.id === 'km-1').sku}`);
-  await page.keyboard.press('Escape');
-  await page.goto('http://127.0.0.1:3000/catalog.html?product=km-29');
+  assert.equal(await page.locator('.ed-category, .ed-price-list, .ed-work-section').count(), 0);
+  assert.equal(await page.locator('.ed-button-primary[href="catalog.html"]').count(), 1);
+  assert.equal(await page.locator('.ed-home-hero-bg').count(), 1);
+  assert.equal(await page.locator('.ed-hero-benefit').count(), 3);
+  await page.goto(`${base}/catalog.html?product=km-29`);
   assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'false');
   assert.equal(await page.locator('#lightboxSku').textContent(), 'Арт. КМ-29');
   await page.keyboard.press('Escape');
   await page.waitForFunction(() => !new URL(location.href).searchParams.has('product'));
   assert.equal(new URL(page.url()).searchParams.has('product'), false);
-  await page.goto('http://127.0.0.1:3000/catalog.html?product=vsk-71a');
+  await page.goto(`${base}/catalog.html?product=vsk-71a`);
   assert.equal(await page.locator('#lightboxPrice').textContent(), 'Ціна за прорахунком');
   await page.keyboard.press('Escape');
-  await page.goto('http://127.0.0.1:3000/index.html');
-  await page.locator('.ed-work-section .js-lightbox').first().click();
-  assert.equal(await page.locator('#lightbox').getAttribute('aria-hidden'), 'false');
-  await page.keyboard.press('Escape');
-  await page.locator('.ed-category[href$="filter=podvijni"]').click();
-  await page.locator('.filter-btn.active[data-filter="podvijni"]').waitFor();
-  assert.equal(await page.locator('.product-card:not(.hidden)').count(), inventory.filter(p => p.category === 'podvijni').length);
-  await page.goto('http://127.0.0.1:3000/brukivka.html');
+  await page.goto(`${base}/index.html`);
+  await page.locator('.ed-button-primary[href="catalog.html"]').click();
+  await page.waitForURL(`${base}/catalog.html`);
+  assert.equal(await page.locator('.product-card:not(.hidden)').count(), inventory.length);
+  await page.goto(`${base}/brukivka.html`);
   assert.equal(await page.locator('h1').innerText(), 'Гранітна бруківка');
-  await page.goto('http://127.0.0.1:3000/oformlennya.html');
+  await page.goto(`${base}/oformlennya.html`);
   assert.equal(await page.locator('h1').innerText(), 'Художнє оформлення');
-  await page.goto('http://127.0.0.1:3000/montazh.html');
+  await page.goto(`${base}/montazh.html`);
   assert.equal(await page.locator('h1').innerText(), 'Доставка та встановлення');
-  await page.goto('http://127.0.0.1:3000/admin');
-  assert.equal((await page.request.get('http://127.0.0.1:3000/api/products')).status(), 200);
-  const base = 'http://127.0.0.1:3000';
+  await page.goto(`${base}/admin`);
+  assert.equal((await page.request.get(`${base}/api/products`)).status(), 200);
   assert.equal(await page.locator('#reviewsAdminTab').isVisible(), true);
   await page.locator('#reviewsAdminTab').click();
   assert.equal(await page.locator('#reviewsAdminPanel').isVisible(), true);
@@ -135,9 +123,9 @@ async function main() {
   const reviewsAfter = await (await page.request.get(`${base}/api/reviews`)).json();
   assert.deepEqual(reviewsAfter, reviewsBefore, 'Existing reviews must remain unchanged');
   await page.goto(`${base}/vidguky.html`);
-  assert.equal(await page.locator('#works').count(), 1);
-  assert.equal(await page.locator('.ed-review').count(), reviewsBefore.filter(review => review.published !== false).length);
-  assert.deepEqual(await page.locator('.ed-review blockquote').allTextContents(), reviewsBefore.filter(review => review.published !== false).map(review => review.text));
+  assert.equal(await page.locator('#works').count(), 0);
+  assert.equal(await page.locator('.ed-review-featured').count() + await page.locator('.ed-review-card').count(), reviewsBefore.filter(review => review.published !== false).length);
+  assert.deepEqual(await page.locator('.ed-reviews blockquote').allTextContents(), reviewsBefore.filter(review => review.published !== false).map(review => review.text));
   for (const [source, target] of [
     ['/catalog/', '/catalog.html'],
     ['/contacts.html', '/kontakty.html'],

@@ -99,6 +99,10 @@ function arrowIcon() {
   return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>';
 }
 
+function arrowRightIcon() {
+  return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"/></svg>';
+}
+
 function phoneIcon() {
   return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
 }
@@ -135,9 +139,9 @@ function renderHeader(active) {
       </a>
       <nav class="main-nav" aria-label="Основна навігація">
         ${navLink(active, 'catalog', 'catalog.html', 'Каталог')}
-        ${navLink(active, 'works', 'vidguky.html', 'Наші роботи')}
-        ${navLink(active, 'production', 'vyrobnytstvo.html', 'Виробництво')}
         ${navLink(active, 'services', 'oformlennya.html', 'Послуги')}
+        ${navLink(active, 'production', 'vyrobnytstvo.html', 'Виробництво')}
+        ${navLink(active, 'works', 'vidguky.html', 'Відгуки')}
         ${navLink(active, 'contacts', 'kontakty.html', 'Контакти')}
       </nav>
       <div class="header-actions">
@@ -158,11 +162,11 @@ function renderFooter() {
   return `<footer class="site-footer">
     <div class="container footer-compact">
       <div class="footer-identity">
-        <a class="footer-mark" href="index.html" aria-label="KAMENOTES, головна сторінка"><img src="img/suhorez_blade.svg" alt="" width="44" height="44"><span>KAMENOTES</span></a>
+        <a class="footer-mark" href="index.html" aria-label="KAMENOTES, головна сторінка"><span>KAMENOTES</span></a>
         <p>KAMENOTES — виробництво гранітних пам’ятників у Коростишеві · з 1995 року</p>
       </div>
       <nav class="footer-navigation" aria-label="Навігація у футері">
-        <a href="catalog.html">Каталог</a><a href="vidguky.html">Наші роботи</a><a href="vyrobnytstvo.html">Виробництво</a><a href="oformlennya.html">Художнє оформлення</a><a href="montazh.html">Монтаж</a><a href="kontakty.html">Контакти</a><a href="brukivka.html">Інша продукція: бруківка</a>
+        <a href="catalog.html">Каталог</a><a href="vidguky.html">Відгуки</a><a href="vyrobnytstvo.html">Виробництво</a><a href="oformlennya.html">Художнє оформлення</a><a href="montazh.html">Монтаж</a><a href="kontakty.html">Контакти</a><a href="brukivka.html">Гранітна бруківка</a>
       </nav>
       <address class="footer-contact-compact">
         <a href="${MAP_LINK}" target="_blank" rel="noopener">м. Коростишів, вул. Партизанська-117<br>Коростишівський гранітний завод</a>
@@ -230,6 +234,12 @@ function pageShell({ title, description, active, body }) {
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти до змісту</a>
+  <div class="top-notice" role="region" aria-label="Оголошення">
+    <div class="top-notice-track">
+      <span>МИ ПРАЦЮЄМО ЗАРАЗ · Приїжджайте на виробництво в Коростишів — при замовленні повернемо витрати на дорогу</span>
+      <span aria-hidden="true">МИ ПРАЦЮЄМО ЗАРАЗ · Приїжджайте на виробництво в Коростишів — при замовленні повернемо витрати на дорогу</span>
+    </div>
+  </div>
   ${renderHeader(active)}
   <main id="main">
 ${body}
@@ -322,7 +332,7 @@ function renderReviewCard(review, compact = false) {
 }
 
 function editorialPages() {
-  return require("./editorial-pages")({ pageShell, escapeHtml, escapeAttr, arrowIcon, viberIcon, VIBER_BASE, PHONE_MAIN, PHONE_MAIN_LABEL, readProducts, readReviews, productForPublic, formatPrice });
+  return require("./editorial-pages")({ pageShell, escapeHtml, escapeAttr, arrowIcon, arrowRightIcon, phoneIcon, viberIcon, VIBER_BASE, PHONE_MAIN, PHONE_MAIN_LABEL, readProducts, readReviews, productForPublic, formatPrice });
 }
 
 function renderIndex(products) {
@@ -387,6 +397,7 @@ function renderCatalog(products) {
         </div>
         <div class="cta-actions">
           <a class="btn btn-viber" href="${VIBER_BASE}&draft=${encodeURIComponent("Вітаю! Маю власний ескіз для прорахунку пам'ятника.")}">${viberIcon()} <span>Надіслати ескіз</span></a>
+          <a class="btn btn-phone" href="tel:${PHONE_MAIN}">${phoneIcon()} <span>${PHONE_MAIN_LABEL}</span></a>
         </div>
       </div>
     </section>`;
@@ -1186,26 +1197,63 @@ h3 {
 }
 
 .dark-cta {
-  background: var(--graphite);
-  color: var(--white);
+  background: var(--surface);
+  color: var(--text);
+  border-top: 1px solid var(--line);
 }
 
 .dark-cta .kicker {
-  color: var(--on-dark-muted);
+  color: var(--muted);
+}
+
+.dark-cta h2 {
+  color: var(--text);
 }
 
 .dark-cta p:not(.kicker) {
   margin-top: 16px;
-  color: var(--on-dark-muted);
+  color: var(--muted);
   font-size: 17px;
 }
 
 .cta-grid {
   grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
 }
 
 .cta-actions {
-  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  min-width: 220px;
+}
+
+.btn-phone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--white);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: border-color 180ms, background-color 180ms;
+}
+
+.btn-phone:hover {
+  border-color: var(--text);
+  background: var(--surface);
+}
+
+.btn-phone .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .plain-list {

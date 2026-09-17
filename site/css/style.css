@@ -685,26 +685,63 @@ h3 {
 }
 
 .dark-cta {
-  background: var(--graphite);
-  color: var(--white);
+  background: var(--surface);
+  color: var(--text);
+  border-top: 1px solid var(--line);
 }
 
 .dark-cta .kicker {
-  color: var(--on-dark-muted);
+  color: var(--muted);
+}
+
+.dark-cta h2 {
+  color: var(--text);
 }
 
 .dark-cta p:not(.kicker) {
   margin-top: 16px;
-  color: var(--on-dark-muted);
+  color: var(--muted);
   font-size: 17px;
 }
 
 .cta-grid {
   grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
 }
 
 .cta-actions {
-  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  min-width: 220px;
+}
+
+.btn-phone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--white);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: border-color 180ms, background-color 180ms;
+}
+
+.btn-phone:hover {
+  border-color: var(--text);
+  background: var(--surface);
+}
+
+.btn-phone .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .plain-list {
