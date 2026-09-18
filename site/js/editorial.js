@@ -24,3 +24,4 @@
     }, { threshold: 0.3 }).observe(contact);
   }
 })();
+

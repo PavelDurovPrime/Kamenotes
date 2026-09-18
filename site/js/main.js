@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (empty) empty.hidden = visible !== 0;
+    const countEl = document.getElementById('catalogCount') || document.querySelector('.catalog-note strong');
+    if (countEl) countEl.textContent = visible;
   }
 
   filterButtons.forEach(button => {
@@ -39,10 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const urlParams = new URLSearchParams(window.location.search);
-  const filterParam = urlParams.get('filter') || urlParams.get('cat');
+  let filterParam = urlParams.get('filter') || urlParams.get('cat') || urlParams.get('category');
   if (filterParam) {
+    if (filterParam === 'svechi' || filterParam === 'svechi-cvety' || filterParam === 'kvity-svichky') filterParam = 'svichky';
+    if (filterParam === 'kvity-kolir') filterParam = 'cvety';
+    if (filterParam === 'hramy') filterParam = 'peyzazh';
     const target = filterButtons.find(button => button.dataset.filter === filterParam);
-    if (target) target.click();
+    if (target) {
+      filterButtons.forEach(item => item.classList.remove('active'));
+      target.classList.add('active');
+      applyCatalogFilter();
+    }
   }
 
   const lightbox = document.getElementById('lightbox');
@@ -94,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const trigger = event.target.closest('.js-lightbox');
     if (trigger && lightbox) {
+      event.preventDefault();
       lastFocus = trigger;
       resetLightboxZoom();
       if (lightboxImg) {
@@ -112,7 +122,17 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxBadge.style.display = badge ? 'inline-block' : 'none';
       }
       if (lightboxPrice) {
-        lightboxPrice.textContent = trigger.dataset.price || 'від виробника';
+        lightboxPrice.textContent = trigger.dataset.price || 'Ціна за прорахунком';
+      }
+      const specsTitle = document.getElementById('lightboxSpecsTitle');
+      if (specsTitle) {
+        specsTitle.textContent = trigger.dataset.specsTitle || 'Комплектація';
+      }
+      const lightboxNote = lightbox.querySelector('.lightbox-note');
+      if (lightboxNote) {
+        lightboxNote.textContent = trigger.dataset.specsTitle
+          ? 'Точна вартість гравіювання залежить від розмірів стели та складності роботи.'
+          : 'Точна вартість залежить від каменю, розмірів, оформлення та монтажу.';
       }
       if (lightboxSpecsList) {
         const rawSpecs = trigger.dataset.specs || '';

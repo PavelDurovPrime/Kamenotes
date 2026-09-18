@@ -10,7 +10,8 @@
       "img/reviews/komplex-gorbanuk.jpg",
       "img/reviews/komplex-gorbanuk-2.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "***myfa-8@ukr.net"
   },
   {
     "id": "review-2018-06-petro",
@@ -22,7 +23,8 @@
     "images": [
       "img/reviews/client-monuments.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "leto20007@bk.ru"
   },
   {
     "id": "review-2018-04-roman",
@@ -32,7 +34,8 @@
     "rating": 5,
     "text": "Вітаю, Юрію! Пам'ятники отримав. Хочу подякувати вам і художнику. Велике спасибі, роботу виконано ідеально. Бажаю вашій компанії процвітання.",
     "images": [],
-    "published": true
+    "published": true,
+    "email": "romodessbes0263@ukr.net"
   },
   {
     "id": "review-2017-10-ludmyla-filina",
@@ -45,7 +48,8 @@
       "img/reviews/filin-stela-odessa.jpg",
       "img/reviews/filin-stela2-odessa.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "olmasom@ukr.net"
   },
   {
     "id": "review-2017-08-viktoriia",
@@ -57,7 +61,8 @@
     "images": [
       "img/reviews/gabbro-leznik-monument.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "viktoriyamos.k@gmail.com"
   },
   {
     "id": "review-2017-07-oksana",
@@ -71,7 +76,8 @@
       "img/reviews/gumenuk-monument-2.jpg",
       "img/reviews/gumenuk-monument-3.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "ogumenyuk2007@ukr.net"
   },
   {
     "id": "review-2017-04-oleksandr",
@@ -81,7 +87,8 @@
     "rating": 5,
     "text": "Дуже вдячні компанії KAMENOTES і людям, які там працюють. Роботу виконано дуже якісно, враження від співпраці лише позитивні.",
     "images": [],
-    "published": true
+    "published": true,
+    "email": "a-green@ukr.net"
   },
   {
     "id": "review-2015-03-nadiia",
@@ -93,7 +100,8 @@
     "images": [
       "img/reviews/komplex-v-pich-17.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "nakoniechnaia77@mail.ru"
   },
   {
     "id": "review-2014-08-vasyl",
@@ -105,7 +113,8 @@
     "images": [
       "img/reviews/phoca_thumb_l_NR-159.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": ""
   },
   {
     "id": "review-2014-06-alla",
@@ -118,7 +127,8 @@
       "img/reviews/samchuk_komplex-02.jpg",
       "img/reviews/samchuk_komplex-06.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "Pshonka_81@mail.ru"
   },
   {
     "id": "review-2014-05-andrii-mykolaiv",
@@ -130,7 +140,8 @@
     "images": [
       "img/reviews/phoca_thumb_l_NR-151.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "office@akva-art.com.ua"
   },
   {
     "id": "review-2014-04-iryna",
@@ -142,7 +153,8 @@
     "images": [
       "img/reviews/phoca_thumb_l_NR-179.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "veria@ukr.net"
   },
   {
     "id": "review-2014-03-andrii",
@@ -154,7 +166,8 @@
     "images": [
       "img/reviews/wave-monument.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "andry_sm48@mail.ru"
   },
   {
     "id": "review-2013-11-anna",
@@ -166,7 +179,8 @@
     "images": [
       "img/reviews/phoca_thumb_l_NR-165.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "calatik@bigmir.net"
   },
   {
     "id": "review-2013-10-olena",
@@ -179,7 +193,8 @@
       "img/reviews/monument_review-01.jpg",
       "img/reviews/monument_review-02.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "anton_bakanov_85@mail.ru"
   },
   {
     "id": "review-2013-07-olena-lichman",
@@ -191,7 +206,8 @@
     "images": [
       "img/reviews/phoca_thumb_l_NR-142.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "Lilu86@ukr.net"
   },
   {
     "id": "review-2013-07-dmytro",
@@ -203,7 +219,8 @@
     "images": [
       "img/reviews/phoca_thumb_l_NR-143.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "Diflex@ukr.net"
   },
   {
     "id": "review-2012-09-viktor",
@@ -215,7 +232,8 @@
     "images": [
       "img/reviews/selo_monument-21.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "Taduk_84@ukr.net"
   },
   {
     "id": "review-2012-09-tetiana",
@@ -227,6 +245,7 @@
     "images": [
       "img/reviews/new-pam-03.jpg"
     ],
-    "published": true
+    "published": true,
+    "email": "tetianagvt@ukr.net"
   }
 ]

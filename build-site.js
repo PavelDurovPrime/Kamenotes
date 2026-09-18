@@ -5,6 +5,7 @@ const ROOT_DIR = __dirname;
 const SITE_DIR = path.join(ROOT_DIR, 'site');
 const PRODUCTS_FILE = path.join(SITE_DIR, 'data', 'products.json');
 const REVIEWS_FILE = path.join(SITE_DIR, 'data', 'reviews.json');
+const SERVICES_FILE = path.join(SITE_DIR, 'data', 'services.json');
 const CATALOG_HTML_FILE = path.join(SITE_DIR, 'catalog.html');
 const REVIEWS_HTML_FILE = path.join(SITE_DIR, 'vidguky.html');
 
@@ -27,7 +28,17 @@ const CATEGORIES = [
   { id: 'vijskovi', label: 'Військові ЗСУ', short: 'Військові ЗСУ' },
   { id: 'modeli', label: 'Авторські моделі цеху', short: 'Моделі цеху' },
   { id: 'khresti', label: 'Хрести та плити', short: 'Хрести' },
-  { id: 'ogorozhi', label: 'Огорожі та столи', short: 'Огорожі' }
+  { id: 'ogorozhi', label: 'Огорожі та столи', short: 'Огорожі' },
+  { id: 'dytiachi', label: "Дитячі пам'ятники", short: 'Дитячі' },
+  { id: 'nadgrobky', label: 'Надгробні плити', short: 'Надгробні' },
+  { id: 'stoly', label: 'Столи і лавки', short: 'Столи/лавки' },
+  { id: 'kolony', label: 'Колони', short: 'Колони' },
+  { id: 'pidvikonnya', label: 'Підвіконня', short: 'Підвіконня' },
+  { id: 'kuli', label: 'Гранітні кулі', short: 'Кулі' },
+  { id: 'lampadky', label: 'Лампадки і свічники', short: 'Лампадки' },
+  { id: 'vazy', label: 'Вази з граніту', short: 'Вази' },
+  { id: 'stovpchyky', label: 'Стовпчики', short: 'Стовпчики' },
+  { id: '3d-proekty', label: '3D-проекти', short: '3D-проекти' },
 ];
 
 function ensureDirs() {
@@ -41,6 +52,10 @@ function readProducts() {
 
 function readReviews() {
   return JSON.parse(fs.readFileSync(REVIEWS_FILE, 'utf8'));
+}
+
+function readServices() {
+  return JSON.parse(fs.readFileSync(SERVICES_FILE, 'utf8'));
 }
 
 function escapeHtml(value) {
@@ -124,7 +139,8 @@ function viberIcon() {
 }
 
 function navLink(active, id, href, label) {
-  const cls = active === id ? ' class="active" aria-current="page"' : '';
+  const isAct = active === id || (id === 'reviews' && (active === 'reviews' || active === 'works'));
+  const cls = isAct ? ' class="active" aria-current="page"' : '';
   return `<a href="${href}"${cls}>${label}</a>`;
 }
 
@@ -139,9 +155,9 @@ function renderHeader(active) {
       </a>
       <nav class="main-nav" aria-label="Основна навігація">
         ${navLink(active, 'catalog', 'catalog.html', 'Каталог')}
-        ${navLink(active, 'services', 'oformlennya.html', 'Послуги')}
+        ${navLink(active, 'services', 'poslugy.html', 'Послуги')}
         ${navLink(active, 'production', 'vyrobnytstvo.html', 'Виробництво')}
-        ${navLink(active, 'works', 'vidguky.html', 'Відгуки')}
+        ${navLink(active, 'reviews', 'vidguky.html', 'Відгуки')}
         ${navLink(active, 'contacts', 'kontakty.html', 'Контакти')}
       </nav>
       <div class="header-actions">
@@ -166,7 +182,7 @@ function renderFooter() {
         <p>KAMENOTES — виробництво гранітних пам’ятників у Коростишеві · з 1995 року</p>
       </div>
       <nav class="footer-navigation" aria-label="Навігація у футері">
-        <a href="catalog.html">Каталог</a><a href="vidguky.html">Відгуки</a><a href="vyrobnytstvo.html">Виробництво</a><a href="oformlennya.html">Художнє оформлення</a><a href="montazh.html">Монтаж</a><a href="kontakty.html">Контакти</a><a href="brukivka.html">Гранітна бруківка</a>
+        <a href="catalog.html">Каталог</a><a href="poslugy.html">Послуги</a><a href="vidguky.html">Відгуки</a><a href="vyrobnytstvo.html">Виробництво</a><a href="oformlennya.html">Художнє оформлення</a><a href="montazh.html">Монтаж</a><a href="kontakty.html">Контакти</a><a href="brukivka.html">Гранітна бруківка</a>
       </nav>
       <address class="footer-contact-compact">
         <a href="${MAP_LINK}" target="_blank" rel="noopener">м. Коростишів, вул. Партизанська-117<br>Коростишівський гранітний завод</a>
@@ -202,7 +218,7 @@ function renderFooter() {
             <strong id="lightboxPrice">Ціна за прорахунком</strong>
           </div>
           <div class="lightbox-specs-block">
-            <h3>Комплектація</h3>
+            <h3 id="lightboxSpecsTitle">Комплектація</h3>
             <ul id="lightboxSpecsList" class="lightbox-specs-list"></ul>
           </div>
           <div class="lightbox-actions-row">
@@ -222,15 +238,19 @@ function pageShell({ title, description, active, body }) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="img/suhorez_blade.svg">
+  <link rel="icon" type="image/svg+xml" href="img/favicon-k.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeAttr(description)}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/theme.css?v=20260915-graphite">
-  <link rel="stylesheet" href="css/style.css?v=20260915-graphite">
-  <link rel="stylesheet" href="css/design-system.css?v=20260915-graphite">
+  <link rel="stylesheet" href="css/style.css?v=20260918-stretched-lb5">
+  <link rel="stylesheet" href="css/design-system.css?v=20260918-stretched-lb5">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -332,7 +352,7 @@ function renderReviewCard(review, compact = false) {
 }
 
 function editorialPages() {
-  return require("./editorial-pages")({ pageShell, escapeHtml, escapeAttr, arrowIcon, arrowRightIcon, phoneIcon, viberIcon, VIBER_BASE, PHONE_MAIN, PHONE_MAIN_LABEL, readProducts, readReviews, productForPublic, formatPrice });
+  return require("./editorial-pages")({ pageShell, escapeHtml, escapeAttr, arrowIcon, arrowRightIcon, phoneIcon, viberIcon, VIBER_BASE, PHONE_MAIN, PHONE_MAIN_LABEL, readProducts, readReviews, readServices, productForPublic, formatPrice });
 }
 
 function renderIndex(products) {
@@ -341,6 +361,151 @@ function renderIndex(products) {
 function renderReviews(reviews) {
   return editorialPages().works(reviews);
 }
+
+function renderDecorCard(item) {
+  const catMap = {
+    obrazy: { name: 'Образи святих', synonyms: 'образ святого святих ісус христос божа матір богородиця ангел діва марія спаситель миколай obr' },
+    krestiki: { name: 'Хрестики', synonyms: 'хрест хрестик розп\'яття хрести православний католицький голгофа hr' },
+    cvety: { name: 'Квіти', synonyms: 'квіти квітка троянди троянда гвоздики тюльпани ромашки букет гілка кольорові колір gv hz tlp tr klr' },
+    svichky: { name: 'Свічки / Свічки з квітами', synonyms: 'свічка свічки вогонь полум\'я свічник пам\'ять свічки з квітами букет cb ks svechi' },
+    peyzazh: { name: 'Пейзажі, природа', synonyms: 'пейзаж природа дерева ліс річка озеро дорога сонце небо гори природа priroda' },
+    'na-kameni': { name: 'Зразки на камені', synonyms: 'зразок зразки на камені гравірування фото приклад готова робота плита kh' }
+  };
+  const catInfo = catMap[item.category] || { name: 'Художнє оформлення', synonyms: '' };
+  const title = item.title || `Малюнок ${item.id}`;
+  const sku = `Арт. ${item.id}`;
+  const badge = item.badge || '';
+  const priceLabel = 'Ціна за прорахунком';
+  const specs = item.specs || [
+    'Рекомендоване розміщення: на стелі пам’ятника',
+    'Спосіб нанесення: комп’ютерне гравіювання або ручна робота художника',
+    'Матеріал: натуральне габро або вставка в кольоровий граніт',
+    'Масштабування: підганяється під точні розміри вашого пам’ятника'
+  ];
+  const specsAttr = escapeAttr(specs.join('||'));
+  const viberDraft = encodeURIComponent(`Вітаю! Мене цікавить зображення на пам'ятник арт. ${item.id} («${title}», ${catInfo.name}). Підкажіть, будь ласка, вартість нанесення.`);
+  const viberHref = `${VIBER_BASE}&draft=${viberDraft}`;
+  const searchTerms = escapeAttr(`${item.id} ${title} ${catInfo.name} ${catInfo.synonyms} малюнок гравірування`.toLowerCase());
+
+  return `<article class="product-card ${escapeAttr(item.category)}" data-category="${escapeAttr(item.category)}" data-search="${searchTerms}">
+    <button class="product-media js-lightbox" type="button"
+      data-image="${escapeAttr(item.localImg)}"
+      data-title="${escapeAttr(title)}"
+      data-sku="${escapeAttr(sku)}"
+      data-category="${escapeAttr(catInfo.name)}"
+      data-product-id="${escapeAttr(item.id.toLowerCase())}"
+      data-badge="${escapeAttr(badge)}"
+      data-price="${escapeAttr(priceLabel)}"
+      data-specs="${specsAttr}"
+      data-specs-title="Параметри нанесення"
+      data-viber="${escapeAttr(viberHref)}"
+      aria-label="Збільшити та переглянути ${escapeAttr(item.id)}: ${escapeAttr(title)}">
+      <img src="${escapeAttr(item.localImg)}" alt="${escapeAttr(title)}" loading="lazy">
+    </button>
+    <div class="product-body">
+      <div class="product-topline">
+        <span>${escapeHtml(sku)}</span>
+        <span>${escapeHtml(catInfo.name)}</span>
+      </div>
+      <h3>${escapeHtml(title)}</h3>
+      <div class="product-price">
+        <strong>${escapeHtml(priceLabel)}</strong>
+        <button class="product-detail js-lightbox" type="button"
+          data-image="${escapeAttr(item.localImg)}"
+          data-title="${escapeAttr(title)}"
+          data-sku="${escapeAttr(sku)}"
+          data-category="${escapeAttr(catInfo.name)}"
+          data-product-id="${escapeAttr(item.id.toLowerCase())}"
+          data-badge="${escapeAttr(badge)}"
+          data-price="${escapeAttr(priceLabel)}"
+          data-specs="${specsAttr}"
+          data-specs-title="Параметри нанесення"
+          data-viber="${escapeAttr(viberHref)}"
+          aria-label="Переглянути деталі ${escapeAttr(item.id)}">${arrowIcon()}</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+function renderDecorCatalog(items) {
+  const counts = items.reduce((acc, item) => {
+    acc[item.category] = (acc[item.category] || 0) + 1;
+    acc.all += 1;
+    return acc;
+  }, { all: 0 });
+
+  const cats = [
+    { id: 'all', label: 'Усі зображення' },
+    { id: 'obrazy', label: 'Образи святих' },
+    { id: 'krestiki', label: 'Хрестики' },
+    { id: 'cvety', label: 'Квіти' },
+    { id: 'svichky', label: 'Свічки / Свічки з квітами' },
+    { id: 'peyzazh', label: 'Пейзажі, природа' },
+    { id: 'na-kameni', label: 'Зразки на камені' }
+  ];
+
+  const filters = cats.map(category => {
+    const count = counts[category.id] || 0;
+    if (category.id !== 'all' && count === 0) return '';
+    const active = category.id === 'all' ? ' active' : '';
+    return `<button class="filter-btn${active}" type="button" data-filter="${category.id}">${category.label}<span>${count}</span></button>`;
+  }).join('\n          ');
+
+  const body = `    <section class="page-hero catalog-hero">
+      <img class="hero-image" src="img/cover-1.jpg" alt="Художнє оформлення пам’ятників у Коростишеві">
+      <div class="hero-overlay"></div>
+      <div class="container page-hero-inner">
+        <p class="kicker hero-kicker">Каталог зображень для каменю</p>
+        <h1>Художнє оформлення</h1>
+        <p>349 зразків ритуальних зображень у 6 каталогах зі старого сайту KAMENOTES: образи святих, хрести, квіти, свічки зі свічками з квітами, пейзажі на тильний бік та реальні зразки гравіювання на камені.</p>
+      </div>
+    </section>
+
+    <section class="section catalog-section">
+      <div class="container">
+        <div class="catalog-toolbar">
+          <label class="search-field">
+            ${searchIcon()}
+            <span class="sr-only">Пошук за номером, назвою або темою</span>
+            <input id="catalogSearchInput" type="search" placeholder="Пошук: OBR-001, хрест, троянда, свічка, пейзаж">
+          </label>
+          <div class="catalog-note">
+            <strong id="catalogCount">${counts.all}</strong>
+            <span>позицій у каталозі</span>
+          </div>
+        </div>
+        <div class="catalog-filters" aria-label="Фільтр категорій зображень">
+          ${filters}
+        </div>
+        <p class="catalog-empty" id="catalogEmpty" hidden>За цим запитом нічого не знайдено.</p>
+        <div class="product-grid catalog-grid" id="catalogGrid">
+          ${items.map(item => renderDecorCard(item)).join('\n          ')}
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark-cta">
+      <div class="container cta-grid">
+        <div>
+          <p class="kicker">Індивідуальне художнє оформлення</p>
+          <h2>Маєте власне зображення або фотографію?</h2>
+          <p>Наш художник виконає ручний портрет або перенесе ваше унікальне зображення на граніт із 100% схожістю та високою деталізацією.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-viber" href="${VIBER_BASE}&draft=${encodeURIComponent("Вітаю! Маю власне зображення для гравірування на пам'ятнику.")}">${viberIcon()} <span>Надіслати у Viber</span></a>
+          <a class="btn btn-phone" href="tel:${PHONE_MAIN}">${phoneIcon()} <span>${PHONE_MAIN_LABEL}</span></a>
+        </div>
+      </div>
+    </section>`;
+
+  return pageShell({
+    title: 'Каталог картинок для гравірування на пам’ятниках | KAMENOTES',
+    description: 'Великий каталог ритуальних картинок для нанесення на пам’ятники: образи святих, хрестики, квіти, свічки, пейзажі на стелу. KAMENOTES Коростишів.',
+    active: 'services',
+    body
+  });
+}
+
 function renderCatalog(products) {
   const counts = products.reduce((acc, product) => {
     acc[product.category] = (acc[product.category] || 0) + 1;
@@ -424,6 +589,18 @@ function renderMounting() {
 
 function renderPaving() {
   return editorialPages().paving();
+}
+
+function renderServicesOverview(services) {
+  return editorialPages().servicesOverview(services);
+}
+
+function renderPortret(service) {
+  return editorialPages().portretPage(service);
+}
+
+function renderLitery(service) {
+  return editorialPages().literyPage(service);
 }
 
 function renderMapFrame() {
@@ -1892,12 +2069,13 @@ h3 {
 
 .lightbox-dialog {
   position: relative;
-  width: min(1120px, 100%);
-  max-height: calc(100svh - 40px);
+  width: min(1100px, 94vw);
+  height: min(680px, 86vh);
+  max-height: 86vh;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 430px);
+  grid-template-columns: minmax(0, 1.2fr) minmax(360px, 430px);
   background: var(--white);
-  border-radius: 12px;
+  border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(var(--ink-rgb), 0.35);
   border: 1px solid rgba(var(--white-rgb), 0.1);
@@ -1905,20 +2083,20 @@ h3 {
 
 .lightbox-media-col {
   position: relative;
-  background: var(--bg);
+  background: var(--surface);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
-  max-height: min(84svh, 740px);
+  min-height: 0;
+  height: 100%;
   border-right: 1px solid var(--line);
 }
 
 .lightbox-media-col img {
   width: 100%;
   height: 100%;
-  max-height: min(84svh, 740px);
+  max-height: 100%;
   object-fit: contain;
   padding: 20px;
 }
@@ -2440,6 +2618,8 @@ function renderMainJs() {
     });
 
     if (empty) empty.hidden = visible !== 0;
+    const countEl = document.getElementById('catalogCount') || document.querySelector('.catalog-note strong');
+    if (countEl) countEl.textContent = visible;
   }
 
   filterButtons.forEach(button => {
@@ -2455,10 +2635,17 @@ function renderMainJs() {
   }
 
   const urlParams = new URLSearchParams(window.location.search);
-  const filterParam = urlParams.get('filter') || urlParams.get('cat');
+  let filterParam = urlParams.get('filter') || urlParams.get('cat') || urlParams.get('category');
   if (filterParam) {
+    if (filterParam === 'svechi' || filterParam === 'svechi-cvety' || filterParam === 'kvity-svichky') filterParam = 'svichky';
+    if (filterParam === 'kvity-kolir') filterParam = 'cvety';
+    if (filterParam === 'hramy') filterParam = 'peyzazh';
     const target = filterButtons.find(button => button.dataset.filter === filterParam);
-    if (target) target.click();
+    if (target) {
+      filterButtons.forEach(item => item.classList.remove('active'));
+      target.classList.add('active');
+      applyCatalogFilter();
+    }
   }
 
   const lightbox = document.getElementById('lightbox');
@@ -2510,6 +2697,7 @@ function renderMainJs() {
     }
     const trigger = event.target.closest('.js-lightbox');
     if (trigger && lightbox) {
+      event.preventDefault();
       lastFocus = trigger;
       resetLightboxZoom();
       if (lightboxImg) {
@@ -2528,7 +2716,17 @@ function renderMainJs() {
         lightboxBadge.style.display = badge ? 'inline-block' : 'none';
       }
       if (lightboxPrice) {
-        lightboxPrice.textContent = trigger.dataset.price || 'від виробника';
+        lightboxPrice.textContent = trigger.dataset.price || 'Ціна за прорахунком';
+      }
+      const specsTitle = document.getElementById('lightboxSpecsTitle');
+      if (specsTitle) {
+        specsTitle.textContent = trigger.dataset.specsTitle || 'Комплектація';
+      }
+      const lightboxNote = lightbox.querySelector('.lightbox-note');
+      if (lightboxNote) {
+        lightboxNote.textContent = trigger.dataset.specsTitle
+          ? 'Точна вартість гравіювання залежить від розмірів стели та складності роботи.'
+          : 'Точна вартість залежить від каменю, розмірів, оформлення та монтажу.';
       }
       if (lightboxSpecsList) {
         const rawSpecs = trigger.dataset.specs || '';
@@ -2620,12 +2818,16 @@ function renderSitemap() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://kamenotes.com/</loc></url>
   <url><loc>https://kamenotes.com/catalog.html</loc></url>
+  <url><loc>https://kamenotes.com/poslugy.html</loc></url>
+  <url><loc>https://kamenotes.com/portret.html</loc></url>
+  <url><loc>https://kamenotes.com/litery.html</loc></url>
   <url><loc>https://kamenotes.com/vyrobnytstvo.html</loc></url>
   <url><loc>https://kamenotes.com/oformlennya.html</loc></url>
   <url><loc>https://kamenotes.com/montazh.html</loc></url>
   <url><loc>https://kamenotes.com/brukivka.html</loc></url>
   <url><loc>https://kamenotes.com/vidguky.html</loc></url>
   <url><loc>https://kamenotes.com/kontakty.html</loc></url>
+  <url><loc>https://kamenotes.com/decor-catalog.html</loc></url>
 </urlset>
 `;
 }
@@ -2633,6 +2835,10 @@ function renderSitemap() {
 function buildCatalogOnly() {
   ensureDirs();
   const products = readProducts();
+    
+  
+  const decorItems = JSON.parse(fs.readFileSync(path.join(SITE_DIR, 'data', 'decor.json'), 'utf8'));
+  fs.writeFileSync(path.join(SITE_DIR, 'decor-catalog.html'), renderDecorCatalog(decorItems), 'utf8');
   fs.writeFileSync(CATALOG_HTML_FILE, renderCatalog(products), 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'index.html'), renderIndex(products), 'utf8');
   return { count: products.length, file: CATALOG_HTML_FILE };
@@ -2646,6 +2852,31 @@ function buildReviewsOnly() {
   return { count: reviews.length, file: REVIEWS_HTML_FILE };
 }
 
+function buildServicesOnly() {
+  ensureDirs();
+  const services = readServices();
+  const ep = editorialPages();
+  const servicesHtml = ep.servicesOverview(services);
+  fs.writeFileSync(path.join(SITE_DIR, 'poslugy.html'), servicesHtml, 'utf8');
+  fs.writeFileSync(path.join(SITE_DIR, 'services.html'), servicesHtml, 'utf8');
+
+  const portret = services.find(s => s.id === 'portret') || services[0];
+  fs.writeFileSync(path.join(SITE_DIR, 'portret.html'), ep.portretPage(portret), 'utf8');
+
+  const litery = services.find(s => s.id === 'litery') || services[1];
+  fs.writeFileSync(path.join(SITE_DIR, 'litery.html'), ep.literyPage(litery), 'utf8');
+
+  const decor = services.find(s => s.id === 'khudozhne-oformlennya') || services[2];
+  fs.writeFileSync(path.join(SITE_DIR, 'oformlennya.html'), ep.decoration(decor), 'utf8');
+
+  const paving = services.find(s => s.id === 'brukivka') || services[3];
+  fs.writeFileSync(path.join(SITE_DIR, 'brukivka.html'), ep.paving(paving), 'utf8');
+
+  fs.writeFileSync(path.join(SITE_DIR, 'sitemap.xml'), renderSitemap(), 'utf8');
+  writeRedirects();
+  return { count: services.length };
+}
+
 function writeRedirects() {
   const redirects = {
     'contacts.html': 'kontakty.html',
@@ -2656,15 +2887,35 @@ function writeRedirects() {
     'ua/mounting.html': '../montazh.html',
     'ua/monuments.html': '../catalog.html',
     'ua/vidguky.html': '../vidguky.html',
+    'reviews.html': 'vidguky.html',
     'ua/services/bruschatka.html': '../../brukivka.html',
     'ua/services/329-bruschatka.html': '../../brukivka.html',
-    'ua/services/portret.html': '../../oformlennya.html',
+    'ua/services/portret.html': '../../portret.html',
     'ua/services/retush.html': '../../oformlennya.html',
-    'ua/services/litery.html': '../../oformlennya.html',
+    'ua/services/litery.html': '../../litery.html',
     'ua/services/khudozhne-oformlennya.html': '../../oformlennya.html',
     'ua/epitaph.html': '../oformlennya.html',
     'ua/epitaph-2.html': '../oformlennya.html',
-    'ua/bruschatka.html': '../brukivka.html'
+    'ua/bruschatka.html': '../brukivka.html',
+    'ua/services.html': '../poslugy.html',
+    'ua/services/index.html': '../../poslugy.html',
+    'services.html': 'poslugy.html',
+    'services/index.html': '../poslugy.html',
+    'services/portret.html': '../portret.html',
+    'services/litery.html': '../litery.html',
+    'services/khudozhne-oformlennya.html': '../oformlennya.html',
+    'services/329-bruschatka.html': '../brukivka.html',
+    'services/bruschatka.html': '../brukivka.html',
+    'services/retush.html': '../oformlennya.html',
+    'ua/catalog/category/78-hudozhka.html': '../../oformlennya.html',
+    'ua/catalog/category/79-svyati.html': '../../decor-catalog.html?category=obrazy',
+    'ua/catalog/category/80-hrestyky.html': '../../decor-catalog.html?category=krestiki',
+    'ua/catalog/category/81-kvity.html': '../../decor-catalog.html?category=cvety',
+    'ua/catalog/category/82-svichky.html': '../../decor-catalog.html?category=svichky',
+    'ua/catalog/category/83-peyzazh.html': '../../decor-catalog.html?category=peyzazh',
+    'ua/catalog/category/84-na-kameni.html': '../../decor-catalog.html?category=na-kameni',
+    'ua/catalog/category/85-kvity-svichky.html': '../../decor-catalog.html?category=svichky',
+    'ua/catalog/category/86-kvity-kolir.html': '../../decor-catalog.html?category=cvety'
   };
   for (const [file, target] of Object.entries(redirects)) {
     const destination = path.join(SITE_DIR, file);
@@ -2677,30 +2928,38 @@ function buildAll() {
   ensureDirs();
   const products = readProducts();
   const reviews = readReviews();
+  const services = readServices();
+  const ep = editorialPages();
+
   fs.writeFileSync(path.join(SITE_DIR, 'css', 'style.css'), renderCss(), 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'js', 'main.js'), renderMainJs(), 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'index.html'), renderIndex(products), 'utf8');
+  
+  const decorItems = JSON.parse(fs.readFileSync(path.join(SITE_DIR, 'data', 'decor.json'), 'utf8'));
+  fs.writeFileSync(path.join(SITE_DIR, 'decor-catalog.html'), renderDecorCatalog(decorItems), 'utf8');
   fs.writeFileSync(CATALOG_HTML_FILE, renderCatalog(products), 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'vyrobnytstvo.html'), renderProduction(), 'utf8');
-  fs.writeFileSync(path.join(SITE_DIR, 'oformlennya.html'), renderDecoration(), 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'montazh.html'), renderMounting(), 'utf8');
-  fs.writeFileSync(path.join(SITE_DIR, 'brukivka.html'), renderPaving(), 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'kontakty.html'), renderContacts(), 'utf8');
   fs.writeFileSync(REVIEWS_HTML_FILE, renderReviews(reviews), 'utf8');
-  fs.writeFileSync(path.join(SITE_DIR, 'sitemap.xml'), renderSitemap(), 'utf8');
-  writeRedirects();
-  return { count: products.length };
+  // Services pages
+  buildServicesOnly();
+
+  return { count: products.length, reviewsCount: reviews.length, servicesCount: services.length };
 }
 
 module.exports = {
   buildAll,
   buildCatalogOnly,
   buildReviewsOnly,
+  buildServicesOnly,
   renderProductCard,
   PRODUCTS_FILE,
   CATALOG_HTML_FILE,
   REVIEWS_FILE,
-  REVIEWS_HTML_FILE
+  REVIEWS_HTML_FILE,
+  SERVICES_FILE,
+  readServices
 };
 
 if (require.main === module) {

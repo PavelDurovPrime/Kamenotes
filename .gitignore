@@ -2,6 +2,9 @@
 PASS*
 *PASS*
 *.pass
+*password*
+*credentials*
+*secret*
 *.env
 *.env.*
 

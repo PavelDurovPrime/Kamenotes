@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Панель керування цінами та каталогом | KAMENOTES Коростишів</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon-k.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet">
@@ -631,6 +636,7 @@
   <main class="container">
     <div class="admin-tabs" role="tablist" aria-label="Розділи панелі">
       <button id="productsAdminTab" class="admin-tab active" type="button" onclick="showAdminPanel('products')">Каталог <span id="productsTabCount">0</span></button>
+      <button id="servicesAdminTab" class="admin-tab" type="button" onclick="showAdminPanel('services')">Послуги <span id="servicesTabCount">0</span></button>
       <button id="reviewsAdminTab" class="admin-tab" type="button" onclick="showAdminPanel('reviews')">Відгуки <span id="reviewsTabCount">0</span></button>
     </div>
 
@@ -734,6 +740,27 @@
       </div>
     </section>
 
+    <section id="servicesAdminPanel" class="admin-panel" hidden>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-title">Усього послуг</div><div class="stat-val" id="statServicesTotal">0</div></div>
+        <div class="stat-card"><div class="stat-title">Опубліковано</div><div class="stat-val" id="statServicesPublished">0</div></div>
+        <div class="stat-card"><div class="stat-title">З галереєю робіт</div><div class="stat-val" id="statServicesGallery">0</div></div>
+      </div>
+      <div class="toolbar">
+        <div><strong>Послуги майстерні зі старого сайту</strong><div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Керування окремими сторінками послуг, текстами, описами та фотогалереями.</div></div>
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="serviceSearchInput" class="search-input" placeholder="Пошук за назвою або описом послуги..." oninput="filterServices()">
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="products-table">
+          <thead><tr><th style="width: 70px;">Фото</th><th style="width: 230px;">Послуга та адреса</th><th>Опис та особливості</th><th style="width: 80px;">Порядок</th><th style="width: 120px;">Статус</th><th style="width: 170px; text-align: right;">Дії</th></tr></thead>
+          <tbody id="servicesTableBody"><tr><td colspan="6" style="text-align:center;padding:40px;color:var(--text-muted);">Завантаження послуг...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
   </main>
 
   <!-- МОДАЛЬНЕ ВІКНО ДОДАВАННЯ / РЕДАГУВАННЯ -->
@@ -823,6 +850,7 @@
         <div class="modal-body">
           <div class="form-row">
             <div class="form-group"><label class="form-label" for="reviewFormName">Ім'я автора *</label><input id="reviewFormName" class="form-input" required></div>
+            <div class="form-group"><label class="form-label" for="reviewFormEmail">Email клієнта</label><input id="reviewFormEmail" type="text" class="form-input" placeholder="client@example.com"></div>
             <div class="form-group"><label class="form-label" for="reviewFormDate">Дата *</label><input id="reviewFormDate" type="date" class="form-input" required></div>
           </div>
           <div class="form-row">
@@ -838,12 +866,74 @@
     </div>
   </div>
 
+  <div id="serviceModal" class="modal-backdrop">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 id="serviceModalTitle" class="modal-title">Додати послугу</h3>
+        <button class="modal-close-btn" type="button" onclick="closeServiceModal()" aria-label="Закрити">&times;</button>
+      </div>
+      <form id="serviceForm" onsubmit="handleServiceSubmit(event)">
+        <input type="hidden" id="serviceFormId">
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="serviceFormTitle">Назва послуги *</label>
+              <input id="serviceFormTitle" class="form-input" placeholder="Наприклад: Портрет у художника" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="serviceFormSlug">Slug (URL сторінки) *</label>
+              <input id="serviceFormSlug" class="form-input" placeholder="Наприклад: portret" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="serviceFormH1">Головний заголовок H1 на сторінці</label>
+              <input id="serviceFormH1" class="form-input" placeholder="Портрет у художника">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="serviceFormBadge">Мітка / Бейдж (опціонально)</label>
+              <input id="serviceFormBadge" class="form-input" placeholder="Ручна робота, Опт від 50 м²...">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="serviceFormOrder">Порядок у списках</label>
+              <input id="serviceFormOrder" type="number" class="form-input" min="1" step="1" value="1">
+            </div>
+            <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:10px;">
+              <label style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;cursor:pointer;">
+                <input id="serviceFormPublished" type="checkbox" checked> Показувати послугу на сайті
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="serviceFormShortDesc">Короткий опис для картки в огляді</label>
+            <textarea id="serviceFormShortDesc" class="form-textarea" rows="2" placeholder="Ручне нанесення портрета на граніт..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="serviceFormIntro">Вступний текст на сторінці</label>
+            <textarea id="serviceFormIntro" class="form-textarea" rows="3" placeholder="Детальний опис послуги..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="serviceFormCover">Шлях до головного фото (на диску)</label>
+            <input id="serviceFormCover" class="form-input" placeholder="img/services/services_hudozhnik_pamyatnikov.jpg">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="closeServiceModal()">Скасувати</button>
+          <button type="submit" id="serviceFormSubmit" class="btn-submit-modal">Зберегти та опублікувати</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- TOAST КОНТЕЙНЕР -->
   <div id="toastContainer" class="toast-container"></div>
 
   <script>
     let allProducts = [];
     let allReviews = [];
+    let allServices = [];
     let currentPanel = 'products';
     let currentCat = 'all';
     let uploadedBase64 = null;
@@ -877,23 +967,47 @@
       }
     }
 
+    async function loadServices() {
+      try {
+        const res = await fetch('/api/services');
+        if (!res.ok) throw new Error('Помилка завантаження');
+        allServices = await res.json();
+        document.getElementById('servicesTabCount').textContent = allServices.length;
+        document.getElementById('statServicesTotal').textContent = allServices.length;
+        document.getElementById('statServicesPublished').textContent = allServices.filter(s => s.published !== false).length;
+        document.getElementById('statServicesGallery').textContent = allServices.filter(s => (s.gallery || []).length > 0).length;
+        filterServices();
+      } catch (err) {
+        showToast('Не вдалося завантажити послуги: ' + err.message, 'error');
+      }
+    }
+
     function showAdminPanel(panel) {
       currentPanel = panel;
       document.getElementById('productsAdminPanel').hidden = panel !== 'products';
+      document.getElementById('servicesAdminPanel').hidden = panel !== 'services';
       document.getElementById('reviewsAdminPanel').hidden = panel !== 'reviews';
       document.getElementById('productsAdminTab').classList.toggle('active', panel === 'products');
+      document.getElementById('servicesAdminTab').classList.toggle('active', panel === 'services');
       document.getElementById('reviewsAdminTab').classList.toggle('active', panel === 'reviews');
-      document.getElementById('primaryAddButton').innerHTML = panel === 'products' ? '<span>＋ Додати пам\'ятник</span>' : '<span>＋ Додати відгук</span>';
+      if (panel === 'products') {
+        document.getElementById('primaryAddButton').innerHTML = '<span>＋ Додати пам\'ятник</span>';
+      } else if (panel === 'services') {
+        document.getElementById('primaryAddButton').innerHTML = '<span>＋ Додати послугу</span>';
+      } else {
+        document.getElementById('primaryAddButton').innerHTML = '<span>＋ Додати відгук</span>';
+      }
     }
 
     function openCreateForCurrentPanel() {
-      if (currentPanel === 'reviews') openAddReviewModal();
+      if (currentPanel === 'services') openAddServiceModal();
+      else if (currentPanel === 'reviews') openAddReviewModal();
       else openAddModal();
     }
 
     function filterReviews() {
       const q = document.getElementById('reviewSearchInput').value.toLowerCase().trim();
-      renderReviewsTable(allReviews.filter(review => !q || `${review.name} ${review.title} ${review.text}`.toLowerCase().includes(q)));
+      renderReviewsTable(allReviews.filter(review => !q || `${review.name} ${review.email || ''} ${review.title} ${review.text}`.toLowerCase().includes(q)));
     }
 
     function renderReviewsTable(reviews) {
@@ -904,7 +1018,7 @@
       }
       tbody.innerHTML = reviews.map(review => `<tr>
         <td>${escapeHtml(review.date)}</td>
-        <td><div class="review-copy"><strong>${escapeHtml(review.name)} · ${escapeHtml(review.title)}</strong>${escapeHtml(review.text)}</div></td>
+        <td><div class="review-copy"><strong>${escapeHtml(review.name)} · ${escapeHtml(review.title)}${review.email ? ' · <a href="mailto:' + escapeHtml(review.email) + '" style="font-weight:normal;color:#2563EB;text-decoration:none;">' + escapeHtml(review.email) + '</a>' : ''}</strong>${escapeHtml(review.text)}</div></td>
         <td><span class="review-photo-count">${(review.images || []).length} фото</span></td>
         <td><span class="review-status ${review.published !== false ? 'published' : 'hidden'}">${review.published !== false ? 'На сайті' : 'Приховано'}</span></td>
         <td class="actions-cell" style="text-align:right;"><button class="btn-action-edit" onclick="openEditReviewModal('${escapeHtml(review.id)}')">Редагувати</button><button class="btn-action-delete" onclick="deleteReview('${escapeHtml(review.id)}')">Видалити</button></td>
@@ -915,6 +1029,7 @@
       document.getElementById('reviewModalTitle').textContent = 'Додати відгук';
       document.getElementById('reviewFormId').value = '';
       document.getElementById('reviewFormName').value = '';
+      document.getElementById('reviewFormEmail').value = '';
       document.getElementById('reviewFormTitle').value = '';
       document.getElementById('reviewFormDate').value = new Date().toISOString().slice(0, 10);
       document.getElementById('reviewFormRating').value = '5';
@@ -930,6 +1045,7 @@
       document.getElementById('reviewModalTitle').textContent = `Редагування: ${review.name}`;
       document.getElementById('reviewFormId').value = review.id;
       document.getElementById('reviewFormName').value = review.name;
+      document.getElementById('reviewFormEmail').value = review.email || '';
       document.getElementById('reviewFormTitle').value = review.title;
       document.getElementById('reviewFormDate').value = review.date;
       document.getElementById('reviewFormRating').value = String(review.rating || 5);
@@ -948,6 +1064,7 @@
       const id = document.getElementById('reviewFormId').value;
       const payload = {
         name: document.getElementById('reviewFormName').value.trim(),
+        email: document.getElementById('reviewFormEmail').value.trim(),
         title: document.getElementById('reviewFormTitle').value.trim(),
         date: document.getElementById('reviewFormDate').value,
         rating: Number(document.getElementById('reviewFormRating').value),
@@ -980,6 +1097,133 @@
         if (!data.success) throw new Error(data.error || 'Помилка видалення');
         await loadReviews();
         showToast('Відгук видалено.', 'success');
+      } catch (err) {
+        showToast('Помилка: ' + err.message, 'error');
+      }
+    }
+
+    // ПОСЛУГИ
+    function filterServices() {
+      const q = document.getElementById('serviceSearchInput').value.toLowerCase().trim();
+      const filtered = allServices.filter(s => {
+        if (!q) return true;
+        const text = `${s.title} ${s.slug} ${s.shortDesc || ''} ${s.intro || ''}`.toLowerCase();
+        return text.includes(q);
+      });
+      renderServicesTable(filtered);
+    }
+
+    function renderServicesTable(services) {
+      const tbody = document.getElementById('servicesTableBody');
+      if (!services.length) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--text-muted);">Послуг не знайдено.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = services.map(s => {
+        const thumb = s.coverImage ? `<img src="${escapeHtml(s.coverImage)}" class="prod-thumb" alt="${escapeHtml(s.title)}" onclick="window.open('${escapeHtml(s.coverImage)}', '_blank')">` : '<div class="prod-thumb" style="display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:10px;">БЕЗ ФОТО</div>';
+        const pageUrl = s.url || `${s.slug}.html`;
+        const badgeHtml = s.badge ? `<span style="font-size:11px;background:#FEF3C7;color:#92400E;padding:2px 6px;border-radius:3px;margin-left:6px;">${escapeHtml(s.badge)}</span>` : '';
+        return `<tr>
+          <td>${thumb}</td>
+          <td>
+            <div class="prod-sku"><a href="${escapeHtml(pageUrl)}" target="_blank" style="color:inherit;text-decoration:none;">${escapeHtml(s.title)} ↗</a>${badgeHtml}</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">/${escapeHtml(pageUrl)}</div>
+          </td>
+          <td><div class="review-copy" style="max-width:440px;">${escapeHtml(s.shortDesc || s.intro || '—')}</div></td>
+          <td><span style="font-weight:700;color:var(--primary);">${escapeHtml(s.order || 0)}</span></td>
+          <td><span class="review-status ${s.published !== false ? 'published' : 'hidden'}">${s.published !== false ? 'На сайті' : 'Приховано'}</span></td>
+          <td class="actions-cell" style="text-align:right;">
+            <button class="btn-action-edit" onclick="openEditServiceModal('${escapeHtml(s.id || s.slug)}')">Редагувати</button>
+            <button class="btn-action-delete" onclick="deleteService('${escapeHtml(s.id || s.slug)}')">Видалити</button>
+          </td>
+        </tr>`;
+      }).join('');
+    }
+
+    function openAddServiceModal() {
+      document.getElementById('serviceModalTitle').textContent = 'Додати послугу';
+      document.getElementById('serviceFormId').value = '';
+      document.getElementById('serviceFormTitle').value = '';
+      document.getElementById('serviceFormSlug').value = '';
+      document.getElementById('serviceFormH1').value = '';
+      document.getElementById('serviceFormBadge').value = '';
+      document.getElementById('serviceFormOrder').value = allServices.length + 1;
+      document.getElementById('serviceFormPublished').checked = true;
+      document.getElementById('serviceFormShortDesc').value = '';
+      document.getElementById('serviceFormIntro').value = '';
+      document.getElementById('serviceFormCover').value = '';
+      document.getElementById('serviceModal').classList.add('open');
+    }
+
+    function openEditServiceModal(id) {
+      const s = allServices.find(item => item.id === id || item.slug === id);
+      if (!s) return;
+      document.getElementById('serviceModalTitle').textContent = `Редагування: ${s.title}`;
+      document.getElementById('serviceFormId').value = s.id || s.slug;
+      document.getElementById('serviceFormTitle').value = s.title || '';
+      document.getElementById('serviceFormSlug').value = s.slug || '';
+      document.getElementById('serviceFormH1').value = s.h1 || s.title || '';
+      document.getElementById('serviceFormBadge').value = s.badge || '';
+      document.getElementById('serviceFormOrder').value = s.order || 1;
+      document.getElementById('serviceFormPublished').checked = s.published !== false;
+      document.getElementById('serviceFormShortDesc').value = s.shortDesc || '';
+      document.getElementById('serviceFormIntro').value = s.intro || '';
+      document.getElementById('serviceFormCover').value = s.coverImage || '';
+      document.getElementById('serviceModal').classList.add('open');
+    }
+
+    function closeServiceModal() {
+      document.getElementById('serviceModal').classList.remove('open');
+    }
+
+    async function handleServiceSubmit(event) {
+      event.preventDefault();
+      const id = document.getElementById('serviceFormId').value;
+      const slug = document.getElementById('serviceFormSlug').value.trim().toLowerCase();
+      const payload = {
+        title: document.getElementById('serviceFormTitle').value.trim(),
+        slug: slug,
+        url: `${slug}.html`,
+        h1: document.getElementById('serviceFormH1').value.trim(),
+        badge: document.getElementById('serviceFormBadge').value.trim(),
+        order: Number(document.getElementById('serviceFormOrder').value) || 1,
+        published: document.getElementById('serviceFormPublished').checked,
+        shortDesc: document.getElementById('serviceFormShortDesc').value.trim(),
+        intro: document.getElementById('serviceFormIntro').value.trim(),
+        coverImage: document.getElementById('serviceFormCover').value.trim()
+      };
+
+      const button = document.getElementById('serviceFormSubmit');
+      button.disabled = true;
+      button.textContent = 'Збереження...';
+      try {
+        const res = await fetch(id ? `/api/services/${encodeURIComponent(id)}` : '/api/services', {
+          method: id ? 'PUT' : 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error || 'Помилка збереження');
+        closeServiceModal();
+        await loadServices();
+        showToast(id ? 'Послугу оновлено.' : 'Послугу додано.', 'success');
+      } catch (err) {
+        showToast('Помилка: ' + err.message, 'error');
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Зберегти та опублікувати';
+      }
+    }
+
+    async function deleteService(id) {
+      const s = allServices.find(item => item.id === id || item.slug === id);
+      if (!s || !confirm(`Видалити послугу "${s.title}"?`)) return;
+      try {
+        const res = await fetch(`/api/services/${encodeURIComponent(id)}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error || 'Помилка видалення');
+        await loadServices();
+        showToast('Послугу видалено.', 'success');
       } catch (err) {
         showToast('Помилка: ' + err.message, 'error');
       }
@@ -1273,6 +1517,7 @@
     // Запуск при відкритті сторінки
     loadProducts();
     loadReviews();
+    loadServices();
   </script>
 </body>
 </html>
