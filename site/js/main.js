@@ -1,28 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const filterButtons = [...document.querySelectorAll('.filter-btn')];
+  const filterButtons = [...document.querySelectorAll('button.filter-btn')];
   const searchInput = document.getElementById('catalogSearchInput');
   const cards = [...document.querySelectorAll('.product-card')];
   const empty = document.getElementById('catalogEmpty');
 
   function activeFilter() {
     const active = filterButtons.find(button => button.classList.contains('active'));
-    return active ? active.dataset.filter : 'all';
+    return active ? active.dataset.filter : (document.getElementById('catalogGrid')?.dataset.defaultFilter || 'all');
   }
 
   function applyCatalogFilter() {
     if (!cards.length) return;
     const filter = activeFilter();
+    filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === filter)));
     const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
     let visible = 0;
 
     cards.forEach(card => {
-      const matchesCategory = filter === 'all' || card.dataset.category === filter;
+      const matchesCategory = filter === 'all' || (filter === 'featured' ? (query ? true : card.dataset.featured === 'true') : card.dataset.category === filter);
       const matchesSearch = !query || (card.dataset.search || card.textContent.toLowerCase()).includes(query);
       const show = matchesCategory && matchesSearch;
       card.classList.toggle('hidden', !show);
       if (show) visible += 1;
     });
 
+    const intro = document.getElementById('catalogIntro');
+    if (intro) intro.hidden = filter !== 'featured' || Boolean(query);
     if (empty) empty.hidden = visible !== 0;
     const countEl = document.getElementById('catalogCount') || document.querySelector('.catalog-note strong');
     if (countEl) countEl.textContent = visible;
@@ -32,6 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', () => {
       filterButtons.forEach(item => item.classList.remove('active'));
       button.classList.add('active');
+      const nextUrl = new URL(window.location.href);
+      nextUrl.searchParams.delete('cat');
+      nextUrl.searchParams.delete('filter');
+      nextUrl.searchParams.set('category', button.dataset.filter);
+      history.replaceState(history.state, '', nextUrl);
       applyCatalogFilter();
     });
   });

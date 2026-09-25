@@ -22,7 +22,7 @@ const ROUTE_KIEV_LINK = 'https://www.google.com/maps/dir/?api=1&origin=%D0%9A%D0
 const ROUTE_ZT_LINK = 'https://www.google.com/maps/dir/?api=1&origin=%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80&destination=50.3281248%2C29.082698&travelmode=driving';
 
 const CATEGORIES = [
-  { id: 'all', label: 'Усі моделі', short: 'Усі моделі' },
+  { id: 'standard', label: 'Стандартні пам’ятники з цінами', short: 'Стандартні з цінами' },
   { id: 'odinarni', label: "Одинарні пам'ятники", short: 'Одинарні' },
   { id: 'podvijni', label: "Подвійні пам'ятники", short: 'Подвійні' },
   { id: 'vijskovi', label: 'Військові ЗСУ', short: 'Військові ЗСУ' },
@@ -39,6 +39,7 @@ const CATEGORIES = [
   { id: 'vazy', label: 'Вази з граніту', short: 'Вази' },
   { id: 'stovpchyky', label: 'Стовпчики', short: 'Стовпчики' },
   { id: '3d-proekty', label: '3D-проекти', short: '3D-проекти' },
+  { id: 'all', label: 'Усі моделі', short: 'Усі моделі' },
 ];
 
 function ensureDirs() {
@@ -77,6 +78,16 @@ function formatPrice(num) {
 
 function hasVerifiedPrice(product) {
   return Number.isFinite(Number(product.price)) && Number(product.price) > 0;
+}
+
+// Keep source categories intact for admin editing and product descriptions.
+function catalogCategory(product) {
+  return ['odinarni', 'podvijni'].includes(product.category) && hasVerifiedPrice(product)
+    ? 'standard' : product.category;
+}
+
+function messengerLinks() {
+  return `<a class="btn messenger-whatsapp" href="https://wa.me/380977157915" target="_blank" rel="noopener" aria-label="Написати у WhatsApp">${whatsappIcon()}<span>WhatsApp</span></a>`;
 }
 
 function categoryName(id) {
@@ -138,6 +149,10 @@ function viberIcon() {
   return '<img class="viber-img" src="img/viber-white.svg" alt="" aria-hidden="true">';
 }
 
+function whatsappIcon() {
+  return '<svg class="messenger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.3-4.5a8.5 8.5 0 1 1 15.7-4.4Z"/><path d="M8.6 8.1c.3-.3.6-.3.9 0l1 1.5c.2.3.2.6 0 .9l-.5.6a8.1 8.1 0 0 0 3 3l.6-.5c.3-.2.6-.2.9 0l1.5 1c.3.3.3.6 0 .9-.6.7-1.4 1-2.2.8a9.4 9.4 0 0 1-6.3-6.3c-.2-.8.1-1.6 1.1-1.9Z"/></svg>';
+}
+
 function navLink(active, id, href, label) {
   const isAct = active === id || (id === 'reviews' && (active === 'reviews' || active === 'works'));
   const cls = isAct ? ' class="active" aria-current="page"' : '';
@@ -154,6 +169,7 @@ function renderHeader(active) {
         </span>
       </a>
       <nav class="main-nav" aria-label="Основна навігація">
+        ${navLink(active, 'home', 'index.html', 'Головна')}
         ${navLink(active, 'catalog', 'catalog.html', 'Каталог')}
         ${navLink(active, 'services', 'poslugy.html', 'Послуги')}
         ${navLink(active, 'production', 'vyrobnytstvo.html', 'Виробництво')}
@@ -169,6 +185,9 @@ function renderHeader(active) {
           ${viberIcon()}
           <span>Viber</span>
         </a>
+        <a class="btn messenger-whatsapp header-whatsapp" href="https://wa.me/380977157915" aria-label="Написати у WhatsApp" target="_blank" rel="noopener">
+          ${whatsappIcon()}<span>WhatsApp</span>
+        </a>
       </div>
     </div>
   </header>`;
@@ -182,11 +201,12 @@ function renderFooter() {
         <p>KAMENOTES — виробництво гранітних пам’ятників у Коростишеві · з 1995 року</p>
       </div>
       <nav class="footer-navigation" aria-label="Навігація у футері">
-        <a href="catalog.html">Каталог</a><a href="poslugy.html">Послуги</a><a href="vidguky.html">Відгуки</a><a href="vyrobnytstvo.html">Виробництво</a><a href="oformlennya.html">Художнє оформлення</a><a href="montazh.html">Монтаж</a><a href="kontakty.html">Контакти</a><a href="brukivka.html">Гранітна бруківка</a>
+        <a href="index.html">Головна</a><a href="catalog.html">Каталог</a><a href="poslugy.html">Послуги</a><a href="vidguky.html">Відгуки</a><a href="vyrobnytstvo.html">Виробництво</a><a href="oformlennya.html">Художнє оформлення</a><a href="montazh.html">Встановлення пам’ятника</a><a href="kontakty.html">Контакти</a><a href="brukivka.html">Гранітна бруківка</a>
       </nav>
       <address class="footer-contact-compact">
         <a href="${MAP_LINK}" target="_blank" rel="noopener">м. Коростишів, вул. Партизанська-117<br>Коростишівський гранітний завод</a>
         <span><a href="tel:${PHONE_MAIN}">${PHONE_MAIN_LABEL}</a><a href="mailto:${EMAIL}">${EMAIL}</a></span>
+        <div class="messenger-links">${messengerLinks()}</div>
       </address>
     </div>
     <div class="container footer-bottom"><span>© 1995–2026 KAMENOTES</span><span>Виробляємо в Коростишеві · працюємо по Україні</span></div>
@@ -194,6 +214,7 @@ function renderFooter() {
   <div class="mobile-actions" aria-label="Швидкий зв'язок">
     <a class="mobile-action" href="tel:${PHONE_MAIN}" aria-label="Зателефонувати">${phoneIcon()}</a>
     <a class="mobile-action mobile-viber" href="${VIBER_BASE}" aria-label="Написати у Viber">${viberIcon()}</a>
+    <a class="mobile-action messenger-whatsapp" href="https://wa.me/380977157915" aria-label="Написати у WhatsApp" target="_blank" rel="noopener">${whatsappIcon()}</a>
   </div>
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox-backdrop" data-lightbox-close></div>
@@ -223,6 +244,7 @@ function renderFooter() {
           </div>
           <div class="lightbox-actions-row">
             <a id="lightboxViber" class="btn btn-viber lightbox-viber-btn" href="${VIBER_BASE}" target="_blank" rel="noopener">${viberIcon()}<span>Уточнити вартість у Viber</span></a>
+            <div class="messenger-links">${messengerLinks()}</div>
             <a class="lightbox-call-link" href="tel:${PHONE_MAIN}">${phoneIcon()}<span>${PHONE_MAIN_LABEL}</span></a>
           </div>
           <p class="lightbox-note">Точна вартість залежить від каменю, розмірів, оформлення та монтажу.</p>
@@ -249,8 +271,8 @@ function pageShell({ title, description, active, body }) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/theme.css?v=20260915-graphite">
-  <link rel="stylesheet" href="css/style.css?v=20260918-stretched-lb5">
-  <link rel="stylesheet" href="css/design-system.css?v=20260918-stretched-lb5">
+  <link rel="stylesheet" href="css/style.css?v=20260922-client">
+  <link rel="stylesheet" href="css/design-system.css?v=20260922-client">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -265,7 +287,7 @@ function pageShell({ title, description, active, body }) {
 ${body}
   </main>
   ${renderFooter()}
-  <script src="js/main.js?v=20260914-modern"></script>
+  <script src="js/main.js?v=20260922-client"></script>
 </body>
 </html>
 `;
@@ -281,7 +303,7 @@ function renderProductCard(product, options = {}) {
   const specsAttr = escapeAttr(specs.join('||'));
   const priceLabel = hasVerifiedPrice(item) ? `від ${formatPrice(item.price)} грн` : 'Ціна за прорахунком';
 
-  return `<article class="product-card ${escapeAttr(item.category)}" data-category="${escapeAttr(item.category)}" data-search="${escapeAttr(`${item.sku} ${item.title} ${specs.join(' ')}`.toLowerCase())}">
+  return `<article class="product-card ${escapeAttr(item.category)}" data-category="${escapeAttr(catalogCategory(item))}" data-search="${escapeAttr(`${item.sku} ${item.title} ${specs.join(' ')}`.toLowerCase())}">
     <button class="product-media js-lightbox" type="button"
       data-image="${escapeAttr(item.img)}"
       data-title="${escapeAttr(item.title)}"
@@ -352,7 +374,7 @@ function renderReviewCard(review, compact = false) {
 }
 
 function editorialPages() {
-  return require("./editorial-pages")({ pageShell, escapeHtml, escapeAttr, arrowIcon, arrowRightIcon, phoneIcon, viberIcon, VIBER_BASE, PHONE_MAIN, PHONE_MAIN_LABEL, readProducts, readReviews, readServices, productForPublic, formatPrice });
+  return require("./editorial-pages")({ pageShell, escapeHtml, escapeAttr, arrowIcon, arrowRightIcon, phoneIcon, viberIcon, messengerLinks, VIBER_BASE, PHONE_MAIN, PHONE_MAIN_LABEL, readProducts, readReviews, readServices, productForPublic, formatPrice });
 }
 
 function renderIndex(products) {
@@ -508,15 +530,18 @@ function renderDecorCatalog(items) {
 
 function renderCatalog(products) {
   const counts = products.reduce((acc, product) => {
-    acc[product.category] = (acc[product.category] || 0) + 1;
+    const category = catalogCategory(product);
+    acc[category] = (acc[category] || 0) + 1;
     acc.all += 1;
     return acc;
   }, { all: 0 });
 
+  const featuredIds = new Set(['odinarni', 'podvijni', 'vijskovi'].flatMap(category => products.filter(product => catalogCategory(product) === category).slice(0, 2).map(product => product.id)));
+
   const filters = CATEGORIES.map(category => {
     const count = counts[category.id] || 0;
     if (category.id !== 'all' && count === 0) return '';
-    const active = category.id === 'all' ? ' active' : '';
+    const active = '';
     return `<button class="filter-btn${active}" type="button" data-filter="${category.id}">${category.label}<span>${count}</span></button>`;
   }).join('\n          ');
 
@@ -526,7 +551,7 @@ function renderCatalog(products) {
       <div class="container page-hero-inner">
         <p class="kicker hero-kicker">Прямі ціни від виробника</p>
         <h1>Каталог гранітних пам'ятників</h1>
-        <p>Оберіть модель, перевірте комплектацію та надішліть артикул у Viber для точного прорахунку з оформленням, доставкою і монтажем.</p>
+        <p>Оберіть модель, перевірте комплектацію та надішліть артикул у зручний месенджер для точного прорахунку з оформленням, доставкою і монтажем.</p>
       </div>
     </section>
 
@@ -546,9 +571,10 @@ function renderCatalog(products) {
         <div class="catalog-filters" aria-label="Фільтр категорій">
           ${filters}
         </div>
+        <div id="catalogIntro" class="catalog-intro"><h2>Приклади з каталогу</h2><p>Оберіть розділ вище, щоб переглянути всі його моделі. Стандартні комплекти з цінами зібрано в окремому розділі.</p></div>
         <p class="catalog-empty" id="catalogEmpty" hidden>За цим запитом нічого не знайдено.</p>
-        <div class="product-grid catalog-grid" id="catalogGrid">
-          ${products.map(product => renderProductCard(product)).join('\n          ')}
+        <div class="product-grid catalog-grid" id="catalogGrid" data-default-filter="featured">
+          ${products.map(product => renderProductCard(product).replace('<article ', '<article data-featured="' + featuredIds.has(product.id) + '" ')).join('\n          ')}
         </div>
       </div>
     </section>
@@ -559,9 +585,11 @@ function renderCatalog(products) {
           <p class="kicker">Індивідуальне замовлення</p>
           <h2>Не знайшли точний варіант?</h2>
           <p>Виготовимо пам'ятник за ескізом, фото або кресленням. Підготуємо кошторис і погодимо 3D-візуалізацію перед запуском у роботу.</p>
+          <a class="text-link catalog-mounting-link" href="montazh.html">Як встановлюємо пам’ятники ${arrowRightIcon()}</a>
         </div>
         <div class="cta-actions">
-          <a class="btn btn-viber" href="${VIBER_BASE}&draft=${encodeURIComponent("Вітаю! Маю власний ескіз для прорахунку пам'ятника.")}">${viberIcon()} <span>Надіслати ескіз</span></a>
+          <a class="btn btn-viber" href="${VIBER_BASE}&draft=${encodeURIComponent("Вітаю! Маю власний ескіз для прорахунку пам'ятника.")}">${viberIcon()} <span>Надіслати ескіз у Viber</span></a>
+          ${messengerLinks()}
           <a class="btn btn-phone" href="tel:${PHONE_MAIN}">${phoneIcon()} <span>${PHONE_MAIN_LABEL}</span></a>
         </div>
       </div>
@@ -630,13 +658,14 @@ function renderContacts() {
       <div class="contacts-copy">
         <p class="kicker">KAMENOTES / Контакти</p>
         <address class="contacts-address">вул. Партизанська-117<span>Коростишівський гранітний завод</span></address>
-        <div class="contacts-main-phone"><span>Олександр / Юрій · Керівництво та виробництво</span><a href="tel:${PHONE_MAIN}">+38 (097) 715-79-15</a></div>
+        <div class="contacts-main-phone"><span>Юрій · Керівництво та виробництво</span><a href="tel:${PHONE_MAIN}">+38 (097) 715-79-15</a></div>
         <dl class="contacts-directory">
-          <div><dt>Відділ продажу</dt><dd><a href="tel:${PHONE_SALES}">+38 (097) 604-61-44</a></dd></div>
-          <div><dt>Цех і відвантаження</dt><dd><a href="tel:${PHONE_SHOP}">+38 (099) 931-45-20</a></dd></div>
+          <div class="contacts-alternate-phone"><dt>Дмитро</dt><dd><a href="tel:${PHONE_SALES}">+38 (097) 604-61-44</a></dd></div>
+          <div class="contacts-alternate-phone"><dt>Vodafone</dt><dd><a href="tel:${PHONE_SHOP}">+38 (099) 931-45-20</a></dd></div>
           <div><dt>Email</dt><dd><a href="mailto:${EMAIL}">${EMAIL}</a></dd></div>
         </dl>
-        <div class="contact-actions"><a class="btn btn-viber" href="${VIBER_BASE}">${viberIcon()} <span>Написати у Viber</span></a><a class="btn btn-dark" href="tel:${PHONE_MAIN}">${phoneIcon()} <span>Подзвонити</span></a></div>
+        <p class="contacts-fallback">Якщо Юрій поза зоною зв’язку, телефонуйте Дмитру або на номер Vodafone.</p>
+        <div class="contact-actions"><a class="btn btn-viber" href="${VIBER_BASE}">${viberIcon()} <span>Написати у Viber</span></a>${messengerLinks()}<a class="btn btn-dark" href="tel:${PHONE_MAIN}">${phoneIcon()} <span>Подзвонити</span></a></div>
         <p class="contacts-hours">Пн–Сб: 08:00–18:00. Неділя: за домовленістю.<br>Час візиту узгодьте за телефоном.</p>
       </div>
       <div class="contacts-map">
@@ -2593,30 +2622,33 @@ h3 {
 
 function renderMainJs() {
   return `document.addEventListener('DOMContentLoaded', () => {
-  const filterButtons = [...document.querySelectorAll('.filter-btn')];
+  const filterButtons = [...document.querySelectorAll('button.filter-btn')];
   const searchInput = document.getElementById('catalogSearchInput');
   const cards = [...document.querySelectorAll('.product-card')];
   const empty = document.getElementById('catalogEmpty');
 
   function activeFilter() {
     const active = filterButtons.find(button => button.classList.contains('active'));
-    return active ? active.dataset.filter : 'all';
+    return active ? active.dataset.filter : (document.getElementById('catalogGrid')?.dataset.defaultFilter || 'all');
   }
 
   function applyCatalogFilter() {
     if (!cards.length) return;
     const filter = activeFilter();
+    filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === filter)));
     const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
     let visible = 0;
 
     cards.forEach(card => {
-      const matchesCategory = filter === 'all' || card.dataset.category === filter;
+      const matchesCategory = filter === 'all' || (filter === 'featured' ? (query ? true : card.dataset.featured === 'true') : card.dataset.category === filter);
       const matchesSearch = !query || (card.dataset.search || card.textContent.toLowerCase()).includes(query);
       const show = matchesCategory && matchesSearch;
       card.classList.toggle('hidden', !show);
       if (show) visible += 1;
     });
 
+    const intro = document.getElementById('catalogIntro');
+    if (intro) intro.hidden = filter !== 'featured' || Boolean(query);
     if (empty) empty.hidden = visible !== 0;
     const countEl = document.getElementById('catalogCount') || document.querySelector('.catalog-note strong');
     if (countEl) countEl.textContent = visible;
@@ -2626,6 +2658,11 @@ function renderMainJs() {
     button.addEventListener('click', () => {
       filterButtons.forEach(item => item.classList.remove('active'));
       button.classList.add('active');
+      const nextUrl = new URL(window.location.href);
+      nextUrl.searchParams.delete('cat');
+      nextUrl.searchParams.delete('filter');
+      nextUrl.searchParams.set('category', button.dataset.filter);
+      history.replaceState(history.state, '', nextUrl);
       applyCatalogFilter();
     });
   });

@@ -800,6 +800,7 @@ html, body {
   margin: 0;
   max-width: 320px;
 }
+.ed-order-item .ed-link { margin-top: 18px; }
 .ed-contact { background: var(--surface); color: var(--ed-ink); padding-block: 64px; border-top: 1px solid var(--ed-line); }
 .ed-contact-inner { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 64px; }
 .ed-site .ed-contact h2 { color: var(--ed-ink); font-size: clamp(28px, 2.6vw, 38px); font-weight: 600; letter-spacing: -.03em; line-height: 1.18; }
@@ -1580,3 +1581,10 @@ html, body {
 @media (max-width: 560px) {
   .ed-decor-catalog-grid { grid-template-columns: 1fr; gap: 16px; }
 }
+
+/* Mounting photos keep the site's simple editorial grid and portrait framing. */
+.ed-mounting-gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.ed-mounting-gallery .ed-photo img { aspect-ratio: 3 / 4; object-fit: contain; background: var(--ed-tint); }
+.ed-mounting-gallery .ed-photo figcaption { font-size: 14px; }
+@media (max-width: 1050px) { .ed-mounting-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .ed-mounting-gallery { grid-template-columns: 1fr; gap: 28px; } }

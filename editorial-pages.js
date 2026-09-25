@@ -1,16 +1,16 @@
 // Public pages with a separate layout. Catalog, contacts and their shared assets stay intact.
 module.exports = function createEditorialPages(api) {
-  const { pageShell, escapeHtml: e, escapeAttr: a, arrowIcon: arrow, arrowRightIcon: arrowRight, phoneIcon, viberIcon, VIBER_BASE, PHONE_MAIN, PHONE_MAIN_LABEL } = api;
+  const { pageShell, escapeHtml: e, escapeAttr: a, arrowIcon: arrow, arrowRightIcon: arrowRight, phoneIcon, viberIcon, messengerLinks, VIBER_BASE, PHONE_MAIN, PHONE_MAIN_LABEL } = api;
   const naturalSizes = { 'img/kamenotes/services_bykvu-na-pamjatniki.jpg': [360, 240], 'img/kamenotes/services_hudozh-oformlenie.jpg': [324, 216], 'img/kamenotes/bryschatka.jpg': [360, 240], 'img/kamenotes/services_hudozhnik_pamyatnikov.jpg': [1488, 450] };
   const picture = (src, title, options = {}) => `<figure class="ed-photo ${options.className || ''}"><button type="button" class="js-lightbox" data-image="${a(src)}" data-title="${a(title)}" aria-label="Збільшити фото: ${a(title)}"><img src="${a(src)}" alt="${a(title)}" ${options.eager ? 'fetchpriority="high"' : 'loading="lazy"'} width="${options.width || naturalSizes[src]?.[0] || 1200}" height="${options.height || naturalSizes[src]?.[1] || 900}"></button>${options.caption === false ? '' : `<figcaption>${e(title)}</figcaption>`}</figure>`;
   const link = (href, text) => `<a class="ed-link" href="${a(href)}">${e(text)}${arrowRight()}</a>`;
   const button = (href, text, style = 'primary') => `<a class="ed-button ed-button-${style}" href="${a(href)}"><span>${e(text)}</span>${style === 'primary' ? arrowRight() : ''}</a>`;
   const viber = (label = 'Написати у Viber') => `<a class="ed-viber" href="${VIBER_BASE}">${viberIcon()}<span>${e(label)}</span></a>`;
-  const contact = (title = 'Обговоримо ваше замовлення', text = 'Надішліть фото або артикул пам’ятника, орієнтовні розміри та населений пункт для встановлення. Ми розрахуємо вартість.') => `<section class="ed-contact"><div class="ed-wrap ed-contact-inner"><div><h2>${title}</h2><p>${text}</p></div><div class="ed-contact-actions">${viber()}<a class="ed-contact-phone" href="tel:${PHONE_MAIN}">${phoneIcon ? phoneIcon() : ''}<span>${PHONE_MAIN_LABEL}</span></a></div></div></section>`;
+  const contact = (title = 'Обговоримо ваше замовлення', text = 'Надішліть фото або артикул пам’ятника, орієнтовні розміри та населений пункт для встановлення. Ми розрахуємо вартість.') => `<section class="ed-contact"><div class="ed-wrap ed-contact-inner"><div><h2>${title}</h2><p>${text}</p></div><div class="ed-contact-actions">${viber()}${messengerLinks()}<a class="ed-contact-phone" href="tel:${PHONE_MAIN}">${phoneIcon ? phoneIcon() : ''}<span>${PHONE_MAIN_LABEL}</span></a></div></div></section>`;
   const heading = (title, text, section = 'Майстерня KAMENOTES') => `<header class="ed-page-head ed-wrap">${section ? `<p class="ed-eyebrow">${section}</p>` : ''}<h1>${title}</h1>${text ? `<p class="ed-intro">${text}</p>` : ''}</header>`;
   const shell = (title, description, active, body, pageClass = '') => pageShell({ title: `${title} | KAMENOTES`, description, active, body })
     .replace('<body>', `<body class="ed-site ${pageClass}">`)
-    .replace('</head>', '<link rel="stylesheet" href="css/editorial.css?v=20260918-v8">\n</head>')
+    .replace('</head>', '<link rel="stylesheet" href="css/editorial.css?v=20260922-client">\n</head>')
     .replace('</body>', '<script src="js/editorial.js?v=20260918-v2"></script>\n<script type="module" src="js/motion-animations.js?v=20260918-v3"></script>\n</body>');
   const sectionHead = (title, href, label) => `<div class="ed-section-head"><h2>${title}</h2>${href ? link(href, label) : ''}</div>`;
   const ALL_SERVICES = [
@@ -118,6 +118,7 @@ module.exports = function createEditorialPages(api) {
           </div>
           <h3>3. Доставка та встановлення</h3>
           <p>Виготовляємо пам’ятник у Коростишеві, доставляємо та надійно монтуємо по всій Україні.</p>
+          ${link('montazh.html', 'Як відбувається монтаж')}
         </div>
       </div>
     </div>
@@ -315,7 +316,7 @@ module.exports = function createEditorialPages(api) {
 
   function mounting() {
     return shell('Доставка та встановлення пам’ятників', 'Монтаж пам’ятників KAMENOTES у Коростишеві та по Україні: підготовка місця, армований бетонний фундамент, цоколь та встановлення під ключ. Гарантія.', 'services', `
-      ${heading('Доставка та встановлення', 'Організуємо дбайливе перевезення виготовленого пам’ятника з Коростишева та надійний монтаж на кладовищі під ключ.')}
+      ${heading('Встановлення пам’ятника', 'Організуємо дбайливе перевезення виготовленого пам’ятника з Коростишева та надійний монтаж на кладовищі під ключ.')}
 
       <section class="ed-wrap ed-foundation-section">
         <div class="ed-foundation-card">
@@ -330,15 +331,18 @@ module.exports = function createEditorialPages(api) {
         </div>
       </section>
 
-      <!-- ВІДЦЕНТРОВАНИЙ БЛОК: ЗАВЕРШЕННЯ ВСТАНОВЛЕННЯ -->
-      <section class="ed-section ed-wrap">
-        <div class="ed-mount-finish-centered">
-          <h2>Завершення встановлення</h2>
-          <p>Фінішне розшивання всіх стиків водостійким еластичним герметиком, захисна обробка граніту, фінальне полірування та повне прибирання будівельного сміття з ділянки. Пам’ятник здається замовнику в бездоганному стані.</p>
-        </div>
-        <div class="ed-mount-finish-photos">
-          ${picture('img/mounting/montazh-pamyatnika-12.jpg', 'Укладання цоколя та надгробних плит')}
-          ${picture('img/mounting/montazh-pamyatnika-01.jpg', 'Підготовчі роботи на ділянці')}
+      <section class="ed-section ed-wrap" id="foto-montazhu">
+        ${sectionHead('Встановлення пам’ятника: фото процесу')}
+        <p class="ed-intro">Від підготовки місця та бетонування основи до монтажу гранітних деталей і готового результату. Кожен кадр показує окремий етап роботи.</p>
+        <div class="ed-gallery ed-mounting-gallery">
+          ${picture('img/mounting/montazh-pamyatnika-01.jpg', 'Підготовка основи та опалубки')}
+          ${picture('img/mounting/montazh-pamyatnika-03.jpg', 'Бетонування основи')}
+          ${picture('img/mounting/montazh-pamyatnika-05.jpg', 'Монтаж гранітного цоколя')}
+          ${picture('img/mounting/montazh-pamyatnika-09.jpg', 'Підготовка місця для пам’ятника')}
+          ${picture('img/mounting/montazh-pamyatnika-16.jpg', 'Укладання гранітних плит')}
+          ${picture('img/workshop/installation-process.webp', 'Підйом важких деталей під час монтажу')}
+          ${picture('img/mounting/montazh-pamyatnika-12.jpg', 'Зібраний цоколь')}
+          ${picture('img/mounting/montazh-pamyatnika-35.jpg', 'Готовий встановлений пам’ятник')}
         </div>
       </section>
 
@@ -539,7 +543,7 @@ module.exports = function createEditorialPages(api) {
 
       <section class="ed-section ed-material-section">
         <div class="ed-wrap">
-          ${sectionHead('Чому ручне гравіювання перевершує станок')}
+          ${sectionHead('Портрети та малюнки після гравіювання верстатом художник обов’язково допрацьовує вручну')}
           <div class="ed-information-columns">
             <article>
               <h3>5 переваг ручної роботи</h3>
@@ -553,6 +557,13 @@ module.exports = function createEditorialPages(api) {
               <p>На ручному портреті майстер виводить усе до найдрібніших деталей: півтіні, форму очей, зморшки та глибину погляду, яку не здатна передати автоматика станка.</p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="ed-section ed-wrap">
+        ${sectionHead('Фото процесу ручного доопрацювання')}
+        <div class="ed-gallery ed-gallery-three ed-process-gallery">
+          ${galleryHtml}
         </div>
       </section>
 
@@ -571,13 +582,16 @@ module.exports = function createEditorialPages(api) {
         </div>
       </section>
 
-      <section class="ed-section ed-wrap">
-        ${sectionHead('Фото процесу гравірування портретів художником вручну')}
-        <div class="ed-gallery ed-gallery-three ed-process-gallery">
-          ${galleryHtml}
-        </div>
+      <section class="ed-section ed-wrap" id="photo-finishes">
+        ${sectionHead('Фотографії у склі та на фотокераміці')}
+        <p class="ed-intro">Окрім гравіювання, пропонуємо фотографії у склі та на фотокераміці. Форму, розмір і спосіб кріплення підбираємо до пам’ятника та погоджуємо перед виготовленням.</p>
+        <div class="ed-gallery ed-gallery-three">${picture('img/workshop/photo-ceramic.webp', 'Кольорова фотографія на фотокераміці')}${picture('img/workshop/photo-glass.webp', 'Фотографія у склі: деталь виробу')}${picture('img/workshop/photo-installed.webp', 'Кольорове фото в оформленні пам’ятника')}</div>
       </section>
-
+      <section class="ed-section ed-wrap" id="color-portraits">
+        ${sectionHead('Кольорові портрети після гравіювання')}
+        <p class="ed-intro">Після нанесення чорно-білого портрета художниця вручну покриває його кольорами, опрацьовує риси обличчя, одяг та деталі композиції. Кольорове оформлення погоджується із замовником.</p>
+        <div class="ed-gallery ed-gallery-two">${picture('img/workshop/portrait-before-paint.webp', 'Портрет до нанесення кольорів')}${picture('img/workshop/portrait-after-paint.webp', 'Той самий портрет після ручного розпису')}${picture('img/workshop/portrait-before-color.webp', 'Підготовка гравійованого портрета до розпису')}${picture('img/workshop/portrait-after-color.webp', 'Завершений кольоровий портрет')}</div>
+      </section>
       <section class="ed-section ed-wrap">
         ${sectionHead('Інші послуги майстерні', 'poslugy.html', 'Всі послуги')}
         ${serviceNav('portret')}

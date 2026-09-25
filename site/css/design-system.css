@@ -1297,7 +1297,7 @@ h3,
   line-height: 1.65;
 }
 
-.footer-contact-compact span {
+.footer-contact-compact > span {
   display: flex;
   flex-wrap: wrap;
   gap: 0 22px;
@@ -1410,3 +1410,46 @@ h3,
   .mobile-actions { display: flex !important; left: 16px; right: auto; bottom: 16px; flex-direction: row; gap: 10px; }
   .mobile-action { width: 52px; height: 52px; border-radius: 50%; }
 }
+
+/* Client updates: clearer catalog labels and direct contact choices. */
+.catalog-filters .filter-btn { font-weight: 750; font-size: 15px; min-height: 48px; white-space: normal; text-align: left; }
+.contacts-directory .contacts-alternate-phone { flex-direction: column; gap: 8px; }
+.contacts-directory .contacts-alternate-phone a { font-size: clamp(24px, 2.5vw, 32px); font-weight: 600; white-space: nowrap; }
+.contacts-fallback { max-width: 46ch; line-height: 1.65; }
+.messenger-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.messenger-whatsapp { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #176b42 !important; color: #fff !important; }
+.messenger-whatsapp:hover { filter: brightness(1.12); }
+.messenger-icon { width: 20px; height: 20px; flex: 0 0 20px; }
+.mobile-action.messenger-whatsapp { border-color: transparent; }
+.contact-actions { flex-wrap: wrap; gap: 10px; }
+.ed-contact-actions .messenger-links { display: contents; }
+.ed-contact-actions .messenger-whatsapp { min-height: 52px; border-radius: 6px; font-size: 16px; font-weight: 600; text-decoration: none; padding: 14px 26px; }
+.catalog-intro { margin: 32px 0; max-width: 720px; }
+.catalog-intro h2 { font-size: clamp(26px, 3vw, 36px); margin-bottom: 12px; }
+.catalog-intro p { color: var(--muted); line-height: 1.65; }
+.catalog-mounting-link { margin-top: 24px; }
+
+/* Compact header actions share one size and align with the navigation. */
+.header-actions { gap: 8px; }
+.header-actions .header-viber,
+.header-actions .header-whatsapp { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 40px; width: 40px !important; min-width: 40px !important; height: 40px !important; min-height: 40px !important; padding: 0 !important; border-radius: 6px; box-shadow: none !important; }
+.header-actions .header-viber span,
+.header-actions .header-whatsapp span { display: none !important; }
+.header-actions .header-viber .viber-img,
+.header-actions .header-whatsapp .messenger-icon { width: 18px; height: 18px; }
+@media (max-width: 1120px) { .main-nav { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+  .header-grid { grid-template-rows: 64px 96px; height: 160px; min-height: 160px; }
+  .main-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, 48px); height: 96px; gap: 0 12px; }
+  .main-nav a { font-size: 13px; }
+}
+
+/* Footer contact methods read as links, consistent with the address and phone. */
+.site-footer .footer-contact-compact .messenger-links { margin-top: 4px; }
+.site-footer .footer-contact-compact .messenger-whatsapp { min-height: 36px; padding: 0; border: 0; background: transparent !important; box-shadow: none; border-radius: 0; color: var(--white) !important; font-size: 14px; font-weight: 500; justify-content: flex-start; }
+.site-footer .footer-contact-compact .messenger-whatsapp:hover { filter: none; opacity: .74; }
+.site-footer .footer-contact-compact .messenger-icon { width: 17px; height: 17px; flex-basis: 17px; }
+
+/* Match the contact buttons in product cards. */
+.lightbox-actions-row > .messenger-links { display: block; width: 100%; }
+.lightbox-actions-row > .messenger-links > .messenger-whatsapp { width: 100%; min-height: 48px; }

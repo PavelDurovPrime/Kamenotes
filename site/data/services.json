@@ -35,52 +35,24 @@
     },
     "gallery": [
       {
-        "src": "img/services/hudozhka-01.jpg",
-        "title": "Ручне гравіювання портрета на камені"
+        "src": "img/workshop/artist-at-work.webp",
+        "title": "Художниця за роботою над портретом"
       },
       {
-        "src": "img/services/hudozhka-02.jpg",
-        "title": "Портрет на пам'ятнику"
+        "src": "img/workshop/portrait-detail.webp",
+        "title": "Ручне опрацювання деталей обличчя"
       },
       {
-        "src": "img/services/hudozhka-03.jpg",
-        "title": "Художник вибиває фото на пам'ятнику"
+        "src": "img/workshop/engraving-process.webp",
+        "title": "Гравіювання портрета на граніті"
       },
       {
-        "src": "img/services/hudozhka-06.jpg",
-        "title": "Ручний портрет художника на граніті"
+        "src": "img/workshop/landscape-engraving.webp",
+        "title": "Ручне допрацювання пейзажу"
       },
       {
-        "src": "img/services/hudozhka-07.jpg",
-        "title": "Набивка фотографії на пам'ятник"
-      },
-      {
-        "src": "img/services/hudozhka-08.jpg",
-        "title": "Фото на пам'ятник"
-      },
-      {
-        "src": "img/services/hudozhka-09.jpg",
-        "title": "Перенесення портрета на камінь"
-      },
-      {
-        "src": "img/services/hudozhka-10.jpg",
-        "title": "Гравіювання на камені ручним інструментом"
-      },
-      {
-        "src": "img/services/hudozhka-11.jpg",
-        "title": "Художник використовує твердосплавні побідитові спиці"
-      },
-      {
-        "src": "img/services/hudozhka-12.jpg",
-        "title": "Художник наносить портрет на камінь"
-      },
-      {
-        "src": "img/services/hudozhka-13.jpg",
-        "title": "Подібність портрету на камені з вихідним фото"
-      },
-      {
-        "src": "img/services/hudozhka-14.jpg",
-        "title": "Гравірування написів на пам'ятнику"
+        "src": "img/workshop/artist-finishing.webp",
+        "title": "Завершальне опрацювання портрета"
       }
     ]
   },
