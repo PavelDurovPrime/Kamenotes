@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (intro) intro.hidden = filter !== 'featured' || Boolean(query);
     if (empty) empty.hidden = visible !== 0;
     const countEl = document.getElementById('catalogCount') || document.querySelector('.catalog-note strong');
-    if (countEl) countEl.textContent = visible;
+    if (countEl) countEl.textContent = filter === 'featured' && !query ? cards.length : visible;
   }
 
   filterButtons.forEach(button => {
