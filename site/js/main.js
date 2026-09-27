@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let visible = 0;
 
     cards.forEach(card => {
-      const matchesCategory = filter === 'all' || (filter === 'featured' ? (query ? true : card.dataset.featured === 'true') : card.dataset.category === filter);
+      const matchesCategory = filter === 'all' || (filter === 'featured' ? (query ? true : card.dataset.featured === 'true') : (card.dataset.category || '').split(' ').includes(filter));
       const matchesSearch = !query || (card.dataset.search || card.textContent.toLowerCase()).includes(query);
       const show = matchesCategory && matchesSearch;
       card.classList.toggle('hidden', !show);

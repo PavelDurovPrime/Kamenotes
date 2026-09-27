@@ -26,6 +26,7 @@ const CATEGORIES = [
   { id: 'odinarni', label: "Одинарні пам'ятники", short: 'Одинарні' },
   { id: 'podvijni', label: "Подвійні пам'ятники", short: 'Подвійні' },
   { id: 'vijskovi', label: 'Військові ЗСУ', short: 'Військові ЗСУ' },
+  { id: 'vip', label: 'VIP-пам’ятники', short: 'VIP' },
   { id: 'modeli', label: 'Авторські моделі цеху', short: 'Моделі цеху' },
   { id: 'khresti', label: 'Хрести та плити', short: 'Хрести' },
   { id: 'ogorozhi', label: 'Огорожі та столи', short: 'Огорожі' },
@@ -303,11 +304,14 @@ function renderProductCard(product, options = {}) {
   const specsAttr = escapeAttr(specs.join('||'));
   const priceLabel = hasVerifiedPrice(item) ? `від ${formatPrice(item.price)} грн` : 'Ціна за прорахунком';
 
-  return `<article class="product-card ${escapeAttr(item.category)}" data-category="${escapeAttr(catalogCategory(item))}" data-search="${escapeAttr(`${item.sku} ${item.title} ${specs.join(' ')}`.toLowerCase())}">
+  const aliases = Array.isArray(item.aliases) ? item.aliases : [];
+  const categories = [...new Set([catalogCategory(item), ...(item.alternateCategories || [])])];
+  const skuDisplay = item.sku + (aliases.length ? ' · також ' + aliases.join(', ') : '');
+  return `<article class="product-card ${escapeAttr(item.category)}" data-category="${escapeAttr(categories.join(' '))}" data-search="${escapeAttr(`${item.sku} ${aliases.join(' ')} ${item.title} ${specs.join(' ')}`.toLowerCase())}">
     <button class="product-media js-lightbox" type="button"
       data-image="${escapeAttr(item.img)}"
       data-title="${escapeAttr(item.title)}"
-      data-sku="Арт. ${escapeAttr(item.sku)}"
+      data-sku="Арт. ${escapeAttr(skuDisplay)}"
       data-category="${escapeAttr(categoryName(item.category))}"
       data-product-id="${escapeAttr(item.id)}"
       data-badge="${escapeAttr(item.badge || '')}"
@@ -319,7 +323,7 @@ function renderProductCard(product, options = {}) {
     </button>
     <div class="product-body">
       <div class="product-topline">
-        <span>Арт. ${escapeHtml(item.sku)}</span>
+        <span>Арт. ${escapeHtml(skuDisplay)}</span>
         <span>${escapeHtml(categoryName(item.category))}</span>
       </div>
       <h3>${escapeHtml(item.title)}</h3>
@@ -328,7 +332,7 @@ function renderProductCard(product, options = {}) {
         <button class="product-detail js-lightbox" type="button"
           data-image="${escapeAttr(item.img)}"
           data-title="${escapeAttr(item.title)}"
-          data-sku="Арт. ${escapeAttr(item.sku)}"
+          data-sku="Арт. ${escapeAttr(skuDisplay)}"
           data-category="${escapeAttr(categoryName(item.category))}"
           data-product-id="${escapeAttr(item.id)}"
           data-badge="${escapeAttr(item.badge || '')}"
@@ -409,6 +413,9 @@ function renderDecorCard(item) {
   const viberHref = `${VIBER_BASE}&draft=${viberDraft}`;
   const searchTerms = escapeAttr(`${item.id} ${title} ${catInfo.name} ${catInfo.synonyms} малюнок гравірування`.toLowerCase());
 
+  const aliases = Array.isArray(item.aliases) ? item.aliases : [];
+  const categories = [...new Set([catalogCategory(item), ...(item.alternateCategories || [])])];
+  const skuDisplay = item.sku + (aliases.length ? ' · також ' + aliases.join(', ') : '');
   return `<article class="product-card ${escapeAttr(item.category)}" data-category="${escapeAttr(item.category)}" data-search="${searchTerms}">
     <button class="product-media js-lightbox" type="button"
       data-image="${escapeAttr(item.localImg)}"
@@ -530,8 +537,8 @@ function renderDecorCatalog(items) {
 
 function renderCatalog(products) {
   const counts = products.reduce((acc, product) => {
-    const category = catalogCategory(product);
-    acc[category] = (acc[category] || 0) + 1;
+    const categories = [catalogCategory(product), ...(product.alternateCategories || [])];
+    categories.forEach(category => { acc[category] = (acc[category] || 0) + 1; });
     acc.all += 1;
     return acc;
   }, { all: 0 });
@@ -1283,12 +1290,15 @@ h3 {
 
 .product-topline {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
   color: var(--muted);
   font-size: 12px;
   font-weight: 800;
 }
+
+.product-topline span:first-child { min-width: 0; overflow-wrap: anywhere; }
 
 .product-topline span:last-child {
   text-align: right;
@@ -2640,7 +2650,7 @@ function renderMainJs() {
     let visible = 0;
 
     cards.forEach(card => {
-      const matchesCategory = filter === 'all' || (filter === 'featured' ? (query ? true : card.dataset.featured === 'true') : card.dataset.category === filter);
+      const matchesCategory = filter === 'all' || (filter === 'featured' ? (query ? true : card.dataset.featured === 'true') : (card.dataset.category || '').split(' ').includes(filter));
       const matchesSearch = !query || (card.dataset.search || card.textContent.toLowerCase()).includes(query);
       const show = matchesCategory && matchesSearch;
       card.classList.toggle('hidden', !show);

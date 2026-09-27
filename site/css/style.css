@@ -565,12 +565,15 @@ h3 {
 
 .product-topline {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
   color: var(--muted);
   font-size: 12px;
   font-weight: 800;
 }
+
+.product-topline span:first-child { min-width: 0; overflow-wrap: anywhere; }
 
 .product-topline span:last-child {
   text-align: right;

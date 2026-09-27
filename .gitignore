@@ -10,6 +10,8 @@ PASS*
 
 # Raw Viber photo imports (already processed in site/img/production)
 Photo/
+site/img/NewPhoto/
+site/img/mounting/*viber*
 
 # QA test artifacts, logs and screenshots
 qa/
@@ -27,3 +29,6 @@ Desktop.ini
 
 # Node dependencies
 node_modules/
+
+# Client source archives; optimized images are in site/img/monuments
+site/catalog/*.rar
