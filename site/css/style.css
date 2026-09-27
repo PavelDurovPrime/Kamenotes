@@ -907,6 +907,40 @@ h3 {
   font-weight: 700;
 }
 
+.catalog-pagination-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 36px;
+  padding: 10px 0 20px;
+}
+
+.btn-load-more {
+  cursor: pointer;
+  background: var(--graphite);
+  color: var(--white);
+  border: 1px solid var(--graphite);
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 999px;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.btn-load-more:hover {
+  transform: translateY(-2px);
+  background: #111;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.catalog-page-status {
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .editorial-masonry {
   columns: 3 280px;
   column-gap: 22px;

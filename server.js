@@ -388,6 +388,7 @@ const server = http.createServer(async (req, res) => {
 
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    if (path.basename(filePath) === 'admin.html') res.setHeader('X-Robots-Tag', 'noindex, nofollow');
 
     fs.readFile(filePath, (readErr, content) => {
       if (readErr) {

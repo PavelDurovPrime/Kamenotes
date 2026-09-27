@@ -42,21 +42,15 @@ const pages = {
         },
         geo: {
           '@type': 'GeoCoordinates',
-          latitude: 50.3167,
-          longitude: 29.0667,
+          latitude: 50.3281248,
+          longitude: 29.082698,
         },
         openingHoursSpecification: [
           {
             '@type': 'OpeningHoursSpecification',
-            dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'],
+            dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
             opens: '08:00',
             closes: '18:00',
-          },
-          {
-            '@type': 'OpeningHoursSpecification',
-            dayOfWeek: 'Saturday',
-            opens: '09:00',
-            closes: '15:00',
           },
         ],
         areaServed: { '@type': 'Country', name: 'Україна' },
@@ -75,11 +69,6 @@ const pages = {
         name: 'KAMENOTES',
         inLanguage: 'uk',
         publisher: { '@id': `${SITE_URL}/#organization` },
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: { '@type': 'EntryPoint', urlTemplate: `${SITE_URL}/catalog.html?q={search_term_string}` },
-          'query-input': 'required name=search_term_string',
-        },
       },
     ],
   },
@@ -88,7 +77,7 @@ const pages = {
     canonical: `${SITE_URL}/catalog.html`,
     og: {
       title: "Каталог гранітних пам'ятників | KAMENOTES",
-      description: "Понад 1960 моделей гранітних пам'ятників: одинарні, подвійні, військові, дитячі, VIP. Фільтр за ціною, розміром, матеріалом.",
+      description: "Моделі пам'ятників і виробів із граніту: одинарні, подвійні, військові, дитячі та VIP. Пошук за артикулом і назвою.",
       type: 'website',
       image: `${SITE_URL}/img/og-image.jpg`,
     },
@@ -99,7 +88,7 @@ const pages = {
         '@id': `${SITE_URL}/catalog.html`,
         name: "Каталог гранітних пам'ятників",
         url: `${SITE_URL}/catalog.html`,
-        description: "Повний каталог гранітних пам'ятників KAMENOTES — понад 1960 моделей різних типів.",
+        description: "Каталог KAMENOTES: пам'ятники й вироби із граніту різних типів.",
         publisher: { '@id': `${SITE_URL}/#organization` },
         inLanguage: 'uk',
       },
@@ -142,44 +131,6 @@ const pages = {
           { '@type': 'ListItem', position: 2, name: 'Послуги', item: `${SITE_URL}/poslugy.html` },
         ],
       },
-      {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: [
-          {
-            '@type': 'Question',
-            name: "Скільки коштує гранітний пам'ятник?",
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: "Вартість гранітного пам'ятника залежить від моделі, розміру, якості каменю та складності оформлення. Базові моделі починаються від 5 900 грн. Для точного розрахунку зверніться до нашого відділу продажу за телефоном 097 715 79 15.",
-            },
-          },
-          {
-            '@type': 'Question',
-            name: "Чи здійснюєте доставку і монтаж по всій Україні?",
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: "Так, KAMENOTES здійснює доставку та монтаж гранітних пам'ятників по всій Україні. Вартість і терміни доставки розраховуються індивідуально залежно від регіону.",
-            },
-          },
-          {
-            '@type': 'Question',
-            name: "Які терміни виготовлення пам'ятника?",
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: "Стандартний термін виготовлення пам'ятника складає від 14 до 30 днів залежно від складності замовлення. Терміновий виробіток можливий за додаткову оплату.",
-            },
-          },
-          {
-            '@type': 'Question',
-            name: "Чи можна приїхати подивитись на виробництво?",
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: "Так, ми запрошуємо відвідати наше виробництво у Коростишеві (вул. Партизанська, 117). При замовленні ми повернемо витрати на дорогу. Попередньо зателефонуйте: 097 715 79 15.",
-            },
-          },
-        ],
-      },
     ],
   },
 
@@ -209,21 +160,15 @@ const pages = {
         },
         geo: {
           '@type': 'GeoCoordinates',
-          latitude: 50.3167,
-          longitude: 29.0667,
+          latitude: 50.3281248,
+          longitude: 29.082698,
         },
         openingHoursSpecification: [
           {
             '@type': 'OpeningHoursSpecification',
-            dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'],
+            dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
             opens: '08:00',
             closes: '18:00',
-          },
-          {
-            '@type': 'OpeningHoursSpecification',
-            dayOfWeek: 'Saturday',
-            opens: '09:00',
-            closes: '15:00',
           },
         ],
         hasMap: 'https://maps.google.com/?q=Коростишів,+вул.+Партизанська+117',
@@ -511,40 +456,23 @@ function buildSeoBlock(config) {
 }
 
 // === Обробка файлів ===
-let processed = 0;
-let skipped = 0;
-
-for (const [filename, config] of Object.entries(pages)) {
-  const filePath = path.join(SITE_DIR, filename);
-
-  if (!fs.existsSync(filePath)) {
-    console.warn(`⚠️  Файл не знайдено: ${filename}`);
-    skipped++;
-    continue;
+function applySeo(filenames = Object.keys(pages)) {
+  for (const filename of filenames) {
+    const config = pages[filename];
+    if (!config) throw new Error('Немає SEO-конфігурації для ' + filename);
+    const filePath = path.join(SITE_DIR, filename);
+    if (!fs.existsSync(filePath)) throw new Error('Не знайдено ' + filePath);
+    let html = fs.readFileSync(filePath, 'utf8');
+    const block = '<!-- SEO-KAMENOTES -->\n' + buildSeoBlock(config) + '\n  <!-- /SEO-KAMENOTES -->';
+    if (html.includes('<!-- SEO-KAMENOTES -->')) {
+      html = html.replace(/<!-- SEO-KAMENOTES -->[\s\S]*?<!-- \/SEO-KAMENOTES -->/, block);
+    } else {
+      if (!html.includes('</head>')) throw new Error('Немає </head> у ' + filename);
+      html = html.replace('</head>', block + '\n</head>');
+    }
+    fs.writeFileSync(filePath, html, 'utf8');
   }
-
-  // Читаємо як Buffer і конвертуємо явно в UTF-8
-  const rawBuffer = fs.readFileSync(filePath);
-  let html = rawBuffer.toString('utf8');
-
-  // Перевіряємо чи вже є SEO-блок
-  if (html.includes('<!-- SEO-KAMENOTES -->')) {
-    // Замінюємо існуючий блок
-    html = html.replace(/<!-- SEO-KAMENOTES -->[\s\S]*?<!-- \/SEO-KAMENOTES -->/,
-      `<!-- SEO-KAMENOTES -->\n${buildSeoBlock(config)}\n  <!-- /SEO-KAMENOTES -->`);
-    console.log(`🔄 Оновлено: ${filename}`);
-  } else {
-    // Вставляємо перед </head>
-    const seoBlock = `<!-- SEO-KAMENOTES -->\n${buildSeoBlock(config)}\n  <!-- /SEO-KAMENOTES -->`;
-    html = html.replace('</head>', `${seoBlock}\n</head>`);
-    console.log(`✅ Додано: ${filename}`);
-  }
-
-  // Записуємо як Buffer UTF-8 (без BOM)
-  fs.writeFileSync(filePath, Buffer.from(html, 'utf8'));
-  processed++;
+  return filenames.length;
 }
-
-console.log(`\n=== Готово ===`);
-console.log(`Оброблено: ${processed} сторінок`);
-console.log(`Пропущено: ${skipped} сторінок`);
+module.exports = { applySeo, SITE_URL };
+if (require.main === module) console.log('SEO updated on ' + applySeo() + ' pages.');

@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const { applySeo } = require('./seo-inject');
+const { buildSeoPages, writeSitemap } = require('./seo-pages');
 
 const ROOT_DIR = __dirname;
 const SITE_DIR = path.join(ROOT_DIR, 'site');
@@ -326,7 +328,7 @@ function renderProductCard(product, options = {}) {
         <span>Арт. ${escapeHtml(skuDisplay)}</span>
         <span>${escapeHtml(categoryName(item.category))}</span>
       </div>
-      <h3>${escapeHtml(item.title)}</h3>
+      <h3><a href="products/${escapeAttr(item.id)}.html">${escapeHtml(item.title)}</a></h3>
       <div class="product-price">
         <strong>${escapeHtml(priceLabel)}</strong>
         <button class="product-detail js-lightbox" type="button"
@@ -543,14 +545,19 @@ function renderCatalog(products) {
     return acc;
   }, { all: 0 });
 
-  const featuredIds = new Set(['odinarni', 'podvijni', 'vijskovi'].flatMap(category => products.filter(product => catalogCategory(product) === category).slice(0, 2).map(product => product.id)));
+  const defaultCategory = 'standard';
 
   const filters = CATEGORIES.map(category => {
     const count = counts[category.id] || 0;
     if (category.id !== 'all' && count === 0) return '';
-    const active = '';
+    const active = category.id === defaultCategory ? ' active' : '';
     return `<button class="filter-btn${active}" type="button" data-filter="${category.id}">${category.label}<span>${count}</span></button>`;
-  }).join('\n          ');
+  }).filter(Boolean).join('\n          ');
+
+  const initialProducts = products.filter(product => {
+    const cats = [catalogCategory(product), ...(product.alternateCategories || [])];
+    return cats.includes(defaultCategory);
+  }).slice(0, 48);
 
   const body = `    <section class="page-hero catalog-hero">
       <img class="hero-image" src="img/cover-1.jpg" alt="Цех KAMENOTES у Коростишеві">
@@ -571,17 +578,20 @@ function renderCatalog(products) {
             <input id="catalogSearchInput" type="search" placeholder="Пошук: КМ-1, ВСК, хрест, огорожа">
           </label>
           <div class="catalog-note">
-            <strong>${counts.all}</strong>
-            <span>позицій у каталозі</span>
+            <strong id="catalogCount">${counts[defaultCategory] || counts.all}</strong>
+            <span id="catalogCountLabel">позицій у розділі</span>
           </div>
         </div>
         <div class="catalog-filters" aria-label="Фільтр категорій">
           ${filters}
         </div>
-        <div id="catalogIntro" class="catalog-intro"><h2>Приклади з каталогу</h2><p>Оберіть розділ вище, щоб переглянути всі його моделі. Стандартні комплекти з цінами зібрано в окремому розділі.</p></div>
         <p class="catalog-empty" id="catalogEmpty" hidden>За цим запитом нічого не знайдено.</p>
-        <div class="product-grid catalog-grid" id="catalogGrid" data-default-filter="featured">
-          ${products.map(product => renderProductCard(product).replace('<article ', '<article data-featured="' + featuredIds.has(product.id) + '" ')).join('\n          ')}
+        <div class="product-grid catalog-grid" id="catalogGrid" data-catalog-type="monuments" data-default-filter="${defaultCategory}">
+          ${initialProducts.map(product => renderProductCard(product)).join('\n          ')}
+        </div>
+        <div class="catalog-pagination-wrap" id="catalogPaginationWrap">
+          <button id="btnLoadMore" class="btn-load-more" type="button" style="display:none;">Показати ще пам'ятники</button>
+          <p class="catalog-page-status" id="catalogPageStatus"></p>
         </div>
       </div>
     </section>
@@ -603,8 +613,8 @@ function renderCatalog(products) {
     </section>`;
 
   return pageShell({
-    title: "Каталог гранітних пам'ятників з цінами | KAMENOTES Коростишів",
-    description: "Каталог пам'ятників KAMENOTES з цінами виробника: одинарні, подвійні, військові ЗСУ, хрести, огорожі та авторські моделі цеху.",
+    title: "Каталог гранітних пам'ятників | KAMENOTES Коростишів",
+    description: "Каталог KAMENOTES: моделі пам'ятників і виробів із граніту. Перегляньте фото та артикули; ціни стандартних комплектів указані окремо.",
     active: 'catalog',
     body
   });
@@ -664,6 +674,7 @@ function renderContacts() {
     <div class="container contacts-composition">
       <div class="contacts-copy">
         <p class="kicker">KAMENOTES / Контакти</p>
+        <h1>Контакти KAMENOTES</h1>
         <address class="contacts-address">вул. Партизанська-117<span>Коростишівський гранітний завод</span></address>
         <div class="contacts-main-phone"><span>Юрій · Керівництво та виробництво</span><a href="tel:${PHONE_MAIN}">+38 (097) 715-79-15</a></div>
         <dl class="contacts-directory">
@@ -1630,6 +1641,40 @@ h3 {
   border-radius: var(--radius);
   color: var(--muted);
   font-weight: 700;
+}
+
+.catalog-pagination-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 36px;
+  padding: 10px 0 20px;
+}
+
+.btn-load-more {
+  cursor: pointer;
+  background: var(--graphite);
+  color: var(--white);
+  border: 1px solid var(--graphite);
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 999px;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.btn-load-more:hover {
+  transform: translateY(-2px);
+  background: #111;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.catalog-page-status {
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .editorial-masonry {
@@ -2632,67 +2677,369 @@ h3 {
 
 function renderMainJs() {
   return `document.addEventListener('DOMContentLoaded', () => {
-  const filterButtons = [...document.querySelectorAll('button.filter-btn')];
-  const searchInput = document.getElementById('catalogSearchInput');
-  const cards = [...document.querySelectorAll('.product-card')];
-  const empty = document.getElementById('catalogEmpty');
-
-  function activeFilter() {
-    const active = filterButtons.find(button => button.classList.contains('active'));
-    return active ? active.dataset.filter : (document.getElementById('catalogGrid')?.dataset.defaultFilter || 'all');
+  const monumentsGrid = document.querySelector('#catalogGrid[data-catalog-type="monuments"]');
+  if (monumentsGrid) {
+    initMonumentsCatalog(monumentsGrid);
+  } else {
+    initStaticCatalog();
   }
 
-  function applyCatalogFilter() {
-    if (!cards.length) return;
-    const filter = activeFilter();
-    filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === filter)));
-    const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
-    let visible = 0;
+  function initMonumentsCatalog(grid) {
+    const filterButtons = [...document.querySelectorAll('.catalog-filters button.filter-btn')];
+    const searchInput = document.getElementById('catalogSearchInput');
+    const countEl = document.getElementById('catalogCount');
+    const countLabel = document.getElementById('catalogCountLabel');
+    const emptyEl = document.getElementById('catalogEmpty');
+    const loadMoreWrap = document.getElementById('catalogPaginationWrap');
+    const loadMoreBtn = document.getElementById('btnLoadMore');
+    const pageStatus = document.getElementById('catalogPageStatus');
 
-    cards.forEach(card => {
-      const matchesCategory = filter === 'all' || (filter === 'featured' ? (query ? true : card.dataset.featured === 'true') : (card.dataset.category || '').split(' ').includes(filter));
-      const matchesSearch = !query || (card.dataset.search || card.textContent.toLowerCase()).includes(query);
-      const show = matchesCategory && matchesSearch;
-      card.classList.toggle('hidden', !show);
-      if (show) visible += 1;
-    });
+    const PAGE_SIZE = 48;
+    let allProducts = null;
+    let currentFilter = grid.dataset.defaultFilter || 'standard';
+    let searchQuery = '';
+    let currentPage = 1;
+    let filteredList = [];
 
-    const intro = document.getElementById('catalogIntro');
-    if (intro) intro.hidden = filter !== 'featured' || Boolean(query);
-    if (empty) empty.hidden = visible !== 0;
-    const countEl = document.getElementById('catalogCount') || document.querySelector('.catalog-note strong');
-    if (countEl) countEl.textContent = filter === 'featured' && !query ? cards.length : visible;
-  }
+    const CAT_NAMES = {
+      standard: 'Стандартні з цінами',
+      odinarni: "Одинарні",
+      podvijni: "Подвійні",
+      vijskovi: "Військові ЗСУ",
+      vip: "VIP",
+      modeli: "Моделі цеху",
+      khresti: "Хрести",
+      ogorozhi: "Огорожі",
+      dytiachi: "Дитячі",
+      nadgrobky: "Надгробні",
+      stoly: "Столи/лавки",
+      kolony: "Колони",
+      pidvikonnya: "Підвіконня",
+      kuli: "Кулі",
+      lampadky: "Лампадки",
+      vazy: "Вази",
+      stovpchyky: "Стовпчики",
+      '3d-proekty': "3D-проекти",
+      all: "Усі моделі"
+    };
 
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      filterButtons.forEach(item => item.classList.remove('active'));
-      button.classList.add('active');
-      const nextUrl = new URL(window.location.href);
-      nextUrl.searchParams.delete('cat');
-      nextUrl.searchParams.delete('filter');
-      nextUrl.searchParams.set('category', button.dataset.filter);
-      history.replaceState(history.state, '', nextUrl);
-      applyCatalogFilter();
-    });
-  });
-
-  if (searchInput) {
-    searchInput.addEventListener('input', applyCatalogFilter);
-  }
-
-  const urlParams = new URLSearchParams(window.location.search);
-  let filterParam = urlParams.get('filter') || urlParams.get('cat') || urlParams.get('category');
-  if (filterParam) {
-    if (filterParam === 'svechi' || filterParam === 'svechi-cvety' || filterParam === 'kvity-svichky') filterParam = 'svichky';
-    if (filterParam === 'kvity-kolir') filterParam = 'cvety';
-    if (filterParam === 'hramy') filterParam = 'peyzazh';
-    const target = filterButtons.find(button => button.dataset.filter === filterParam);
-    if (target) {
-      filterButtons.forEach(item => item.classList.remove('active'));
-      target.classList.add('active');
-      applyCatalogFilter();
+    function getCatName(id) {
+      return CAT_NAMES[id] || "Пам'ятники";
     }
+
+    function getCatalogCategory(p) {
+      return (p.category === 'odinarni' || p.category === 'podvijni') && Number(p.price) > 0
+        ? 'standard'
+        : p.category;
+    }
+
+    function matchesCategory(p, cat) {
+      if (cat === 'all') return true;
+      const cats = [getCatalogCategory(p), ...(p.alternateCategories || [])];
+      return cats.includes(cat);
+    }
+
+    function matchesSearch(p, q) {
+      if (!q) return true;
+      const aliases = Array.isArray(p.aliases) ? p.aliases.join(' ') : '';
+      const specs = Array.isArray(p.specs) ? p.specs.join(' ') : '';
+      const hay = (p.sku + ' ' + aliases + ' ' + p.title + ' ' + specs).toLowerCase();
+      return hay.includes(q);
+    }
+
+    function formatPrice(num) {
+      return Number(num || 0).toLocaleString('uk-UA').replace(/\\u00A0/g, ' ');
+    }
+
+    function escapeHtml(str) {
+      return String(str ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function renderCard(item) {
+      const isPriceVerified = Number(item.price) > 0;
+      const priceLabel = isPriceVerified ? 'від ' + formatPrice(item.price) + ' грн' : 'Ціна за прорахунком';
+      const specs = (Array.isArray(item.specs) && item.specs.length)
+        ? item.specs
+        : ['Натуральне Букинське габро', 'Пряма різка у цеху Коростишева', 'Дзеркальне водяне полірування'];
+      const specsAttr = escapeHtml(specs.join('||'));
+      const aliases = Array.isArray(item.aliases) ? item.aliases : [];
+      const skuDisplay = item.sku + (aliases.length ? ' / також ' + aliases.join(', ') : '');
+      const pricePart = isPriceVerified ? ' за ціною від ' + formatPrice(item.price) + ' грн' : '';
+      const viberText = 'Вітаю! Мене цікавить пам\\\'ятник арт. ' + item.sku + ' ("' + item.title + '")' + pricePart + '. Прошу прорахувати повну вартість з оформленням і монтажем.';
+      const viberHref = 'viber://chat?number=%2B380977157915&draft=' + encodeURIComponent(viberText);
+      const catName = getCatName(item.category);
+      const categories = [...new Set([getCatalogCategory(item), ...(item.alternateCategories || [])])];
+      const searchStr = (item.sku + ' ' + aliases.join(' ') + ' ' + item.title + ' ' + specs.join(' ')).toLowerCase();
+
+      return '<article class="product-card ' + escapeHtml(item.category) + '" data-category="' + escapeHtml(categories.join(' ')) + '" data-search="' + escapeHtml(searchStr) + '">' +
+        '<button class="product-media js-lightbox" type="button"' +
+          ' data-image="' + escapeHtml(item.img) + '"' +
+          ' data-title="' + escapeHtml(item.title) + '"' +
+          ' data-sku="Арт. ' + escapeHtml(skuDisplay) + '"' +
+          ' data-category="' + escapeHtml(catName) + '"' +
+          ' data-product-id="' + escapeHtml(item.id) + '"' +
+          ' data-badge="' + escapeHtml(item.badge || '') + '"' +
+          ' data-price="' + escapeHtml(priceLabel) + '"' +
+          ' data-specs="' + specsAttr + '"' +
+          ' data-viber="' + escapeHtml(viberHref) + '"' +
+          ' aria-label="Збільшити та переглянути ' + escapeHtml(item.sku) + '">' +
+          '<img src="' + escapeHtml(item.img) + '" alt="' + escapeHtml(item.title) + '" loading="lazy">' +
+        '</button>' +
+        '<div class="product-body">' +
+          '<div class="product-topline">' +
+            '<span>Арт. ' + escapeHtml(skuDisplay) + '</span>' +
+            '<span>' + escapeHtml(catName) + '</span>' +
+          '</div>' +
+          '<h3><a href="products/' + escapeHtml(item.id) + '.html">' + escapeHtml(item.title) + '</a></h3>' +
+          '<div class="product-price">' +
+            '<strong>' + escapeHtml(priceLabel) + '</strong>' +
+            '<button class="product-detail js-lightbox" type="button"' +
+              ' data-image="' + escapeHtml(item.img) + '"' +
+              ' data-title="' + escapeHtml(item.title) + '"' +
+              ' data-sku="Арт. ' + escapeHtml(skuDisplay) + '"' +
+              ' data-category="' + escapeHtml(catName) + '"' +
+              ' data-product-id="' + escapeHtml(item.id) + '"' +
+              ' data-badge="' + escapeHtml(item.badge || '') + '"' +
+              ' data-price="' + escapeHtml(priceLabel) + '"' +
+              ' data-specs="' + specsAttr + '"' +
+              ' data-viber="' + escapeHtml(viberHref) + '"' +
+              ' aria-label="Переглянути деталі ' + escapeHtml(item.sku) + '">' +
+              '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>' +
+            '</button>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+    }
+
+    function updateView(isAppend = false) {
+      if (!allProducts) return;
+
+      if (!isAppend) {
+        filteredList = allProducts.filter(p => matchesCategory(p, currentFilter) && matchesSearch(p, searchQuery));
+      }
+
+      const start = isAppend ? (currentPage - 1) * PAGE_SIZE : 0;
+      const end = currentPage * PAGE_SIZE;
+      const batch = filteredList.slice(start, end);
+      const html = batch.map(renderCard).join('\\n');
+
+      if (isAppend) {
+        grid.insertAdjacentHTML('beforeend', html);
+      } else {
+        grid.innerHTML = html;
+      }
+
+      if (countEl) countEl.textContent = filteredList.length;
+      if (countLabel) countLabel.textContent = searchQuery ? 'знайдено за запитом' : 'позицій у розділі';
+      if (emptyEl) emptyEl.hidden = filteredList.length > 0;
+
+      if (loadMoreWrap && loadMoreBtn) {
+        const shownCount = Math.min(filteredList.length, end);
+        const remaining = filteredList.length - shownCount;
+        if (remaining > 0) {
+          loadMoreWrap.style.display = '';
+          loadMoreBtn.style.display = 'inline-block';
+          loadMoreBtn.textContent = 'Показати ще (' + Math.min(PAGE_SIZE, remaining) + ' із ' + remaining + ')';
+          if (pageStatus) pageStatus.textContent = 'Показано ' + shownCount + ' із ' + filteredList.length + ' моделей';
+        } else {
+          loadMoreBtn.style.display = 'none';
+          if (pageStatus) pageStatus.textContent = filteredList.length ? 'Показано всі ' + filteredList.length + ' моделей' : '';
+        }
+      }
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.filter;
+        if (cat === currentFilter && !searchQuery) return;
+        filterButtons.forEach(b => {
+          const isActive = b === btn;
+          b.classList.toggle('active', isActive);
+          b.setAttribute('aria-pressed', String(isActive));
+        });
+        currentFilter = cat;
+        currentPage = 1;
+
+        const nextUrl = new URL(window.location.href);
+        nextUrl.searchParams.delete('cat');
+        nextUrl.searchParams.delete('filter');
+        nextUrl.searchParams.set('category', cat);
+        history.replaceState({ category: cat }, '', nextUrl);
+
+        updateView(false);
+      });
+    });
+
+    let searchTimer = null;
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+          searchQuery = searchInput.value.trim().toLowerCase();
+          currentPage = 1;
+          const nextUrl = new URL(window.location.href);
+          if (searchQuery) {
+            nextUrl.searchParams.set('q', searchInput.value.trim());
+          } else {
+            nextUrl.searchParams.delete('q');
+          }
+          history.replaceState({ q: searchQuery }, '', nextUrl);
+          updateView(false);
+        }, 100);
+      });
+    }
+
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        currentPage++;
+        updateView(true);
+      });
+    }
+
+    fetch('data/products.json')
+      .then(response => {
+        if (!response.ok) throw new Error('catalog fetch failed');
+        return response.json();
+      })
+      .then(data => {
+        allProducts = data;
+        const urlParams = new URLSearchParams(window.location.search);
+        let catParam = urlParams.get('category') || urlParams.get('cat') || urlParams.get('filter');
+        if (catParam === 'svechi' || catParam === 'svechi-cvety' || catParam === 'kvity-svichky') catParam = 'svichky';
+        const qParam = urlParams.get('q');
+
+        if (catParam || qParam) {
+          if (catParam) {
+            currentFilter = catParam;
+            filterButtons.forEach(btn => {
+              const isActive = btn.dataset.filter === currentFilter;
+              btn.classList.toggle('active', isActive);
+              btn.setAttribute('aria-pressed', String(isActive));
+            });
+          }
+          if (qParam && searchInput) {
+            searchQuery = qParam.trim().toLowerCase();
+            searchInput.value = qParam;
+          }
+          currentPage = 1;
+          updateView(false);
+        } else {
+          filteredList = allProducts.filter(p => matchesCategory(p, currentFilter));
+          const remaining = filteredList.length - PAGE_SIZE;
+          if (loadMoreWrap && loadMoreBtn) {
+            if (remaining > 0) {
+              loadMoreWrap.style.display = '';
+              loadMoreBtn.style.display = 'inline-block';
+              loadMoreBtn.textContent = 'Показати ще (' + Math.min(PAGE_SIZE, remaining) + ' із ' + remaining + ')';
+              if (pageStatus) pageStatus.textContent = 'Показано ' + PAGE_SIZE + ' із ' + filteredList.length + ' моделей';
+            } else {
+              loadMoreBtn.style.display = 'none';
+              if (pageStatus) pageStatus.textContent = filteredList.length ? 'Показано всі ' + filteredList.length + ' моделей' : '';
+            }
+          }
+        }
+
+        const productParam = urlParams.get('product');
+        if (productParam) {
+          const targetTrigger = document.querySelector('.js-lightbox[data-product-id="' + CSS.escape(productParam) + '"]');
+          if (targetTrigger) {
+            targetTrigger.click();
+          } else {
+            const prod = allProducts.find(p => p.id === productParam);
+            if (prod) {
+              currentFilter = getCatalogCategory(prod);
+              filterButtons.forEach(btn => {
+                const isActive = btn.dataset.filter === currentFilter;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-pressed', String(isActive));
+              });
+              filteredList = allProducts.filter(p => matchesCategory(p, currentFilter));
+              const idx = filteredList.findIndex(p => p.id === productParam);
+              currentPage = idx >= 0 ? Math.ceil((idx + 1) / PAGE_SIZE) : 1;
+              updateView(false);
+              setTimeout(() => {
+                const t = document.querySelector('.js-lightbox[data-product-id="' + CSS.escape(productParam) + '"]');
+                if (t) t.click();
+              }, 50);
+            }
+          }
+        }
+      })
+      .catch(err => {
+        console.warn('Products preload failed', err);
+      });
+  }
+
+  function initStaticCatalog() {
+    const filterButtons = [...document.querySelectorAll('button.filter-btn')];
+    const searchInput = document.getElementById('catalogSearchInput');
+    const cards = [...document.querySelectorAll('.product-card')];
+    const empty = document.getElementById('catalogEmpty');
+    const countEl = document.getElementById('catalogCount');
+
+    if (!cards.length) return;
+
+    function activeFilter() {
+      const active = filterButtons.find(b => b.classList.contains('active'));
+      return active ? active.dataset.filter : 'all';
+    }
+
+    function applyStaticFilter() {
+      const filter = activeFilter();
+      filterButtons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === filter)));
+      const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+      let visible = 0;
+
+      cards.forEach(card => {
+        const matchesCategory = filter === 'all' || (card.dataset.category || '').split(' ').includes(filter);
+        const matchesSearch = !query || (card.dataset.search || card.textContent.toLowerCase()).includes(query);
+        const show = matchesCategory && matchesSearch;
+        card.classList.toggle('hidden', !show);
+        if (show) visible += 1;
+      });
+
+      if (empty) empty.hidden = visible !== 0;
+      if (countEl) countEl.textContent = visible;
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+        const nextUrl = new URL(window.location.href);
+        nextUrl.searchParams.delete('cat');
+        nextUrl.searchParams.delete('filter');
+        nextUrl.searchParams.set('category', button.dataset.filter);
+        history.replaceState(history.state, '', nextUrl);
+        applyStaticFilter();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', applyStaticFilter);
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    let filterParam = urlParams.get('filter') || urlParams.get('cat') || urlParams.get('category');
+    if (filterParam) {
+      if (filterParam === 'svechi' || filterParam === 'svechi-cvety' || filterParam === 'kvity-svichky') filterParam = 'svichky';
+      if (filterParam === 'kvity-kolir') filterParam = 'cvety';
+      if (filterParam === 'hramy') filterParam = 'peyzazh';
+      const target = filterButtons.find(b => b.dataset.filter === filterParam);
+      if (target) {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        target.classList.add('active');
+      }
+    }
+    if (urlParams.get('q') && searchInput) {
+      searchInput.value = urlParams.get('q');
+    }
+    applyStaticFilter();
   }
 
   const lightbox = document.getElementById('lightbox');
@@ -2842,12 +3189,14 @@ function renderMainJs() {
     }
   });
 
-  applyCatalogFilter();
-  const productParam = urlParams.get('product');
-  if (productParam) {
-    const productTrigger = document.querySelector('.js-lightbox[data-product-id="' + CSS.escape(productParam) + '"]');
-    if (productTrigger) productTrigger.click();
+  if (!monumentsGrid) {
+    const productParam = new URLSearchParams(window.location.search).get('product');
+    if (productParam) {
+      const productTrigger = document.querySelector('.js-lightbox[data-product-id="' + CSS.escape(productParam) + '"]');
+      if (productTrigger) productTrigger.click();
+    }
   }
+
   window.addEventListener('popstate', () => {
     const productId = new URL(window.location.href).searchParams.get('product');
     if (!productId) {
@@ -2860,25 +3209,6 @@ function renderMainJs() {
 });`;
 }
 
-function renderSitemap() {
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://kamenotes.com/</loc></url>
-  <url><loc>https://kamenotes.com/catalog.html</loc></url>
-  <url><loc>https://kamenotes.com/poslugy.html</loc></url>
-  <url><loc>https://kamenotes.com/portret.html</loc></url>
-  <url><loc>https://kamenotes.com/litery.html</loc></url>
-  <url><loc>https://kamenotes.com/vyrobnytstvo.html</loc></url>
-  <url><loc>https://kamenotes.com/oformlennya.html</loc></url>
-  <url><loc>https://kamenotes.com/montazh.html</loc></url>
-  <url><loc>https://kamenotes.com/brukivka.html</loc></url>
-  <url><loc>https://kamenotes.com/vidguky.html</loc></url>
-  <url><loc>https://kamenotes.com/kontakty.html</loc></url>
-  <url><loc>https://kamenotes.com/decor-catalog.html</loc></url>
-</urlset>
-`;
-}
-
 function buildCatalogOnly() {
   ensureDirs();
   const products = readProducts();
@@ -2888,6 +3218,8 @@ function buildCatalogOnly() {
   fs.writeFileSync(path.join(SITE_DIR, 'decor-catalog.html'), renderDecorCatalog(decorItems), 'utf8');
   fs.writeFileSync(CATALOG_HTML_FILE, renderCatalog(products), 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'index.html'), renderIndex(products), 'utf8');
+  buildSeoPages(SITE_DIR, products);
+  applySeo(['index.html', 'catalog.html', 'decor-catalog.html']);
   return { count: products.length, file: CATALOG_HTML_FILE };
 }
 
@@ -2896,6 +3228,7 @@ function buildReviewsOnly() {
   const reviews = readReviews();
   fs.writeFileSync(REVIEWS_HTML_FILE, renderReviews(reviews), 'utf8');
   fs.writeFileSync(path.join(SITE_DIR, 'index.html'), renderIndex(readProducts()), 'utf8');
+  applySeo(['index.html', 'vidguky.html']);
   return { count: reviews.length, file: REVIEWS_HTML_FILE };
 }
 
@@ -2919,8 +3252,9 @@ function buildServicesOnly() {
   const paving = services.find(s => s.id === 'brukivka') || services[3];
   fs.writeFileSync(path.join(SITE_DIR, 'brukivka.html'), ep.paving(paving), 'utf8');
 
-  fs.writeFileSync(path.join(SITE_DIR, 'sitemap.xml'), renderSitemap(), 'utf8');
+  writeSitemap(SITE_DIR, readProducts());
   writeRedirects();
+  applySeo(['index.html', 'poslugy.html', 'portret.html', 'litery.html', 'oformlennya.html', 'brukivka.html']);
   return { count: services.length };
 }
 
@@ -2967,7 +3301,7 @@ function writeRedirects() {
   for (const [file, target] of Object.entries(redirects)) {
     const destination = path.join(SITE_DIR, file);
     fs.mkdirSync(path.dirname(destination), { recursive: true });
-    fs.writeFileSync(destination, `<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0;url=${target}"><title>KAMENOTES</title></head><body><a href="${target}">Перейти на сайт KAMENOTES</a><script>location.replace(${JSON.stringify(target)} + location.search + location.hash);</script></body></html>`, 'utf8');
+    fs.writeFileSync(destination, `<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url=${target}"><title>KAMENOTES</title></head><body><a href="${target}">Перейти на сайт KAMENOTES</a><script>location.replace(${JSON.stringify(target)} + location.search + location.hash);</script></body></html>`, 'utf8');
   }
 }
 
@@ -2991,6 +3325,8 @@ function buildAll() {
   fs.writeFileSync(REVIEWS_HTML_FILE, renderReviews(reviews), 'utf8');
   // Services pages
   buildServicesOnly();
+  buildSeoPages(SITE_DIR, products);
+  applySeo();
 
   return { count: products.length, reviewsCount: reviews.length, servicesCount: services.length };
 }

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
   <title>Панель керування цінами та каталогом | KAMENOTES Коростишів</title>
   <link rel="icon" type="image/svg+xml" href="img/favicon-k.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
@@ -661,6 +662,10 @@
         <div class="stat-val" id="statVijskovi">0</div>
       </div>
       <div class="stat-card">
+        <div class="stat-title">VIP-пам’ятники</div>
+        <div class="stat-val" id="statVip">0</div>
+      </div>
+      <div class="stat-card">
         <div class="stat-title">Моделі цеху</div>
         <div class="stat-val" id="statModeli">0</div>
       </div>
@@ -681,9 +686,13 @@
         <button class="pill-btn" data-cat="odinarni" onclick="setCategoryFilter('odinarni', this)">Одинарні</button>
         <button class="pill-btn" data-cat="podvijni" onclick="setCategoryFilter('podvijni', this)">Подвійні</button>
         <button class="pill-btn" data-cat="vijskovi" onclick="setCategoryFilter('vijskovi', this)">Військові ЗСУ</button>
+        <button class="pill-btn" data-cat="vip" onclick="setCategoryFilter('vip', this)">VIP-пам’ятники</button>
         <button class="pill-btn" data-cat="modeli" onclick="setCategoryFilter('modeli', this)">Моделі цеху</button>
-        <button class="pill-btn" data-cat="khresti" onclick="setCategoryFilter('khresti', this)">Хрести та плити</button>
-        <button class="pill-btn" data-cat="ogorozhi" onclick="setCategoryFilter('ogorozhi', this)">Огорожі та столи</button>
+        <button class="pill-btn" data-cat="khresti" onclick="setCategoryFilter('khresti', this)">Хрести</button>
+        <button class="pill-btn" data-cat="dytiachi" onclick="setCategoryFilter('dytiachi', this)">Дитячі</button>
+        <button class="pill-btn" data-cat="nadgrobky" onclick="setCategoryFilter('nadgrobky', this)">Надгробки</button>
+        <button class="pill-btn" data-cat="ogorozhi" onclick="setCategoryFilter('ogorozhi', this)">Огорожі</button>
+        <button class="pill-btn" data-cat="3d-proekty" onclick="setCategoryFilter('3d-proekty', this)">3D-проєкти</button>
       </div>
 
       <div class="search-box">
@@ -785,9 +794,20 @@
                 <option value="odinarni">Одинарні пам'ятники</option>
                 <option value="podvijni">Подвійні пам'ятники</option>
                 <option value="vijskovi">Військові ЗСУ</option>
+                <option value="vip">VIP-пам’ятники</option>
                 <option value="modeli">Моделі цеху</option>
-                <option value="khresti">Хрести та надгробні плити</option>
-                <option value="ogorozhi">Огорожі, столи та лавки</option>
+                <option value="khresti">Хрести та плити</option>
+                <option value="dytiachi">Дитячі пам’ятники</option>
+                <option value="nadgrobky">Надгробні плити</option>
+                <option value="ogorozhi">Огорожі</option>
+                <option value="stoly">Столи і лавки</option>
+                <option value="kuli">Гранітні кулі</option>
+                <option value="vazy">Вази з граніту</option>
+                <option value="lampadky">Лампадки і свічники</option>
+                <option value="kolony">Колони</option>
+                <option value="pidvikonnya">Підвіконня</option>
+                <option value="stovpchyky">Стовпчики</option>
+                <option value="3d-proekty">3D-проєкти</option>
               </select>
             </div>
           </div>
@@ -1235,6 +1255,8 @@
       document.getElementById('statOdinarni').textContent = allProducts.filter(p => p.category === 'odinarni').length;
       document.getElementById('statPodvijni').textContent = allProducts.filter(p => p.category === 'podvijni').length;
       document.getElementById('statVijskovi').textContent = allProducts.filter(p => p.category === 'vijskovi').length;
+      const vipEl = document.getElementById('statVip');
+      if (vipEl) vipEl.textContent = allProducts.filter(p => p.category === 'vip').length;
       document.getElementById('statModeli').textContent = allProducts.filter(p => p.category === 'modeli').length;
       document.getElementById('statKhresti').textContent = allProducts.filter(p => p.category === 'khresti').length;
       document.getElementById('statOgorozhi').textContent = allProducts.filter(p => p.category === 'ogorozhi').length;
@@ -1272,9 +1294,20 @@
         odinarni: 'Одинарні',
         podvijni: 'Подвійні',
         vijskovi: 'Військові ЗСУ',
+        vip: 'VIP-пам’ятники',
         modeli: 'Моделі цеху',
         khresti: 'Хрести та плити',
-        ogorozhi: 'Огорожі та столи'
+        dytiachi: 'Дитячі',
+        nadgrobky: 'Надгробки',
+        ogorozhi: 'Огорожі',
+        stoly: 'Столи і лавки',
+        kuli: 'Кулі',
+        vazy: 'Вази',
+        lampadky: 'Лампадки',
+        kolony: 'Колони',
+        pidvikonnya: 'Підвіконня',
+        stovpchyky: 'Стовпчики',
+        '3d-proekty': '3D-проєкти'
       };
 
       tbody.innerHTML = products.map(p => {
