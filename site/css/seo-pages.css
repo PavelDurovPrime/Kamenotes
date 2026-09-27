@@ -41,3 +41,37 @@
   .seo-logo{grid-column:1;grid-row:1;font-size:21px}
 }
 @media(max-width:390px){.seo-logo{font-size:19px}.seo-call{font-size:12px}.seo-nav a{font-size:12px}}
+
+.seo-card-image{display:grid;place-items:center;padding:12px}
+.seo-card-image img{width:auto;height:auto;max-width:100%;max-height:100%}
+.seo-dimensions{font-weight:700;color:#244d61!important;line-height:1.45}
+.seo-detail-media{display:grid;place-items:center;align-content:center;gap:14px;background:#f1f2f3;padding:16px;min-height:340px}
+.seo-detail-image{width:auto;height:auto;max-width:100%;max-height:700px;background:transparent}
+.seo-diagram-link{font-size:14px;font-weight:700;color:#155977;text-decoration:underline}
+.seo-measurements{margin:24px 0;padding:18px 20px;background:#f1f7f9;border-left:3px solid #1686a8}
+.seo-measurements h2{margin:0 0 12px!important;font-size:18px!important}
+.seo-measurements dl{margin:0}
+.seo-measurements dl>div{display:flex;justify-content:space-between;gap:18px;padding:8px 0;border-top:1px solid #dbe6eb}
+.seo-measurements dt{font-weight:600}
+.seo-measurements dd{margin:0;white-space:nowrap;font-weight:800}
+
+.seo-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.seo-detail-grid>*{min-width:0}
+.seo-detail-media{grid-template-columns:minmax(0,1fr);min-width:0}
+.seo-detail-media .seo-detail-image{width:100%;max-width:850px}
+@media(max-width:850px){.seo-detail-grid{grid-template-columns:minmax(0,1fr)}}
+
+.seo-example{width:100%;margin-top:22px;padding:18px;background:#fff}
+.seo-example h2{margin:0 0 14px;font-size:18px}
+.seo-example a{display:inline-block;max-width:100%}
+.seo-example img{display:block;max-width:100%;max-height:360px;width:auto;height:auto;object-fit:contain}
+.seo-example p{margin:14px 0 0;color:#5f6870;font-size:14px}
+
+.seo-primary-caption{width:100%;margin:0;color:#4d616a;font-size:13px;line-height:1.5}
+.seo-photo-label{margin:0 0 4px!important;color:#476475;font-size:12px;font-weight:700}
+
+.seo-detail-media--example{grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;align-items:start;gap:14px}
+.seo-detail-media--example .seo-detail-image{width:auto;max-width:100%;max-height:450px}
+.seo-detail-media--example .seo-example{margin:0;padding:10px}
+.seo-detail-media--example .seo-example img{max-height:380px}
+@media(max-width:560px){.seo-detail-media--example{grid-template-columns:minmax(0,1fr)}.seo-detail-media--example .seo-example{width:100%}}

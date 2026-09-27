@@ -79,10 +79,14 @@ function shell({ title, description, canonical, image, schema, body }) {
   ];
   return head.join('\n');
 }
+function dimensionSummary(item) {
+  const d = item.overallDimensions;
+  return d ? '<p class="seo-dimensions">Висота з підставкою ' + d.height + ' см · ширина ' + d.width + ' см · довжина з квітником ' + d.length + ' см</p>' : '';
+}
 function card(item) {
   return '<article class="seo-card"><a class="seo-card-image" href="' + productUrl(item) + '"><img src="/' + escape(item.img) + '" alt="' + escape(item.title) + '" loading="lazy"></a>' +
     '<div class="seo-card-body"><p>Арт. ' + escape(item.sku) + '</p><h2><a href="' + productUrl(item) + '">' + escape(item.title) + '</a></h2>' +
-    '<strong>' + escape(priceText(item)) + '</strong></div></article>';
+    dimensionSummary(item) + '<strong>' + escape(priceText(item)) + '</strong></div></article>';
 }
 function categoryPage(category, items, page, pages) {
   const label = labels[category];
@@ -111,12 +115,17 @@ function productPage(item, related) {
   const title = item.title;
   const description = productDescription(item);
   const specs = (item.specs || []).map(spec => '<li>' + escape(spec) + '</li>').join('');
+  const diagram = item.dimensionDiagram || item.img;
+  const displayImage = item.exampleImg || diagram;
+  const d = item.overallDimensions;
+  const dimensions = d ? '<section class="seo-measurements" aria-label="Загальні розміри"><h2>Загальні габарити комплекту</h2><dl><div><dt>Висота з підставкою</dt><dd>' + d.height + ' см</dd></div><div><dt>Ширина</dt><dd>' + d.width + ' см</dd></div><div><dt>Довжина з квітником і підставкою</dt><dd>' + d.length + ' см</dd></div></dl></section>' : '';
+  const example = item.exampleImg ? '<section class="seo-example"><h2>Фото виготовленої моделі</h2><a href="/' + escape(item.exampleImg) + '" target="_blank" rel="noopener"><img src="/' + escape(item.exampleImg) + '" alt="Приклад виготовленого пам’ятника ' + escape(item.sku) + '" loading="lazy"></a><p>Приклад виконання з архіву KAMENOTES. Оформлення та комплектація можуть відрізнятися.</p></section>' : '';
   const question = encodeURIComponent('Вітаю! Прошу прорахувати ' + item.title + ', арт. ' + item.sku + '.');
   const aliases = (item.aliases || []).length ? '<p>Інші артикули: ' + escape(item.aliases.join(', ')) + '</p>' : '';
   const body = '<section class="seo-detail container"><nav class="seo-crumbs"><a href="/">Головна</a> / <a href="/catalog.html">Каталог</a> / <a href="' + categoryUrl(category) + '">' + escape(labels[category] || 'Моделі') + '</a></nav>' +
-    '<div class="seo-detail-grid"><div><img class="seo-detail-image" src="/' + escape(item.img) + '" alt="' + escape(item.title) + '" fetchpriority="high"></div>' +
+    '<div class="seo-detail-grid"><div' + (d || item.exampleImg ? ' class="seo-detail-media' + (item.exampleImg && !d ? ' seo-detail-media--example' : '') + '"' : '') + '><img class="seo-detail-image" src="/' + escape(diagram) + '" alt="' + escape(item.title) + (d ? ': схема розмірів' : '') + '" fetchpriority="high">' + (d ? '<a class="seo-diagram-link" href="/' + escape(diagram) + '" target="_blank" rel="noopener">Відкрити схему розмірів</a>' : '') + example + '</div>' +
     '<div><p class="kicker">Арт. ' + escape(item.sku) + '</p><h1>' + escape(title) + '</h1><p class="seo-price">' + escape(priceText(item)) + '</p>' +
-    aliases + '<p>Виготовляємо у Коростишеві. Точну вартість з оформленням, доставкою та монтажем повідомимо після узгодження комплектації.</p>' +
+    aliases + dimensions + '<p>Виготовляємо у Коростишеві. Точну вартість з оформленням, доставкою та монтажем повідомимо після узгодження комплектації.</p>' +
     (specs ? '<h2>Опис і параметри</h2><ul>' + specs + '</ul>' : '') +
     '<div class="seo-actions"><a class="btn btn-dark" href="tel:+380977157915">Подзвонити</a><a class="btn btn-viber" href="viber://chat?number=%2B380977157915&draft=' + question + '">Запитати у Viber</a></div></div></div>' +
     '<h2>Схожі моделі</h2><div class="seo-grid">' + related.map(card).join('') + '</div></section>';

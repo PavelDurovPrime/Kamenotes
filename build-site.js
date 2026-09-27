@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { applySeo } = require('./seo-inject');
 const { buildSeoPages, writeSitemap } = require('./seo-pages');
+const { buildDimensionDiagrams } = require('./build-dimensions');
 
 const ROOT_DIR = __dirname;
 const SITE_DIR = path.join(ROOT_DIR, 'site');
@@ -303,7 +304,15 @@ function renderProductCard(product, options = {}) {
     ? item.specs
     : ['Натуральне Букинське габро', 'Пряма різка у цеху Коростишева', 'Дзеркальне водне полірування фасок'];
 
-  const specsAttr = escapeAttr(specs.join('||'));
+  const dimensions = item.overallDimensions;
+  const dimensionSpecs = dimensions ? [
+    `Загальна висота з підставкою: ${dimensions.height} см`,
+    `Загальна ширина: ${dimensions.width} см`,
+    `Загальна довжина з квітником і підставкою: ${dimensions.length} см`
+  ] : [];
+  const specsAttr = escapeAttr([...dimensionSpecs, ...specs].join('||'));
+  const dimensionSummary = dimensions ? `<p class="product-dimensions">Висота ${dimensions.height} см · ширина ${dimensions.width} см · довжина ${dimensions.length} см</p>` : '';
+  const examplePreview = item.exampleImg ? '<button class="product-example js-lightbox" type="button" data-image="' + escapeAttr(item.exampleImg) + '" data-title="Приклад виконання ' + escapeAttr(item.sku) + '" data-meta="Фото зі старого сайту KAMENOTES" aria-label="Переглянути фото виготовленої моделі ' + escapeAttr(item.sku) + '"><img src="' + escapeAttr(item.exampleImg) + '" alt="" loading="lazy"><span>Фото виготовленої моделі</span></button>' : '';
   const priceLabel = hasVerifiedPrice(item) ? `від ${formatPrice(item.price)} грн` : 'Ціна за прорахунком';
 
   const aliases = Array.isArray(item.aliases) ? item.aliases : [];
@@ -311,7 +320,7 @@ function renderProductCard(product, options = {}) {
   const skuDisplay = item.sku + (aliases.length ? ' · також ' + aliases.join(', ') : '');
   return `<article class="product-card ${escapeAttr(item.category)}" data-category="${escapeAttr(categories.join(' '))}" data-search="${escapeAttr(`${item.sku} ${aliases.join(' ')} ${item.title} ${specs.join(' ')}`.toLowerCase())}">
     <button class="product-media js-lightbox" type="button"
-      data-image="${escapeAttr(item.img)}"
+      data-image="${escapeAttr(item.dimensionDiagram || item.img)}"
       data-title="${escapeAttr(item.title)}"
       data-sku="Арт. ${escapeAttr(skuDisplay)}"
       data-category="${escapeAttr(categoryName(item.category))}"
@@ -329,10 +338,10 @@ function renderProductCard(product, options = {}) {
         <span>${escapeHtml(categoryName(item.category))}</span>
       </div>
       <h3><a href="products/${escapeAttr(item.id)}.html">${escapeHtml(item.title)}</a></h3>
-      <div class="product-price">
+      ${[dimensionSummary, examplePreview].filter(Boolean).map(part => part + '\n      ').join('')}<div class="product-price">
         <strong>${escapeHtml(priceLabel)}</strong>
         <button class="product-detail js-lightbox" type="button"
-          data-image="${escapeAttr(item.img)}"
+          data-image="${escapeAttr(item.dimensionDiagram || item.img)}"
           data-title="${escapeAttr(item.title)}"
           data-sku="Арт. ${escapeAttr(skuDisplay)}"
           data-category="${escapeAttr(categoryName(item.category))}"
@@ -1268,13 +1277,17 @@ h3 {
   background: var(--surface);
   overflow: hidden;
   border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-media img {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
+  max-width: calc(100% - 20px);
+  max-height: calc(100% - 20px);
   object-fit: contain;
-  padding: 10px;
   transition: transform 0.4s ease;
 }
 
@@ -1291,6 +1304,20 @@ h3 {
   font-size: 12px;
   font-weight: 800;
 }
+
+.product-dimensions {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.product-card:hover .product-media img { transform: none; }
+
+.product-example { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 60px; margin: 0 0 12px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--text); text-align: left; font-size: 13px; font-weight: 700; }
+.product-example:hover, .product-example:focus-visible { border-color: var(--text); }
+.product-example img { width: 48px; height: 48px; flex: none; object-fit: cover; border-radius: 3px; }
 
 .product-body {
   flex: 1;
@@ -2178,11 +2205,11 @@ h3 {
 }
 
 .lightbox-media-col img {
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
+  width: auto;
+  height: auto;
+  max-width: calc(100% - 40px);
+  max-height: calc(100% - 40px);
   object-fit: contain;
-  padding: 20px;
 }
 
 .lightbox-zoom-badge {
@@ -2766,7 +2793,15 @@ function renderMainJs() {
       const specs = (Array.isArray(item.specs) && item.specs.length)
         ? item.specs
         : ['Натуральне Букинське габро', 'Пряма різка у цеху Коростишева', 'Дзеркальне водяне полірування'];
-      const specsAttr = escapeHtml(specs.join('||'));
+      const dimensions = item.overallDimensions;
+      const dimensionSpecs = dimensions ? [
+        'Загальна висота з підставкою: ' + dimensions.height + ' см',
+        'Загальна ширина: ' + dimensions.width + ' см',
+        'Загальна довжина з квітником і підставкою: ' + dimensions.length + ' см'
+      ] : [];
+      const specsAttr = escapeHtml([...dimensionSpecs, ...specs].join('||'));
+      const dimensionSummary = dimensions ? '<p class="product-dimensions">Висота ' + dimensions.height + ' см · ширина ' + dimensions.width + ' см · довжина ' + dimensions.length + ' см</p>' : '';
+      const examplePreview = item.exampleImg ? '<button class="product-example js-lightbox" type="button" data-image="' + escapeHtml(item.exampleImg) + '" data-title="Приклад виконання ' + escapeHtml(item.sku) + '" data-meta="Фото зі старого сайту KAMENOTES" aria-label="Переглянути фото виготовленої моделі ' + escapeHtml(item.sku) + '"><img src="' + escapeHtml(item.exampleImg) + '" alt="" loading="lazy"><span>Фото виготовленої моделі</span></button>' : '';
       const aliases = Array.isArray(item.aliases) ? item.aliases : [];
       const skuDisplay = item.sku + (aliases.length ? ' / також ' + aliases.join(', ') : '');
       const pricePart = isPriceVerified ? ' за ціною від ' + formatPrice(item.price) + ' грн' : '';
@@ -2778,7 +2813,7 @@ function renderMainJs() {
 
       return '<article class="product-card ' + escapeHtml(item.category) + '" data-category="' + escapeHtml(categories.join(' ')) + '" data-search="' + escapeHtml(searchStr) + '">' +
         '<button class="product-media js-lightbox" type="button"' +
-          ' data-image="' + escapeHtml(item.img) + '"' +
+          ' data-image="' + escapeHtml(item.dimensionDiagram || item.img) + '"' +
           ' data-title="' + escapeHtml(item.title) + '"' +
           ' data-sku="Арт. ' + escapeHtml(skuDisplay) + '"' +
           ' data-category="' + escapeHtml(catName) + '"' +
@@ -2796,10 +2831,12 @@ function renderMainJs() {
             '<span>' + escapeHtml(catName) + '</span>' +
           '</div>' +
           '<h3><a href="products/' + escapeHtml(item.id) + '.html">' + escapeHtml(item.title) + '</a></h3>' +
+          dimensionSummary +
+          examplePreview +
           '<div class="product-price">' +
             '<strong>' + escapeHtml(priceLabel) + '</strong>' +
             '<button class="product-detail js-lightbox" type="button"' +
-              ' data-image="' + escapeHtml(item.img) + '"' +
+              ' data-image="' + escapeHtml(item.dimensionDiagram || item.img) + '"' +
               ' data-title="' + escapeHtml(item.title) + '"' +
               ' data-sku="Арт. ' + escapeHtml(skuDisplay) + '"' +
               ' data-category="' + escapeHtml(catName) + '"' +
@@ -3211,6 +3248,7 @@ function renderMainJs() {
 
 function buildCatalogOnly() {
   ensureDirs();
+  buildDimensionDiagrams();
   const products = readProducts();
     
   
@@ -3307,6 +3345,7 @@ function writeRedirects() {
 
 function buildAll() {
   ensureDirs();
+  buildDimensionDiagrams();
   const products = readProducts();
   const reviews = readReviews();
   const services = readServices();

@@ -88,7 +88,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const specs = (Array.isArray(item.specs) && item.specs.length)
         ? item.specs
         : ['Натуральне Букинське габро', 'Пряма різка у цеху Коростишева', 'Дзеркальне водяне полірування'];
-      const specsAttr = escapeHtml(specs.join('||'));
+      const dimensions = item.overallDimensions;
+      const dimensionSpecs = dimensions ? [
+        'Загальна висота з підставкою: ' + dimensions.height + ' см',
+        'Загальна ширина: ' + dimensions.width + ' см',
+        'Загальна довжина з квітником і підставкою: ' + dimensions.length + ' см'
+      ] : [];
+      const specsAttr = escapeHtml([...dimensionSpecs, ...specs].join('||'));
+      const dimensionSummary = dimensions ? '<p class="product-dimensions">Висота ' + dimensions.height + ' см · ширина ' + dimensions.width + ' см · довжина ' + dimensions.length + ' см</p>' : '';
+      const examplePreview = item.exampleImg ? '<button class="product-example js-lightbox" type="button" data-image="' + escapeHtml(item.exampleImg) + '" data-title="Приклад виконання ' + escapeHtml(item.sku) + '" data-meta="Фото зі старого сайту KAMENOTES" aria-label="Переглянути фото виготовленої моделі ' + escapeHtml(item.sku) + '"><img src="' + escapeHtml(item.exampleImg) + '" alt="" loading="lazy"><span>Фото виготовленої моделі</span></button>' : '';
       const aliases = Array.isArray(item.aliases) ? item.aliases : [];
       const skuDisplay = item.sku + (aliases.length ? ' / також ' + aliases.join(', ') : '');
       const pricePart = isPriceVerified ? ' за ціною від ' + formatPrice(item.price) + ' грн' : '';
@@ -100,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return '<article class="product-card ' + escapeHtml(item.category) + '" data-category="' + escapeHtml(categories.join(' ')) + '" data-search="' + escapeHtml(searchStr) + '">' +
         '<button class="product-media js-lightbox" type="button"' +
-          ' data-image="' + escapeHtml(item.img) + '"' +
+          ' data-image="' + escapeHtml(item.dimensionDiagram || item.img) + '"' +
           ' data-title="' + escapeHtml(item.title) + '"' +
           ' data-sku="Арт. ' + escapeHtml(skuDisplay) + '"' +
           ' data-category="' + escapeHtml(catName) + '"' +
@@ -118,10 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
             '<span>' + escapeHtml(catName) + '</span>' +
           '</div>' +
           '<h3><a href="products/' + escapeHtml(item.id) + '.html">' + escapeHtml(item.title) + '</a></h3>' +
+          dimensionSummary +
+          examplePreview +
           '<div class="product-price">' +
             '<strong>' + escapeHtml(priceLabel) + '</strong>' +
             '<button class="product-detail js-lightbox" type="button"' +
-              ' data-image="' + escapeHtml(item.img) + '"' +
+              ' data-image="' + escapeHtml(item.dimensionDiagram || item.img) + '"' +
               ' data-title="' + escapeHtml(item.title) + '"' +
               ' data-sku="Арт. ' + escapeHtml(skuDisplay) + '"' +
               ' data-category="' + escapeHtml(catName) + '"' +
