@@ -12,6 +12,7 @@ PASS*
 Photo/
 site/img/NewPhoto/
 site/img/mounting/*viber*
+!site/img/mounting/изображение_viber_2026-09-27_13-50-12-687.jpg
 
 # QA test artifacts, logs and screenshots
 qa/

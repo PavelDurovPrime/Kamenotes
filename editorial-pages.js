@@ -340,7 +340,7 @@ module.exports = function createEditorialPages(api) {
           ${picture('img/mounting/montazh-pamyatnika-05.jpg', 'Монтаж гранітного цоколя')}
           ${picture('img/mounting/montazh-pamyatnika-09.jpg', 'Підготовка місця для пам’ятника')}
           ${picture('img/mounting/montazh-pamyatnika-16.jpg', 'Укладання гранітних плит')}
-          ${picture('img/workshop/installation-process.webp', 'Підйом важких деталей під час монтажу')}
+          ${picture('img/mounting/изображение_viber_2026-09-27_13-50-12-687.jpg', 'Підйом важких деталей під час монтажу')}
           ${picture('img/mounting/montazh-pamyatnika-12.jpg', 'Зібраний цоколь')}
           ${picture('img/mounting/montazh-pamyatnika-35.jpg', 'Готовий встановлений пам’ятник')}
         </div>
